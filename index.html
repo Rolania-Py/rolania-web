@@ -28,10 +28,8 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
-            background-image: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.08) 0%, transparent 60%);
         }
 
-        /* NAVEGACIÓN */
         header {
             position: fixed;
             top: 0;
@@ -54,7 +52,6 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            letter-spacing: -0.5px;
         }
 
         .logo span { color: var(--emerald); }
@@ -72,13 +69,10 @@
             color: var(--gold);
             font-weight: 700;
             font-size: 0.85rem;
-            transition: all 0.3s;
         }
-        .lang-switch:hover { background: rgba(245, 158, 11, 0.2); transform: scale(1.05); }
 
-        /* SECCIÓN HERO */
         .hero {
-            padding: 12rem 6% 6rem;
+            padding: 12rem 6% 4rem;
             text-align: center;
             max-width: 1100px;
             margin: 0 auto;
@@ -99,50 +93,22 @@
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
         }
 
         h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ffffff 30%, var(--text-muted) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.15;
-            letter-spacing: -1px;
+            color: #ffffff;
         }
 
-        .hero p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 3rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 3rem; }
 
-        .cta-group { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
-
-        .btn {
-            padding: 0.9rem 2.2rem;
-            border-radius: 10px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-size: 1rem;
-        }
-
-        .btn-primary { background: var(--emerald); color: #000; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3); }
-        .btn-primary:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4); }
-        .btn-secondary { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border-glass); }
-        .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
-
-        /* TARJETAS DE VALOR */
         .features {
-            padding: 4rem 6% 8rem;
+            padding: 2rem 6% 4rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             max-width: 1250px;
             margin: 0 auto;
         }
@@ -150,57 +116,36 @@
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border-glass);
-            padding: 3rem 2.5rem;
-            border-radius: 20px;
-            transition: transform 0.3s, border-color 0.3s;
-            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 16px;
         }
-        .card:hover { transform: translateY(-5px); border-color: rgba(16, 185, 129, 0.4); }
-        .card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--gold); font-weight: 600; }
-        .card p { color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
+        .card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--gold); }
+        .card p { color: var(--text-muted); font-size: 0.95rem; }
 
-        /* SIMULADOR EN VIVO (TOTALMENTE LIBRE SIN BORDES) */
         .simulator-section {
-            padding: 4rem 2% 8rem;
-            max-width: 1550px;
+            padding: 2rem 1% 6rem;
+            max-width: 100%;
             margin: 0 auto;
             text-align: center;
         }
-        .simulator-section h2 { font-size: 3rem; margin-bottom: 1rem; letter-spacing: -0.5px; }
-        .simulator-section > p { color: var(--text-muted); font-size: 1.15rem; margin-bottom: 4rem; }
+        .simulator-section h2 { font-size: 2.8rem; margin-bottom: 0.5rem; }
+        .simulator-section > p { color: var(--text-muted); margin-bottom: 2rem; }
 
-        .iframe-wrapper {
-            width: 100%;
-            background: transparent;
-            padding: 0;
-            margin: 0 auto;
-        }
-
-        /* SIN BORDES, SIN SOMBRAS, ALTURA AMPLIADA PARA EVITAR CORTES */
+        /* IFRAME LIMPIO Y EXPANDIDO SIN CAJAS RESTRICTIVAS */
         iframe {
             width: 100%;
-            height: 1450px;
+            height: 1800px;
             border: none;
-            background: transparent;
-            box-shadow: none;
+            background: #0e1117;
         }
 
-        /* FOOTER */
         footer {
             border-top: 1px solid var(--border-glass);
-            padding: 5rem 6%;
+            padding: 4rem 6%;
             text-align: center;
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             background: rgba(5, 8, 15, 0.5);
-        }
-        footer p { margin-bottom: 1.2rem; }
-        .disclaimer { font-size: 0.85rem; max-width: 850px; margin: 0 auto; opacity: 0.65; line-height: 1.6; }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            nav { display: none; }
-            iframe { height: 1700px; }
         }
     </style>
 </head>
@@ -222,25 +167,21 @@
             <div class="badge">🌐 Global Expats (EU / USA / LATAM)</div>
         </div>
         <h1 data-i18n="hero_title">Tu Libertad Fiscal y Arraigo Legal en Paraguay</h1>
-        <p data-i18n="hero_sub">Estrategias de expatriación 100% legales avaladas por Convenios de Doble Imposición (CDI) y la Ley 6380/2019 de Territorialidad. Protege tu patrimonio sin interpretaciones opacas.</p>
-        <div class="cta-group">
-            <a href="#simulator" class="btn btn-primary" data-i18n="btn_calc">📊 Calcular Ahorro Ahora</a>
-            <a href="https://wa.me/34600000000" target="_blank" class="btn btn-secondary" data-i18n="btn_wsp">💬 Consultoría WhatsApp</a>
-        </div>
+        <p data-i18n="hero_sub">Estrategias de expatriación 100% legales avaladas por Convenios de Doble Imposición (CDI) y la Ley 6380/2019 de Territorialidad.</p>
     </section>
 
     <section id="features" class="features">
         <div class="card">
             <h3 data-i18n="card1_title">0% Renta Extranjera</h3>
-            <p data-i18n="card1_desc">Bajo el principio de territorialidad paraguayo (Ley 6380/19), los ingresos que generes online desde el exterior o tus pensiones privadas quedan completamente exentos de imposición.</p>
+            <p data-i18n="card1_desc">Bajo el principio de territorialidad paraguayo (Ley 6380/19), los ingresos que generes online desde el exterior quedan exentos.</p>
         </div>
         <div class="card">
             <h3 data-i18n="card2_title">Seguridad Jurídica CDI</h3>
-            <p data-i18n="card2_desc">No operamos en zonas grises. Todo el marco de optimización se fundamenta en tratados oficiales que evitan la doble tributación y protegen tu traslado ante Hacienda.</p>
+            <p data-i18n="card2_desc">Tratados internacionales oficiales que evitan la doble tributación y protegen tu traslado ante Hacienda.</p>
         </div>
         <div class="card">
             <h3 data-i18n="card3_title">Alcance Internacional</h3>
-            <p data-i18n="card3_desc">Diseñamos estructuras para nómadas digitales, consultores, inversores y jubilados de España, toda la Unión Europea, Estados Unidos y Latinoamérica.</p>
+            <p data-i18n="card3_desc">Estructuras a medida para profesionales y jubilados de España, UE, EE. UU. y Latinoamérica.</p>
         </div>
     </section>
 
@@ -248,15 +189,13 @@
         <h2 data-i18n="sim_title">Simulador Fiscal en Vivo</h2>
         <p data-i18n="sim_sub">Interactúa con nuestro motor algorítmico y descubre tu ahorro neto anual en tiempo real.</p>
         
-        <div class="iframe-wrapper">
-            <iframe src="https://rolania.streamlit.app/?embed=true"></iframe>
-        </div>
+        <iframe src="https://rolania.streamlit.app/?embed=true" scrolling="yes"></iframe>
     </section>
 
     <footer id="contact">
         <p><strong>ROLANIA CONSULTING</strong> | <span data-i18n="footer_loc">Asunción, Paraguay & Madrid, España</span></p>
-        <p class="disclaimer" data-i18n="disclaimer">Nota legal: La información contenida en esta web y en el simulador tiene carácter orientativo y educativo. ROLANIA recomienda un estudio de viabilidad personalizado antes de ejecutar cualquier traslado de residencia fiscal internacional.</p>
-        <p style="margin-top: 2rem; font-size: 0.8rem;">&copy; 2026 ROLANIA.ES — All rights reserved.</p>
+        <p class="disclaimer" data-i18n="disclaimer">Nota legal: La información contenida en esta web y en el simulador tiene carácter orientativo y educativo.</p>
+        <p style="margin-top: 1.5rem; font-size: 0.8rem;">&copy; 2026 ROLANIA.ES — All rights reserved.</p>
     </footer>
 
     <script>
@@ -266,47 +205,41 @@
                 nav_sim: "Simulador Fiscal",
                 nav_contact: "Contacto",
                 hero_title: "Tu Libertad Fiscal y Arraigo Legal en Paraguay",
-                hero_sub: "Estrategias de expatriación 100% legales avaladas por Convenios de Doble Imposición (CDI) y la Ley 6380/2019 de Territorialidad. Protege tu patrimonio sin interpretaciones opacas.",
-                btn_calc: "📊 Calcular Ahorro Ahora",
-                btn_wsp: "💬 Consultoría WhatsApp",
+                hero_sub: "Estrategias de expatriación 100% legales avaladas por Convenios de Doble Imposición (CDI) y la Ley 6380/2019 de Territorialidad.",
                 card1_title: "0% Renta Extranjera",
-                card1_desc: "Bajo el principio de territorialidad paraguayo (Ley 6380/19), los ingresos que generes online desde el exterior o tus pensiones privadas quedan completamente exentos de imposición.",
+                card1_desc: "Bajo el principio de territorialidad paraguayo (Ley 6380/19), los ingresos que generes online desde el exterior quedan exentos.",
                 card2_title: "Seguridad Jurídica CDI",
-                card2_desc: "No operamos en zonas grises. Todo el marco de optimización se fundamenta en tratados oficiales que evitan la doble tributación y protegen tu traslado ante Hacienda.",
+                card2_desc: "Tratados internacionales oficiales que evitan la doble tributación y protegen tu traslado ante Hacienda.",
                 card3_title: "Alcance Internacional",
-                card3_desc: "Diseñamos estructuras para nómadas digitales, consultores, inversores y jubilados de España, toda la Unión Europea, Estados Unidos y Latinoamérica.",
+                card3_desc: "Estructuras a medida para profesionales y jubilados de España, UE, EE. UU. y Latinoamérica.",
                 sim_title: "Simulador Fiscal en Vivo",
                 sim_sub: "Interactúa con nuestro motor algorítmico y descubre tu ahorro neto anual en tiempo real.",
                 footer_loc: "Asunción, Paraguay & Madrid, España",
-                disclaimer: "Nota legal: La información contenida en esta web y en el simulador tiene carácter orientativo y educativo. ROLANIA recomienda un estudio de viabilidad personalizado antes de ejecutar cualquier traslado de residencia fiscal internacional."
+                disclaimer: "Nota legal: La información contenida en esta web y en el simulador tiene carácter orientativo y educativo."
             },
             en: {
                 nav_why: "Why Paraguay?",
                 nav_sim: "Tax Simulator",
                 nav_contact: "Contact",
                 hero_title: "Your Tax Freedom & Legal Residency in Paraguay",
-                hero_sub: "100% legal expatriation strategies backed by Double Taxation Treaties (DTT) and the 6380/2019 Territoriality Law. Protect your wealth without aggressive or opaque loopholes.",
-                btn_calc: "📊 Calculate Savings Now",
-                btn_wsp: "WhatsApp Consulting",
+                hero_sub: "100% legal expatriation strategies backed by Double Taxation Treaties (DTT) and the 6380/2019 Territoriality Law.",
                 card1_title: "0% Foreign Income",
-                card1_desc: "Under Paraguay's territorial tax principle (Law 6380/19), income generated online from abroad or private pensions remain completely tax-exempt.",
+                card1_desc: "Under Paraguay's territorial tax principle (Law 6380/19), income generated online from abroad remains exempt.",
                 card2_title: "DTT Legal Security",
-                card2_desc: "We do not operate in gray areas. Our entire optimization framework is built upon official international treaties that prevent double taxation and shield your relocation.",
+                card2_desc: "Official international treaties preventing double taxation and shielding your relocation.",
                 card3_title: "Global Reach",
-                card3_desc: "We tailor corporate and residency structures for digital nomads, consultants, investors, and retirees from Spain, the European Union, USA, and Latin America.",
+                card3_desc: "Tailored structures for professionals and retirees from Spain, EU, USA, and Latin America.",
                 sim_title: "Live Tax Simulator",
                 sim_sub: "Interact with our algorithmic engine and discover your net annual tax savings in real time.",
                 footer_loc: "Asuncion, Paraguay & Madrid, Spain",
-                disclaimer: "Legal notice: The information provided on this website and simulator is for educational and guidance purposes. ROLANIA strongly recommends a personalized feasibility study prior to executing any international tax residency relocation."
+                disclaimer: "Legal notice: The information provided on this website and simulator is for educational and guidance purposes."
             }
         };
 
         let currentLang = 'es';
-
         function toggleLanguage() {
             currentLang = currentLang === 'es' ? 'en' : 'es';
             document.getElementById('langBtn').innerText = currentLang === 'es' ? '🇬🇧 EN' : '🇪🇸 ES';
-            
             document.querySelectorAll('[data-i18n]').forEach(element => {
                 const key = element.getAttribute('data-i18n');
                 if (i18n[currentLang][key]) {
