@@ -159,10 +159,10 @@
         .card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--gold); font-weight: 600; }
         .card p { color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
 
-        /* SIMULADOR EN VIVO (DISEÑO ABIERTO Y FLUIDO) */
+        /* SIMULADOR EN VIVO (TOTALMENTE LIBRE SIN BORDES) */
         .simulator-section {
-            padding: 4rem 3% 8rem;
-            max-width: 1450px;
+            padding: 4rem 2% 8rem;
+            max-width: 1550px;
             margin: 0 auto;
             text-align: center;
         }
@@ -176,14 +176,13 @@
             margin: 0 auto;
         }
 
-        /* ⚠️ SIMULADOR FUERA DE CAJAS: Ancho total, sin marcos agobiantes y altura amplia */
+        /* SIN BORDES, SIN SOMBRAS, ALTURA AMPLIADA PARA EVITAR CORTES */
         iframe {
             width: 100%;
-            height: 1100px;
+            height: 1450px;
             border: none;
-            border-radius: 16px;
-            background: #0e1117;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+            background: transparent;
+            box-shadow: none;
         }
 
         /* FOOTER */
@@ -201,7 +200,7 @@
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             nav { display: none; }
-            iframe { height: 1300px; }
+            iframe { height: 1700px; }
         }
     </style>
 </head>
@@ -249,7 +248,6 @@
         <h2 data-i18n="sim_title">Simulador Fiscal en Vivo</h2>
         <p data-i18n="sim_sub">Interactúa con nuestro motor algorítmico y descubre tu ahorro neto anual en tiempo real.</p>
         
-        <!-- CONTENEDOR AMPLIO Y FLUIDO SIN BORDES ENCAJADOS -->
         <div class="iframe-wrapper">
             <iframe src="https://rolania.streamlit.app/?embed=true"></iframe>
         </div>
