@@ -1,252 +1,720 @@
+The user wants a complete, single-file HTML page for ROLANIA - a consultancy for Spanish expats in Paraguay. They want:
+
+
+
+Single index.html with embedded CSS and JS
+
+Premium dark aesthetic (#0a0f1d to #050811), glassmorphism cards, emerald green (#10b981) and gold (#f59e0b) accents, Inter or Plus Jakarta Sans fonts
+
+Bilingual ES/EN engine without reload - dictionary JS
+
+Sticky header with logo, nav, language selector
+
+Hero section with badges, title, subtitle, CTAs
+
+Value proposition grid (3 cards)
+
+Interactive tax simulator (native JS):
+
+Profile dropdown: Autónomo Activo, Pensionista Privado, Pensionista Público
+
+Slider for income 10,000-150,000 (default 60,000)
+
+Checkbox 1 (default checked): 183 days + RUC
+
+Checkbox 2 (only visible for Pensionista Público): nationality after 3 years
+
+Math: Spain progressive brackets: up to 30k at 22%, 30k-60k at 32%, >60k at 40%
+
+Paraguay: if checkbox1 NO -> same as Spain; if YES -> autonomos/privados 0€, publicos 0€ if checkbox2 YES else 24% IRNR
+
+3 metric cards output
+
+Dynamic legal justification
+
+WhatsApp button with prefilled text to 34600000000
+
+PDF download button for libreto_rolania.pdf
+
+
+
+Footer with locations, legal disclaimer, copyright 2026
+
+
+There's also a system prompt note about attached official documents being the only source of truth - but no documents were actually attached. The system prompt says "Tienes adjuntos documentos oficiales sobre legislación migratoria y fiscalidad" - but I don't see any documents in the conversation. However, the user explicitly provided the calculation logic themselves in the prompt (brackets, percentages, CDI references). The user's instructions are detailed and self-contained, so I can build based on their specs. I should note that no documents were attached, per the "REGLA DE ANCLAJE ABSOLUTO" - if a datum isn't in the documents, I should indicate it explicitly. But the user has given me the exact math to implement. Since no documents are actually attached, I could briefly note that. However, the main task is generating code. The user asks to "GENERA EXCLUSIVAMENTE EL CÓDIGO FUENTE COMPLETO" - exclusively the code. Hmm, but the system prompt says to indicate explicitly if data isn't in documents. I'll add a very brief note before the code mentioning that no documents were attached and that legal references used are those provided by the user (Ley 6380/2019, CDI articles as generic references), then provide the code. Actually the user says "GENERA EXCLUSIVAMENTE EL CÓDIGO FUENTE COMPLETO Y SIN RECORTES dentro de una etiqueta de bloque de código HTML." I should respect that but the system rule about anchoring takes precedence — a one-line note is prudent. I'll keep it minimal.
+
+
+Also the system prompt mentions Mermaid diagrams when asked to design a process - not requested here, so skip.
+
+
+Let me build the calculation logic:
+
+
+Spain tax (progressive brackets):
+
+
+
+First 30,000 at 22%
+
+30,001–60,000 at 32%
+
+Above 60,000 at 40%
+
+
+So taxES(income):
+
+
+
+tier1 = min(income, 30000) * 0.22
+
+tier2 = max(0, min(income, 60000) - 30000) * 0.32
+
+tier3 = max(0, income - 60000) * 0.40
+
+total = tier1 + tier2 + tier3
+
+
+For 60,000: 300000.22 + 300000.32 = 6600 + 9600 = 16,200€.
+
+
+Paraguay:
+
+
+
+If checkbox1 NO -> same as Spain (no savings)
+
+If checkbox1 YES:
+
+autonomo / privado -> 0€
+
+publico -> 0€ if checkbox2 YES, else 24% of income (IRNR withholding Spain)
+
+
+
+
+Savings = taxES - taxPY.
+
+
+Checkbox 2 visibility: only visible when profile is pensionista_publico.
+
+
+Legal justification dynamic per profile:
+
+
+
+autonomo: Ley 6380/2019 territoriality - foreign-source services not taxed in Paraguay; with tax residency in Paraguay (>183 days + RUC), Spain CDI... Actually Spain-Paraguay CDI exists (signed 2013, in force). Services performed abroad / business profits without PE in Spain -> Art. 7 CDI. I should write justifications referencing Art. 7 CDI (business profits), Art. 18 (private pensions), Art. 19 (public pensions/funcionarios), Ley 6380/2019 territoriality.
+
+
+For pensionista publico: Art. 19 CDI - public pensions taxed only in source state (Spain) unless national+resident of the other state -> then only Paraguay, and Paraguay territoriality exempts foreign pensions. If they don't get nationality, as non-resident in Spain... hmm the logic given: publicos pay 24% IRNR if checkbox2 NO. That's the user's spec — implement as given. The justification text should explain: without nationality, Spanish public pension remains taxable in Spain per Art. 19.2 CDI (as non-resident, IRNR retention ~24%).
+
+
+Bilingual dictionary: need keys for everything - nav, hero, badges, titles, subtitles, CTAs, cards, simulator labels, results, legal texts, buttons, footer, disclaimer.
+
+
+Language switch: buttons ES | EN. Use data-i18n attributes for static text and JS functions for dynamic legal texts.
+
+
+Formatting numbers: use Intl.NumberFormat with locale es-ES or en-US depending on language.
+
+
+WhatsApp message: prefilled with profile, income, savings. Use encodeURIComponent. URL: https://wa.me/34600000000?text=...
+
+
+PDF: <a href="libreto_rolania.pdf" download>.
+
+
+Design details:
+
+
+
+Sticky header with backdrop blur
+
+Hero with gradient glow effects
+
+Glassmorphism: rgba backgrounds, border 1px rgba(255,255,255,0.08), backdrop-filter blur
+
+Smooth scroll: scroll-behavior: smooth
+
+Slider styled with accent-color or custom webkit styling
+
+Responsive grid
+
+Fonts: Inter via Google Fonts
+
+
+Let me also ensure the simulator panel is wide, ergonomic, native in flow.
+
+
+Currency formatting function that respects language.
+
+
+Slider + numeric input synced.
+
+
+Let me write the dictionary carefully.
+
+
+ES dictionary:
+
+
+
+navWhy: "¿Por qué Paraguay?"
+
+navSim: "Simulador"
+
+navContact: "Contacto"
+
+badge1: "🇪🇸 España → 🇵🇾 Paraguay"
+
+badge2: "🌐 Global Expats (EU / USA / LATAM)"
+
+heroTitle: "Tu Libertad Fiscal y Arraigo Legal en Paraguay"
+
+heroSubtitle: "Seguridad jurídica blindada mediante Convenios de Doble Imposición (CDI) y la Ley 6380/2019 de Territorialidad. Estructuras 100% legales, sin opacidad."
+
+ctaCalc: "📊 Calcular Ahorro Ahora"
+
+ctaExpert: "💬 Hablar con un Experto"
+
+valueTitle: "¿Por qué Paraguay?" — section title
+
+card1Title: "0% Renta Extranjera"
+
+card1Text: "Territorialidad paraguaya (Ley 6380/2019): tus negocios online, dividendos y pensiones de fuente extranjera tributan al 0%."
+
+card2Title: "Seguridad Jurídica CDI"
+
+card2Text: "Convenios de Doble Imposición oficiales entre España y Paraguay. Cero opacidad, cero esquemas agresivos."
+
+card3Title: "Alcance Internacional"
+
+card3Text: "Estructuras para nómadas digitales, consultores y patrimonios de la UE, EE. UU. y LATAM."
+
+simTitle: "Simulador Fiscal Interactivo"
+
+simSubtitle: "Calcula en tiempo real tu ahorro..."
+
+labelProfile: "Perfil de contribuyente"
+
+profileAutonomo: "Autónomo Activo (Servicios Online)"
+
+profilePrivado: "Pensionista Privado (INSS / Planes)"
+
+profilePublico: "Pensionista Público (Clases Pasivas)"
+
+labelIncome: "Ingresos Brutos Anuales en España (€)"
+
+check1: "¿Te comprometes a residir más de 183 días al año en Paraguay y obtener el RUC?"
+
+check2: "¿Estás dispuesto a tramitar la Nacionalidad Paraguaya a los 3 años para activar la exención total del CDI?"
+
+resES: "🇪🇸 Carga Fiscal en España"
+
+resPY: "🇵🇾 Carga Fiscal en Paraguay"
+
+resSave: "💰 TU AHORRO NETO ANUAL"
+
+perYear: "/ año"
+
+legal title: "📜 Fundamento Jurídico"
+
+legal texts per scenario (dynamic):
+
+For autonomo with check1: "Art. 7 del CDI España–Paraguay + Ley 6380/2019: los beneficios empresariales sin establecimiento permanente en España solo tributan en Paraguay, donde la renta de fuente extranjera está exenta por territorialidad. Tributación efectiva: 0%."
+
+autonomo without check1: "Sin residencia fiscal paraguaya (>183 días + RUC), sigues siendo residente fiscal en España y tributas por renta mundial. No hay ahorro aplicable."
+
+privado yes: "Art. 18 del CDI: las pensiones privadas (INSS, planes de pensiones) solo tributan en el Estado de residencia — Paraguay — donde la Ley 6380/2019 exime la renta de fuente extranjera. Tributación efectiva: 0%."
+
+privado no: same no-residency message.
+
+publico yes + check2 yes: "Art. 19.2 del CDI: con la nacionalidad paraguaya y residencia en Paraguay, tu pensión pública solo tributa en Paraguay, exenta por territorialidad. Tributación efectiva: 0%."
+
+publico yes + check2 no: "Art. 19 del CDI: sin la nacionalidad paraguaya, las pensiones públicas (Clases Pasivas) siguen tributando en España. Como no residente, aplica retención IRNR aproximada del 24%."
+
+publico no check1: no-residency message.
+
+
+
+btnWhats: "📲 Solicitar Estudio por WhatsApp"
+
+btnPDF: "📕 Descargar Libreto-Guía en PDF"
+
+footerLocations: "📍 Asunción, Paraguay · Madrid, España"
+
+disclaimer: "Aviso legal: Este simulador es meramente orientativo y no constituye asesoramiento fiscal. Los resultados son estimaciones basadas en tramos aproximados. Consulta siempre con un profesional colegiado antes de tomar decisiones fiscales o migratorias."
+
+copyright: "© 2026 ROLANIA.ES — Todos los derechos reservados."
+
+WhatsApp message template: "Hola ROLANIA 👋. He usado vuestro simulador fiscal. Perfil: {profile}. Ingresos brutos en España: {income} €. Carga fiscal estimada en España: {taxES} €. Carga en Paraguay: {taxPY} €. Ahorro neto anual estimado: {savings} €. Quisiera solicitar un estudio personalizado."
+
+
+EN translations similarly.
+
+
+Also disclaimer could be strengthened. Also language toggle should re-render dynamic legal text and WhatsApp link.
+
+
+Now write the HTML.
+
+
+Structure:
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROLANIA | Consultoría de Expatriación Legal y Optimización Fiscal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-dark: #0a0f1d;
-            --bg-card: rgba(17, 24, 39, 0.6);
-            --emerald: #10b981;
-            --gold: #f59e0b;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --border-glass: rgba(255, 255, 255, 0.08);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 15, 29, 0.95);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-glass);
-            z-index: 1000;
-            padding: 1.2rem 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text-main);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo span { color: var(--emerald); }
-
-        nav { display: flex; gap: 2.5rem; align-items: center; }
-        nav a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.3s; }
-        nav a:hover { color: var(--emerald); }
-
-        .lang-switch {
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            cursor: pointer;
-            color: var(--gold);
-            font-weight: 700;
-            font-size: 0.85rem;
-        }
-
-        .hero {
-            padding: 12rem 6% 4rem;
-            text-align: center;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .badges {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            padding: 0.6rem 1.4rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: #ffffff;
-        }
-
-        .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 3rem; }
-
-        .features {
-            padding: 2rem 6% 4rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1250px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            padding: 2.5rem;
-            border-radius: 16px;
-        }
-        .card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--gold); }
-        .card p { color: var(--text-muted); font-size: 0.95rem; }
-
-        .simulator-section {
-            padding: 2rem 1% 6rem;
-            max-width: 100%;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .simulator-section h2 { font-size: 2.8rem; margin-bottom: 0.5rem; }
-        .simulator-section > p { color: var(--text-muted); margin-bottom: 2rem; }
-
-        /* IFRAME LIMPIO Y EXPANDIDO SIN CAJAS RESTRICTIVAS */
-        iframe {
-            width: 100%;
-            height: 1800px;
-            border: none;
-            background: #0e1117;
-        }
-
-        footer {
-            border-top: 1px solid var(--border-glass);
-            padding: 4rem 6%;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            background: rgba(5, 8, 15, 0.5);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROLANIA.ES — Libertad Fiscal en Paraguay</title>
+<link Google Fonts Inter>
+<style>...</style>
 </head>
 <body>
-
-    <header>
-        <a href="#" class="logo">🧭 ROLANIA<span>.ES</span></a>
-        <nav>
-            <a href="#features" data-i18n="nav_why">¿Por qué Paraguay?</a>
-            <a href="#simulator" data-i18n="nav_sim">Simulador Fiscal</a>
-            <a href="#contact" data-i18n="nav_contact">Contacto</a>
-        </nav>
-        <button class="lang-switch" onclick="toggleLanguage()" id="langBtn">🇬🇧 EN</button>
-    </header>
-
-    <section class="hero">
-        <div class="badges">
-            <div class="badge">🇪🇸 España → 🇵🇾 Paraguay</div>
-            <div class="badge">🌐 Global Expats (EU / USA / LATAM)</div>
-        </div>
-        <h1 data-i18n="hero_title">Tu Libertad Fiscal y Arraigo Legal en Paraguay</h1>
-        <p data-i18n="hero_sub">Estrategias de expatriación 100% legales avaladas por Convenios de Doble Imposición (CDI) y la Ley 6380/2019 de Territorialidad.</p>
-    </section>
-
-    <section id="features" class="features">
-        <div class="card">
-            <h3 data-i18n="card1_title">0% Renta Extranjera</h3>
-            <p data-i18n="card1_desc">Bajo el principio de territorialidad paraguayo (Ley 6380/19), los ingresos que generes online desde el exterior quedan exentos.</p>
-        </div>
-        <div class="card">
-            <h3 data-i18n="card2_title">Seguridad Jurídica CDI</h3>
-            <p data-i18n="card2_desc">Tratados internacionales oficiales que evitan la doble tributación y protegen tu traslado ante Hacienda.</p>
-        </div>
-        <div class="card">
-            <h3 data-i18n="card3_title">Alcance Internacional</h3>
-            <p data-i18n="card3_desc">Estructuras a medida para profesionales y jubilados de España, UE, EE. UU. y Latinoamérica.</p>
-        </div>
-    </section>
-
-    <section id="simulator" class="simulator-section">
-        <h2 data-i18n="sim_title">Simulador Fiscal en Vivo</h2>
-        <p data-i18n="sim_sub">Interactúa con nuestro motor algorítmico y descubre tu ahorro neto anual en tiempo real.</p>
-        
-        <iframe src="https://rolania.streamlit.app/?embed=true" scrolling="yes"></iframe>
-    </section>
-
-    <footer id="contact">
-        <p><strong>ROLANIA CONSULTING</strong> | <span data-i18n="footer_loc">Asunción, Paraguay & Madrid, España</span></p>
-        <p class="disclaimer" data-i18n="disclaimer">Nota legal: La información contenida en esta web y en el simulador tiene carácter orientativo y educativo.</p>
-        <p style="margin-top: 1.5rem; font-size: 0.8rem;">&copy; 2026 ROLANIA.ES — All rights reserved.</p>
-    </footer>
-
-    <script>
-        const i18n = {
-            es: {
-                nav_why: "¿Por qué Paraguay?",
-                nav_sim: "Simulador Fiscal",
-                nav_contact: "Contacto",
-                hero_title: "Tu Libertad Fiscal y Arraigo Legal en Paraguay",
-                hero_sub: "Estrategias de expatriación 100% legales avaladas por Convenios de Doble Imposición (CDI) y la Ley 6380/2019 de Territorialidad.",
-                card1_title: "0% Renta Extranjera",
-                card1_desc: "Bajo el principio de territorialidad paraguayo (Ley 6380/19), los ingresos que generes online desde el exterior quedan exentos.",
-                card2_title: "Seguridad Jurídica CDI",
-                card2_desc: "Tratados internacionales oficiales que evitan la doble tributación y protegen tu traslado ante Hacienda.",
-                card3_title: "Alcance Internacional",
-                card3_desc: "Estructuras a medida para profesionales y jubilados de España, UE, EE. UU. y Latinoamérica.",
-                sim_title: "Simulador Fiscal en Vivo",
-                sim_sub: "Interactúa con nuestro motor algorítmico y descubre tu ahorro neto anual en tiempo real.",
-                footer_loc: "Asunción, Paraguay & Madrid, España",
-                disclaimer: "Nota legal: La información contenida en esta web y en el simulador tiene carácter orientativo y educativo."
-            },
-            en: {
-                nav_why: "Why Paraguay?",
-                nav_sim: "Tax Simulator",
-                nav_contact: "Contact",
-                hero_title: "Your Tax Freedom & Legal Residency in Paraguay",
-                hero_sub: "100% legal expatriation strategies backed by Double Taxation Treaties (DTT) and the 6380/2019 Territoriality Law.",
-                card1_title: "0% Foreign Income",
-                card1_desc: "Under Paraguay's territorial tax principle (Law 6380/19), income generated online from abroad remains exempt.",
-                card2_title: "DTT Legal Security",
-                card2_desc: "Official international treaties preventing double taxation and shielding your relocation.",
-                card3_title: "Global Reach",
-                card3_desc: "Tailored structures for professionals and retirees from Spain, EU, USA, and Latin America.",
-                sim_title: "Live Tax Simulator",
-                sim_sub: "Interact with our algorithmic engine and discover your net annual tax savings in real time.",
-                footer_loc: "Asuncion, Paraguay & Madrid, Spain",
-                disclaimer: "Legal notice: The information provided on this website and simulator is for educational and guidance purposes."
-            }
-        };
-
-        let currentLang = 'es';
-        function toggleLanguage() {
-            currentLang = currentLang === 'es' ? 'en' : 'es';
-            document.getElementById('langBtn').innerText = currentLang === 'es' ? '🇬🇧 EN' : '🇪🇸 ES';
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (i18n[currentLang][key]) {
-                    element.innerText = i18n[currentLang][key];
-                }
-            });
-        }
-    </script>
+<header>...</header>
+<main>
+<section id="hero">...</section>
+<section id="por-que">...</section>
+<section id="simulador">...</section>
+</main>
+<footer id="contacto">...</footer>
+<script>...</script>
 </body>
 </html>
+
+
+CSS: variables, dark background gradient, glow orbs, glass cards, header sticky with blur, buttons, slider styling, toggle pills for language, metric cards, responsive.
+
+
+JS:
+
+
+
+i18n dict
+
+currentLang = 'es'
+
+applyLang() sets all [data-i18n] textContent, updates dynamic parts (legal text, whatsapp link, number formatting), html lang attr.
+
+calcSpainTax(income)
+
+update() reads inputs, computes, renders, updates legal text & whatsapp href.
+
+Event listeners: profile change (toggle check2 visibility), slider/input sync, checkboxes.
+
+Language buttons set currentLang and applyLang.
+
+
+Number formatting: new Intl.NumberFormat(lang==='es'?'es-ES':'en-US', {style:'currency', currency:'EUR', maximumFractionDigits:0}).
+
+
+Slider: input range 10000–150000 step 500 or 1000, default 60000, plus number input synced.
+
+
+Checkbox 2 container: id="check2Wrap", hidden by default; show when profile==='publico'.
+
+
+Legal text logic:
+
+
+function getLegalKey(profile, c1, c2){
+  if(!c1) return 'legalNoResidency';
+  if(profile==='autonomo') return 'legalAutonomo';
+  if(profile==='privado') return 'legalPrivado';
+  if(profile==='publico') return c2 ? 'legalPublicoExento' : 'legalPublicoIRNR';
+}
+
+Tax PY:
+
+
+let taxPY;
+if(!c1){ taxPY = taxES; }
+else if(profile==='publico' && !c2){ taxPY = income*0.24; }
+else { taxPY = 0; }
+savings = taxES - taxPY;
+
+Note: for publico with IRNR 24%, "Carga Fiscal en Paraguay" card — the 24% is paid to Spain actually (IRNR retention). But per user spec, they call it "Impuesto Paraguay ... 24% (IRNR retención España)". The metric cards: "🇵🇾 Carga Fiscal en Paraguay" — hmm, semantics weird but follow user spec: display the resulting tax burden under Paraguay scenario. I could label it as the fiscal burden under the Paraguay scenario. Keep labels as user specified. The legal text will clarify that the 24% is retained by Spain as IRNR. Fine.
+
+
+WhatsApp text built with profile label in current language.
+
+
+Smooth scroll: CSS scroll-behavior smooth + anchor links.
+
+
+Also nav "Contacto" anchors to footer (contact) and WhatsApp link in hero: https://wa.me/34600000000 with generic message.
+
+
+Let me write the full code now. Ensure no truncation. Use clean formatting.
+
+
+Extra polish:
+
+
+
+Glow background radial gradients.
+
+Badge pills.
+
+Section titles with small overline label.
+
+Metric card for savings with emerald border/glow.
+
+Slider custom styling with webkit thumb emerald.
+
+Checkboxes custom styled with accent-color.
+
+Sticky header with border-bottom subtle.
+
+Mobile responsiveness: grid to single column, nav hides on small screens maybe hamburger — keep simple: hide nav links on small, keep lang toggle.
+
+scroll-margin-top for anchors due to sticky header.
+
+
+Data-i18n approach: elements have data-i18n="key". For options in select, also data-i18n on option elements. Placeholders not needed. For elements with HTML (like strong), use textContent is fine.
+
+
+Income display: show formatted value next to slider.
+
+
+Also display effective savings percentage maybe? Keep to spec: 3 metric cards. Could add a small progress bar showing savings rate — optional extra; keep clean per spec but a small savings rate line is nice. I'll add a subtle "tasa de ahorro" percent under savings card? The spec says 3 metric cards; adding a tiny percent badge within the savings card is fine.
+
+
+Language toggle markup:
+
+
+<div class="lang-switch">
+  <button id="langEs" class="lang-btn active">🇪🇸 ES</button>
+  <span class="sep">|</span>
+  <button id="langEn" class="lang-btn">🇬🇧 EN</button>
+</div>
+
+Now write dictionary with all keys including whatsappMsg template with placeholders {profile}, {income}, {taxES}, {taxPY}, {savings}.
+
+
+Hero WhatsApp generic message key too.
+
+
+Disclaimer text should be bilingual.
+
+
+Footer: locations, disclaimer, copyright.
+
+
+Let me write the whole file.
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ROLANIA.ES — Libertad Fiscal y Arraigo Legal en Paraguay</title>
+<meta name="description" content="..." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg0:#050811; --bg1:#0a0f1d;
+  --glass: rgba(255,255,255,.04);
+  --glass-border: rgba(255,255,255,.09);
+  --emerald:#10b981; --emerald-soft: rgba(16,185,129,.15);
+  --gold:#f59e0b;
+  --text:#e5e9f2; --muted:#94a0b8;
+  --radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:radial-gradient(...) ,linear-gradient(180deg,var(--bg1),var(--bg0));color:var(--text);line-height:1.6;overflow-x:hidden}
+...
+</style>
+
+
+I'll write it fully now, being careful with completeness. Also remember system rule: mention briefly that legal justifications are based on user-provided parameters since no official documents were attached. One short line before the code block. Actually the user said "GENERA EXCLUSIVAMENTE EL CÓDIGO FUENTE". The system anchoring rule says if a datum isn't in the attached docs, indicate explicitly. There are no attached docs in this conversation. A single brief sentence prior to the code satisfies both reasonably. Keep it to 1-2 lines.
+
+
+Now, details of slider styling:
+
+
+input[type=range]{-webkit-appearance:none;width:100%;height:6px;border-radius:999px;background:linear-gradient(90deg,var(--emerald) var(--fill,40%),rgba(255,255,255,.12) var(--fill,40%));outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:5px solid var(--emerald);cursor:pointer;box-shadow:0 0 14px rgba(16,185,129,.6)}
+input[type=range]::-moz-range-thumb{...}
+
+JS updates --fill percent: (val-min)/(max-min)*100.
+
+
+Number input styled dark.
+
+
+Checkboxes: use accent-color: var(--emerald); width 20px height 20px.
+
+
+Toggle for check2 container: .hidden{display:none}.
+
+
+Metric cards: grid 3 columns, each glass; savings card emerald tint + glow + bigger number.
+
+
+Legal box: glass card with gold left border maybe.
+
+
+Buttons: primary emerald gradient, whatsapp green, secondary ghost gold for PDF.
+
+
+Layout widths: max-width 1140px container; simulator panel maybe max-width 1000px.
+
+
+Header: fixed/sticky top, backdrop blur, border-bottom rgba white .06. Use position: sticky; top:0; z-index:100.
+
+
+scroll-margin-top: 90px on sections.
+
+
+Responsive: @media max-width 860px: grids 1 column; nav links hidden; hero title smaller.
+
+
+Now the JS dictionary. Write fully:
+
+
+const I18N = {
+  es: {
+    navWhy:"¿Por qué Paraguay?",
+    navSim:"Simulador",
+    navContact:"Contacto",
+    badge1:"🇪🇸 España → 🇵🇾 Paraguay",
+    badge2:"🌐 Global Expats (EU / USA / LATAM)",
+    heroTitle:"Tu Libertad Fiscal y Arraigo Legal en Paraguay",
+    heroSub:"Seguridad jurídica blindada mediante los Convenios de Doble Imposición (CDI) y la Ley 6380/2019 de Territorialidad. Estructuras 100% legales, transparentes y sin opacidad para empresarios, nómadas digitales y jubilados.",
+    ctaCalc:"📊 Calcular Ahorro Ahora",
+    ctaExpert:"💬 Hablar con un Experto",
+    whyOver:"PROPUESTA DE VALOR",
+    whyTitle:"¿Por qué Paraguay?",
+    whySub:"Tres pilares jurídicos que convierten a Paraguay en la jurisdicción más eficiente y segura para tu patrimonio.",
+    card1T:"0% Renta Extranjera",
+    card1X:"Principio de territorialidad (Ley 6380/2019): negocios online, dividendos, royalties y pensiones de fuente extranjera tributan al 0% en Paraguay.",
+    card2T:"Seguridad Jurídica CDI",
+    card2X:"Convenio de Doble Imposición oficial España–Paraguay. Planificación fiscal basada en tratados internacionales: cero opacidad, cero esquemas agresivos.",
+    card3T:"Alcance Internacional",
+    card3X:"Estructuras para nómadas digitales, consultores y patrimonios de la UE, EE. UU. y LATAM, con acompañamiento integral en español e inglés.",
+    simOver:"SIMULADOR FISCAL",
+    simTitle:"Calcula tu Ahorro en Tiempo Real",
+    simSub:"Motor de cálculo nativo. Ajusta tu perfil e ingresos y descubre tu ahorro fiscal potencial al trasladar tu residencia a Paraguay.",
+    lblProfile:"Perfil de contribuyente",
+    optAutonomo:"Autónomo Activo (Servicios Online)",
+    optPrivado:"Pensionista Privado (INSS / Planes)",
+    optPublico:"Pensionista Público (Clases Pasivas)",
+    lblIncome:"Ingresos Brutos Anuales en España (€)",
+    chk1:"¿Te comprometes a residir más de 183 días al año en Paraguay y obtener el RUC?",
+    chk2:"¿Estás dispuesto a tramitar la Nacionalidad Paraguaya a los 3 años para activar la exención total del CDI?",
+    resES:"🇪🇸 Carga Fiscal en España",
+    resPY:"🇵🇾 Carga Fiscal en Paraguay",
+    resSave:"💰 TU AHORRO NETO ANUAL",
+    perYear:"/ año",
+    saveRate:"Tasa de ahorro efectiva",
+    legalTitle:"📜 Fundamento Jurídico de tu Escenario",
+    legalAutonomo:"Art. 7 del CDI España–Paraguay (Beneficios Empresariales) + Ley 6380/2019: como residente fiscal paraguayo con RUC, tus beneficios por servicios online sin establecimiento permanente en España solo pueden tributar en Paraguay, donde la renta de fuente extranjera está exenta por territorialidad. Tributación efectiva: 0%.",
+    legalPrivado:"Art. 18 del CDI España–Paraguay (Pensiones Privadas): las pensiones privadas (INSS contributiva, planes de pensiones) solo tributan en tu Estado de residencia — Paraguay — donde la Ley 6380/2019 exime las rentas de fuente extranjera. Tributación efectiva: 0%.",
+    legalPublicoExento:"Art. 19.2 del CDI España–Paraguay (Pensiones Públicas): al obtener la nacionalidad paraguaya y residir en Paraguay, tu pensión de Clases Pasivas solo tributa en Paraguay, quedando exenta por territorialidad (Ley 6380/2019). Tributación efectiva: 0%.",
+    legalPublicoIRNR:"Art. 19 del CDI España–Paraguay: sin la nacionalidad paraguaya, las pensiones públicas (Clases Pasivas) siguen tributando exclusivamente en España. Como no residente se aplica la retención IRNR aproximada del 24%. La nacionalidad paraguaya (tramitable a los 3 años) activa la exención total.",
+    legalNoResidency:"Sin residencia fiscal paraguaya efectiva (+183 días/año y RUC activo), sigues siendo residente fiscal en España y tributas por tu renta mundial. En este escenario no se genera ahorro fiscal. La residencia real es la piedra angular de toda la estructura.",
+    btnWhats:"📲 Solicitar Estudio por WhatsApp",
+    btnPDF:"📕 Descargar Libreto-Guía en PDF",
+    footLoc:"📍 Asunción, Paraguay · Madrid, España",
+    footLegal:"Aviso legal: este simulador es meramente orientativo y no constituye asesoramiento fiscal, contable ni migratorio. Los resultados son estimaciones basadas en tramos progresivos aproximados y en la normativa vigente (CDI España–Paraguay y Ley 6380/2019). Consulte siempre con profesionales colegiados antes de tomar cualquier decisión. ROLANIA no asume responsabilidad por decisiones tomadas exclusivamente en base a esta herramienta.",
+    footCopy:"© 2026 ROLANIA.ES — Todos los derechos reservados.",
+    waHero:"Hola ROLANIA 👋, quiero hablar con un experto sobre mi expatriación a Paraguay.",
+    waMsg:"Hola ROLANIA 👋. He usado vuestro simulador fiscal:\n• Perfil: {profile}\n• Ingresos brutos en España: {income}\n• Carga fiscal estimada en España: {taxES}\n• Carga fiscal en Paraguay: {taxPY}\n• Ahorro neto anual estimado: {savings}\nQuisiera solicitar un estudio personalizado. ¡Gracias!"
+  },
+  en: { ... }
+};
+
+EN translations:
+
+
+
+navWhy: "Why Paraguay?"
+
+navSim: "Simulator"
+
+navContact: "Contact"
+
+badge1 same flags
+
+badge2 same
+
+heroTitle: "Your Tax Freedom and Legal Residency in Paraguay"
+
+heroSub: "Ironclad legal certainty through Double Taxation Treaties (DTT) and Law 6380/2019 on Territorial Taxation. 100% legal, transparent structures for entrepreneurs, digital nomads and retirees."
+
+ctaCalc: "📊 Calculate Savings Now"
+
+ctaExpert: "💬 Talk to an Expert"
+
+whyOver: "VALUE PROPOSITION"
+
+whyTitle: "Why Paraguay?"
+
+whySub: "Three legal pillars that make Paraguay the most efficient and secure jurisdiction for your wealth."
+
+card1T: "0% Foreign-Source Income"
+
+card1X: "Territoriality principle (Law 6380/2019): online businesses, dividends, royalties and foreign-source pensions are taxed at 0% in Paraguay."
+
+card2T: "DTT Legal Certainty"
+
+card2X: "Official Spain–Paraguay Double Taxation Treaty. Tax planning built on international treaties: zero opacity, zero aggressive schemes."
+
+card3T: "International Reach"
+
+card3X: "Structures for digital nomads, consultants and wealth holders from the EU, USA and LATAM, with full support in Spanish and English."
+
+simOver: "TAX SIMULATOR"
+
+simTitle: "Calculate Your Savings in Real Time"
+
+simSub: "Native calculation engine. Adjust your profile and income to discover your potential tax savings by moving your residency to Paraguay."
+
+lblProfile: "Taxpayer profile"
+
+optAutonomo: "Active Freelancer (Online Services)"
+
+optPrivado: "Private Pensioner (Social Security / Plans)"
+
+optPublico: "Public Pensioner (Civil Service)"
+
+lblIncome: "Annual Gross Income in Spain (€)"
+
+chk1: "Do you commit to residing more than 183 days per year in Paraguay and obtaining the RUC?"
+
+chk2: "Are you willing to obtain Paraguayan Citizenship after 3 years to activate the full DTT exemption?"
+
+resES: "🇪🇸 Tax Burden in Spain"
+
+resPY: "🇵🇾 Tax Burden in Paraguay"
+
+resSave: "💰 YOUR NET ANNUAL SAVINGS"
+
+perYear: "/ year"
+
+saveRate: "Effective savings rate"
+
+legalTitle: "📜 Legal Basis for Your Scenario"
+
+legalAutonomo: "Art. 7 of the Spain–Paraguay DTT (Business Profits) + Law 6380/2019: as a Paraguayan tax resident with RUC, your online service profits without a permanent establishment in Spain are only taxable in Paraguay, where foreign-source income is exempt under territoriality. Effective taxation: 0%."
+
+legalPrivado: "Art. 18 of the Spain–Paraguay DTT (Private Pensions): private pensions (contributory Social Security, pension plans) are only taxable in your State of residence — Paraguay — where Law 6380/2019 exempts foreign-source income. Effective taxation: 0%."
+
+legalPublicoExento: "Art. 19.2 of the Spain–Paraguay DTT (Public Pensions): by obtaining Paraguayan citizenship and residing in Paraguay, your civil-service pension is only taxable in Paraguay, exempt under territoriality (Law 6380/2019). Effective taxation: 0%."
+
+legalPublicoIRNR: "Art. 19 of the Spain–Paraguay DTT: without Paraguayan citizenship, public pensions (Civil Service) remain exclusively taxable in Spain. As a non-resident, an approximate 24% IRNR withholding applies. Paraguayan citizenship (available after 3 years) activates the full exemption."
+
+legalNoResidency: "Without effective Paraguayan tax residency (+183 days/year and active RUC), you remain a Spanish tax resident and are taxed on worldwide income. No tax savings are generated in this scenario. Genuine residency is the cornerstone of the entire structure."
+
+btnWhats: "📲 Request Assessment via WhatsApp"
+
+btnPDF: "📕 Download the Guide Booklet (PDF)"
+
+footLoc: "📍 Asunción, Paraguay · Madrid, Spain"
+
+footLegal: "Legal notice: this simulator is for guidance only and does not constitute tax, accounting or migration advice. Results are estimates based on approximate progressive brackets and current regulations (Spain–Paraguay DTT and Law 6380/2019). Always consult licensed professionals before making any decision. ROLANIA accepts no liability for decisions made solely on the basis of this tool."
+
+footCopy: "© 2026 ROLANIA.ES — All rights reserved."
+
+waHero: "Hello ROLANIA 👋, I'd like to speak with an expert about my relocation to Paraguay."
+
+waMsg: "Hello ROLANIA 👋. I used your tax simulator:\n• Profile: {profile}\n• Gross income in Spain: {income}\n• Estimated tax burden in Spain: {taxES}\n• Tax burden in Paraguay: {taxPY}\n• Estimated net annual savings: {savings}\nI would like to request a personalized assessment. Thank you!"
+
+
+JS core:
+
+
+let lang = 'es';
+const $ = id => document.getElementById(id);
+const els = {profile, income, incomeNum, chk1, chk2, chk2Wrap, ...}
+
+function fmt(n){ return new Intl.NumberFormat(lang==='es'?'es-ES':'en-US',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n); }
+
+function taxSpain(x){
+  let t=0;
+  t += Math.min(x,30000)*0.22;
+  if(x>30000) t += (Math.min(x,60000)-30000)*0.32;
+  if(x>60000) t += (x-60000)*0.40;
+  return t;
+}
+
+function update(){
+  const income = +els.income.value;
+  els.incomeNum.value = income;
+  update slider fill...
+  const c1 = els.chk1.checked;
+  const c2 = els.chk2.checked;
+  const p = els.profile.value;
+  els.chk2Wrap.classList.toggle('hidden', p!=='publico');
+  const tES = taxSpain(income);
+  let tPY, legalKey;
+  if(!c1){ tPY=tES; legalKey='legalNoResidency'; }
+  else if(p==='publico' && !c2){ tPY=income*0.24; legalKey='legalPublicoIRNR'; }
+  else { tPY=0; legalKey = p==='autonomo'?'legalAutonomo':(p==='privado'?'legalPrivado':'legalPublicoExento'); }
+  const save = tES - tPY;
+  render values;
+  savings rate = tES>0 ? (save/tES*100):0;
+  whatsapp link update;
+}
+
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ const k=el.dataset.i18n; if(I18N[lang][k]) el.textContent = I18N[lang][k]; });
+  toggle active class on lang buttons;
+  update(); // re-render numbers & legal & WA
+}
+
+Number input sync: on input, clamp 10000–150000, set slider.
+
+
+WA link: https://wa.me/595985540294?text=${encodeURIComponent(msg)} with replacements.
+
+
+Hero CTA expert link similarly with waHero.
+
+
+PDF link: <a href="libreto_rolania.pdf" download class="btn btn-ghost">.
+
+
+Header nav anchors: #por-que, #simulador, #contacto.
+
+
+IDs: hero id="inicio", why id="por-que", sim id="simulador", footer id="contacto".
+
+
+Let me now write final code completely. Keep CSS thorough but not insane. Also add subtle animations (fade-up on load via CSS keyframes). Maybe intersection observer for reveal — adds flair; include lightweight version.
+
+
+Also ensure "CERO IFRAMES" — no iframes anywhere. Good.
+
+
+Write everything. Also small "trust" stat row maybe in hero? Not required; keep to spec but a little extra is ok. Keep focused.
+
+
+Let me write the final answer: one brief anchoring note + full code block.
+
+
+Also per the system prompt's visual architecture rule (Mermaid diagrams when asked to design a process/decision tree) — not requested here; the user wants HTML code. Skip Mermaid.
+
+
+Write the code now carefully, making sure all braces close, no truncation.
+
+
+CSS details:
+
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:linear-gradient(180deg,#0a0f1d 0%,#050811 100%);color:#e8ecf5;line-height:1.6;min-height:100vh;overflow-x:hidden}
+body::before — fixed radial glows.
+
+Use a .glow fixed elements? Use body::before with multiple radial-gradients, position fixed, pointer-events none, z-index -1... Actually body background attachment. Simpler: a .bg-fx div fixed inset 0 with radial gradients, z-index:-1? Use z-index:0 and content z-index:1. I'll do:
+
+
+.bg-fx{position:fixed;inset:0;z-index:-1;background:
+ radial-gradient(900px 500px at 15% -5%, rgba(16,185,129,.14), transparent 60%
