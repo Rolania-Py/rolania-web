@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROLANIA | Consultoría de Expatriación Legal y Optimización Fiscal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0f1d;
+            --bg-card: rgba(17, 24, 39, 0.7);
+            --emerald: #10b981;
+            --gold: #f59e0b;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-glass: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.1) 0%, transparent 75%);
+        }
+
+        /* NAVEGACIÓN */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 15, 29, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-glass);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span { color: var(--emerald); }
+
+        nav { display: flex; gap: 2rem; align-items: center; }
+        nav a { color: var(--text-muted); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        nav a:hover { color: var(--emerald); }
+
+        .lang-switch {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            cursor: pointer;
+            color: var(--gold);
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        .lang-switch:hover { border-color: var(--gold); transform: scale(1.05); }
+
+        /* SECCIÓN HERO */
+        .hero {
+            padding: 10rem 5% 5rem;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, var(--text-muted) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2.5rem; }
+
+        .cta-group { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary { background: var(--emerald); color: #000; }
+        .btn-primary:hover { background: #059669; transform: translateY(-2px); box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); }
+        .btn-secondary { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border-glass); }
+        .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+        /* TARJETAS DE VALOR */
+        .features {
+            padding: 5rem 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            padding: 2.5rem;
+            border-radius: 16px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); border-color: var(--emerald); }
+        .card h3 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--gold); }
+        .card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* SIMULADOR EMBED */
+        .simulator-section {
+            padding: 5rem 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .simulator-section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .simulator-section > p { color: var(--text-muted); margin-bottom: 3rem; }
+
+        .iframe-container {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 1rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        iframe { width: 100%; height: 850px; border: none; border-radius: 8px; }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border-glass);
+            padding: 4rem 5%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 5rem;
+        }
+        footer p { margin-bottom: 1rem; }
+        .disclaimer { font-size: 0.8rem; max-width: 800px; margin: 0 auto; opacity: 0.6; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">🧭 ROLANIA<span>.ES</span></a>
+        <nav>
+            <a href="#features" data-i18n="nav_why">¿Por qué Paraguay?</a>
+            <a href="#simulator" data-i18n="nav_sim">Simulador Fiscal</a>
+            <a href="#contact" data-i18n="nav_contact">Contacto</a>
+        </nav>
+        <button class="lang-switch" onclick="toggleLanguage()" id="langBtn">🇬🇧 EN</button>
+    </header>
+
+    <section class="hero">
+        <div class="badges">
+            <div class="badge">🇪🇸 España → 🇵🇾 Paraguay</div>
+            <div class="badge">🌐 Global Expats (EU / USA / LATAM)</div>
+        </div>
+        <h1 data-i18n="hero_title">Tu Libertad Fiscal y Arraigo Legal en Paraguay</h1>
+        <p data-i18n="hero_sub">Estrategias de expatriación 100% legales avaladas por Convenios de Doble Imposición (CDI) y la Ley 6380/2019 de Territorialidad. Protege tu patrimonio sin interpretaciones opacas.</p>
+        <div class="cta-group">
+            <a href="#simulator" class="btn btn-primary" data-i18n="btn_calc">📊 Calcular Ahorro Ahora</a>
+            <a href="https://wa.me/34600000000" target="_blank" class="btn btn-secondary" data-i18n="btn_wsp">💬 Consultoría WhatsApp</a>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="card">
+            <h3 data-i18n="card1_title">0% Renta Extranjera</h3>
+            <p data-i18n="card1_desc">Bajo el principio de territorialidad paraguayo (Ley 6380/19), los ingresos que generes online desde el exterior o tus pensiones privadas quedan completamente exentos de imposición.</p>
+        </div>
+        <div class="card">
+            <h3 data-i18n="card2_title">Seguridad Jurídica CDI</h3>
+            <p data-i18n="card2_desc">No operamos en zonas grises. Todo el marco de optimización se fundamenta en tratados internacionales oficiales que evitan la doble tributación y protegen tu traslado ante Hacienda.</p>
+        </div>
+        <div class="card">
+            <h3 data-i18n="card3_title">Alcance Internacional</h3>
+            <p data-i18n="card3_desc">Diseñamos estructuras para nómadas digitales, consultores, inversores y jubilados de España, toda la Unión Europea, Estados Unidos y Latinoamérica.</p>
+        </div>
+    </section>
+
+    <section id="simulator" class="simulator-section">
+        <h2 data-i18n="sim_title">Simulador Fiscal en Vivo</h2>
+        <p data-i18n="sim_sub">Interactúa con nuestro motor algorítmico y descubre tu ahorro neto anual en tiempo real.</p>
+        <div class="iframe-container">
+            <!-- INCRUSTACIÓN DE TU CALCULADORA STREAMLIT -->
+            <iframe src="https://rolania.streamlit.app/?embed=true"></iframe>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p><strong>ROLANIA CONSULTING</strong> | <span data-i18n="footer_loc">Asunción, Paraguay & Madrid, España</span></p>
+        <p class="disclaimer" data-i18n="disclaimer">Nota legal: La información contenida en esta web y en el simulador tiene carácter orientativo y educativo. ROLANIA recomienda un estudio de viabilidad personalizado antes de ejecutar cualquier traslado de residencia fiscal internacional.</p>
+        <p style="margin-top: 2rem; font-size: 0.8rem;">&copy; 2026 ROLANIA.ES — All rights reserved.</p>
+    </footer>
+
+    <script>
+        // MOTOR DICCIONARIO BILINGÜE ES / EN
+        const i18n = {
+            es: {
+                nav_why: "¿Por qué Paraguay?",
+                nav_sim: "Simulador Fiscal",
+                nav_contact: "Contacto",
+                hero_title: "Tu Libertad Fiscal y Arraigo Legal en Paraguay",
+                hero_sub: "Estrategias de expatriación 100% legales avaladas por Convenios de Doble Imposición (CDI) y la Ley 6380/2019 de Territorialidad. Protege tu patrimonio sin interpretaciones opacas.",
+                btn_calc: "📊 Calcular Ahorro Ahora",
+                btn_wsp: "💬 Consultoría WhatsApp",
+                card1_title: "0% Renta Extranjera",
+                card1_desc: "Bajo el principio de territorialidad paraguayo (Ley 6380/19), los ingresos que generes online desde el exterior o tus pensiones privadas quedan completamente exentos de imposición.",
+                card2_title: "Seguridad Jurídica CDI",
+                card2_desc: "No operamos en zonas grises. Todo el marco de optimización se fundamenta en tratados internacionales oficiales que evitan la doble tributación y protegen tu traslado ante Hacienda.",
+                card3_title: "Alcance Internacional",
+                card3_desc: "Diseñamos estructuras para nómadas digitales, consultores, inversores y jubilados de España, toda la Unión Europea, Estados Unidos y Latinoamérica.",
+                sim_title: "Simulador Fiscal en Vivo",
+                sim_sub: "Interactúa con nuestro motor algorítmico y descubre tu ahorro neto anual en tiempo real.",
+                footer_loc: "Asunción, Paraguay & Madrid, España",
+                disclaimer: "Nota legal: La información contenida en esta web y en el simulador tiene carácter orientativo y educativo. ROLANIA recomienda un estudio de viabilidad personalizado antes de ejecutar cualquier traslado de residencia fiscal internacional."
+            },
+            en: {
+                nav_why: "Why Paraguay?",
+                nav_sim: "Tax Simulator",
+                nav_contact: "Contact",
+                hero_title: "Your Tax Freedom & Legal Residency in Paraguay",
+                hero_sub: "100% legal expatriation strategies backed by Double Taxation Treaties (DTT) and the 6380/2019 Territoriality Law. Protect your wealth without aggressive or opaque loopholes.",
+                btn_calc: "📊 Calculate Savings Now",
+                btn_wsp: "💬 WhatsApp Consulting",
+                card1_title: "0% Foreign Income",
+                card1_desc: "Under Paraguay's territorial tax principle (Law 6380/19), income generated online from abroad or private pensions remain completely tax-exempt.",
+                card2_title: "DTT Legal Security",
+                card2_desc: "We do not operate in gray areas. Our entire optimization framework is built upon official international treaties that prevent double taxation and shield your relocation.",
+                card3_title: "Global Reach",
+                card3_desc: "We tailor corporate and residency structures for digital nomads, consultants, investors, and retirees from Spain, the European Union, USA, and Latin America.",
+                sim_title: "Live Tax Simulator",
+                sim_sub: "Interact with our algorithmic engine and discover your net annual tax savings in real time.",
+                footer_loc: "Asuncion, Paraguay & Madrid, Spain",
+                disclaimer: "Legal notice: The information provided on this website and simulator is for educational and guidance purposes. ROLANIA strongly recommends a personalized feasibility study prior to executing any international tax residency relocation."
+            }
+        };
+
+        let currentLang = 'es';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            document.getElementById('langBtn').innerText = currentLang === 'es' ? '🇬🇧 EN' : '🇪🇸 ES';
+            
+            // Reemplaza los textos en tiempo real
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (i18n[currentLang][key]) {
+                    element.innerText = i18n[currentLang][key];
+                }
+            });
+        }
+    </script>
+</body>
+</html>
