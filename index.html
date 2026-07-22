@@ -1,581 +1,366 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROLANIA | Consultoría de Expatriación Legal y Optimización Fiscal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-dark: #0a0f1d;
-            --bg-card: rgba(17, 24, 39, 0.7);
-            --emerald: #10b981;
-            --emerald-hover: #059669;
-            --gold: #f59e0b;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --border-glass: rgba(255, 255, 255, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-            background-image: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
-        }
-
-        /* NAVEGACIÓN */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 15, 29, 0.95);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border-glass);
-            z-index: 1000;
-            padding: 1.2rem 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text-main);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            letter-spacing: -0.5px;
-        }
-        .logo span { color: var(--emerald); }
-
-        nav { display: flex; gap: 2.5rem; align-items: center; }
-        nav a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.3s ease; }
-        nav a:hover { color: var(--emerald); }
-
-        .lang-switch {
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            padding: 0.5rem 1.1rem;
-            border-radius: 30px;
-            cursor: pointer;
-            color: var(--gold);
-            font-weight: 700;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-        }
-        .lang-switch:hover { background: rgba(245, 158, 11, 0.2); transform: scale(1.05); }
-
-        /* SECCIÓN HERO */
-        .hero {
-            padding: 11rem 6% 5rem;
-            text-align: center;
-            max-width: 1150px;
-            margin: 0 auto;
-        }
-
-        .badges {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            padding: 0.6rem 1.4rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        h1 {
-            font-size: 3.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ffffff 30%, var(--text-muted) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.15;
-            letter-spacing: -1px;
-        }
-
-        .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 3rem; max-width: 900px; margin-left: auto; margin-right: auto; line-height: 1.7; }
-
-        .cta-group { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
-
-        .btn {
-            padding: 0.95rem 2.4rem;
-            border-radius: 10px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-size: 1rem;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary { background: var(--emerald); color: #000; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3); }
-        .btn-primary:hover { background: var(--emerald-hover); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5); }
-        .btn-secondary { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border-glass); }
-        .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
-
-        /* TARJETAS DE VALOR */
-        .features {
-            padding: 3rem 6% 6rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            max-width: 1250px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            padding: 2.5rem;
-            border-radius: 20px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-        }
-        .card:hover { transform: translateY(-5px); border-color: rgba(16, 185, 129, 0.4); }
-        .card h3 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--gold); font-weight: 600; }
-        .card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
-
-        /* SIMULADOR NATIVO (SIN MARCOS ENCAPSULADOS) */
-        .simulator-section {
-            padding: 4rem 6% 6rem;
-            max-width: 1250px;
-            margin: 0 auto;
-        }
-        .simulator-header { text-align: center; margin-bottom: 3.5rem; }
-        .simulator-header h2 { font-size: 2.8rem; margin-bottom: 1rem; }
-        .simulator-header p { color: var(--text-muted); font-size: 1.1rem; }
-
-        .simulator-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            padding: 3rem;
-            border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-
-        .sim-inputs { display: flex; flex-direction: column; gap: 1.8rem; }
-        .input-group label { display: block; font-weight: 600; margin-bottom: 0.6rem; color: var(--text-main); font-size: 0.95rem; }
-        
-        .sim-select, .sim-slider {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            background: #0e1117;
-            border: 1px solid var(--border-glass);
-            color: var(--text-main);
-            border-radius: 10px;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        .sim-select:focus { border-color: var(--emerald); }
-        
-        .slider-val-display {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--emerald);
-            margin-top: 0.5rem;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.8rem;
-            background: rgba(0,0,0,0.2);
-            padding: 1rem;
-            border-radius: 10px;
-            border: 1px solid var(--border-glass);
-        }
-        .checkbox-group input { margin-top: 0.3rem; accent-color: var(--emerald); width: 18px; height: 18px; cursor: pointer; }
-        .checkbox-group label { font-size: 0.9rem; color: var(--text-muted); cursor: pointer; line-height: 1.4; }
-
-        .sim-outputs {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            background: #0e1117;
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .output-box {
-            padding: 1.2rem;
-            border-bottom: 1px solid var(--border-glass);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .output-box:last-of-type { border-bottom: none; }
-        .output-title { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; }
-        .output-value { font-size: 1.6rem; font-weight: 700; color: var(--text-main); }
-        
-        .highlight-box {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid var(--emerald);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-top: 1rem;
-        }
-        .highlight-box .output-title { color: var(--emerald); font-weight: 600; font-size: 1.1rem; }
-        .highlight-box .output-value { color: var(--emerald); font-size: 2.4rem; }
-
-        .sim-legal-note {
-            margin-top: 1.5rem;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            background: rgba(255,255,255,0.03);
-            padding: 1rem;
-            border-radius: 8px;
-            border-left: 3px solid var(--gold);
-        }
-
-        .sim-ctas {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        /* FOOTER */
-        footer {
-            border-top: 1px solid var(--border-glass);
-            padding: 4rem 6%;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            background: #050811;
-        }
-        footer p { margin-bottom: 1rem; }
-        .disclaimer { font-size: 0.8rem; max-width: 850px; margin: 0 auto; opacity: 0.6; line-height: 1.6; }
-
-        @media (max-width: 900px) {
-            .simulator-grid { grid-template-columns: 1fr; padding: 1.5rem; }
-            h1 { font-size: 2.6rem; }
-            nav { display: none; }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ROLANIA.ES — Libertad Fiscal, Ecosistema 360° y Conserjería VIP en Paraguay</title>
+<meta name="description" content="Agencia 360° de expatriación legal, optimización fiscal, inversión inmobiliaria y concierge VIP en Paraguay para clientes de España, UE, USA y LATAM." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg0:#050811;
+  --bg1:#0a0f1d;
+  --glass:rgba(255,255,255,.045);
+  --glass-strong:rgba(255,255,255,.07);
+  --border:rgba(255,255,255,.09);
+  --emerald:#10b981;
+  --emerald-glow:rgba(16,185,129,.35);
+  --gold:#f59e0b;
+  --gold-glow:rgba(245,158,11,.3);
+  --text:#e8ecf5;
+  --muted:#96a1ba;
+  --radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:linear-gradient(180deg,var(--bg1) 0%,var(--bg0) 100%);
+  color:var(--text);
+  line-height:1.6;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+.bg-fx{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(900px 520px at 12% -5%, rgba(16,185,129,.13), transparent 60%),
+    radial-gradient(800px 520px at 88% 18%, rgba(245,158,11,.07), transparent 60%),
+    radial-gradient(1000px 700px at 50% 105%, rgba(16,185,129,.06), transparent 60%);
+}
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+section{scroll-margin-top:96px}
+/* ---------- HEADER ---------- */
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(8,12,24,.72);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.header-inner{
+  max-width:1160px;margin:0 auto;padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.logo{font-size:1.25rem;font-weight:800;letter-spacing:.5px;text-decoration:none;color:var(--text)}
+.logo span{color:var(--emerald)}
+nav{display:flex;gap:28px;align-items:center}
+nav a{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500;transition:color .2s}
+nav a:hover{color:var(--emerald)}
+.lang-switch{
+  display:flex;align-items:center;gap:4px;
+  background:var(--glass);border:1px solid var(--border);
+  border-radius:999px;padding:5px 10px;
+}
+.lang-btn{
+  background:none;border:none;color:var(--muted);cursor:pointer;
+  font-family:inherit;font-size:.85rem;font-weight:700;padding:4px 8px;border-radius:999px;
+  transition:all .2s;
+}
+.lang-btn.active{background:var(--emerald);color:#04120c}
+.lang-sep{color:rgba(255,255,255,.25)}
+/* ---------- HERO ---------- */
+.hero{padding:110px 0 90px;text-align:center}
+.badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.badge{
+  background:var(--glass);border:1px solid var(--border);
+  border-radius:999px;padding:8px 18px;font-size:.85rem;font-weight:600;color:var(--text);
+  backdrop-filter:blur(8px);
+}
+.badge.gold{border-color:rgba(245,158,11,.4);color:var(--gold)}
+.hero h1{
+  font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:900;line-height:1.12;
+  letter-spacing:-1.5px;max-width:900px;margin:0 auto 22px;
+  background:linear-gradient(120deg,#fff 30%,var(--emerald) 75%,var(--gold));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero p{max-width:760px;margin:0 auto 38px;color:var(--muted);font-size:1.1rem}
+.cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+  font-weight:700;font-size:1rem;padding:15px 30px;border-radius:14px;
+  transition:transform .2s,box-shadow .2s;cursor:pointer;border:none;font-family:inherit;
+}
+.btn:hover{transform:translateY(-3px)}
+.btn-primary{background:linear-gradient(135deg,#10b981,#0d9e6e);color:#03130c;box-shadow:0 8px 30px var(--emerald-glow)}
+.btn-primary:hover{box-shadow:0 12px 40px var(--emerald-glow)}
+.btn-ghost{background:var(--glass);border:1px solid var(--border);color:var(--text);backdrop-filter:blur(8px)}
+.btn-ghost:hover{border-color:var(--emerald)}
+.btn-gold{background:var(--glass);border:1px solid rgba(245,158,11,.45);color:var(--gold)}
+.btn-gold:hover{box-shadow:0 8px 30px var(--gold-glow)}
+/* ---------- SECTION HEADERS ---------- */
+.section{padding:80px 0}
+.over{
+  display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:2.5px;
+  color:var(--emerald);background:var(--glass);border:1px solid var(--border);
+  border-radius:999px;padding:6px 16px;margin-bottom:18px;text-transform:uppercase;
+}
+.section h2{font-size:clamp(1.7rem,3.5vw,2.5rem);font-weight:800;letter-spacing:-.8px;margin-bottom:12px}
+.section .sub{color:var(--muted);max-width:720px;font-size:1.02rem}
+.center{text-align:center}
+.center .sub{margin:0 auto}
+/* ---------- VALUE GRID ---------- */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.card{
+  background:var(--glass);border:1px solid var(--border);border-radius:var(--radius);
+  padding:32px 28px;backdrop-filter:blur(12px);
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.card:hover{transform:translateY(-6px);border-color:rgba(16,185,129,.45);box-shadow:0 16px 44px rgba(0,0,0,.4)}
+.card .icon{font-size:2rem;margin-bottom:16px}
+.card h3{font-size:1.15rem;font-weight:700;margin-bottom:10px}
+.card p{color:var(--muted);font-size:.94rem}
+/* ---------- ECOSYSTEM 360 ---------- */
+.pillar{
+  position:relative;margin-top:38px;
+  background:var(--glass);border:1px solid var(--border);border-radius:22px;
+  padding:36px 32px;backdrop-filter:blur(12px);overflow:hidden;
+}
+.pillar::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(180deg,var(--emerald),var(--gold));
+}
+.pillar-head{display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.pillar-num{
+  font-size:2.6rem;font-weight:900;line-height:1;letter-spacing:-2px;
+  background:linear-gradient(135deg,var(--emerald),var(--gold));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  min-width:74px;
+}
+.pillar-head h3{font-size:1.35rem;font-weight:800;letter-spacing:-.3px}
+.pillar-head p{color:var(--muted);font-size:.93rem;margin-top:4px;max-width:560px}
+.pillar-tags{margin-left:auto;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.phase-chip{
+  font-size:.7rem;font-weight:800;letter-spacing:2px;color:var(--gold);
+  border:1px solid rgba(245,158,11,.4);border-radius:999px;padding:4px 12px;
+}
+.tag-chip{
+  font-size:.7rem;font-weight:700;letter-spacing:1.5px;color:var(--emerald);
+  border:1px solid rgba(16,185,129,.4);border-radius:999px;padding:4px 12px;text-transform:uppercase;
+}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:16px}
+.svc{
+  background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:16px;
+  padding:22px 20px;display:flex;flex-direction:column;gap:10px;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.svc:hover{transform:translateY(-5px);border-color:rgba(16,185,129,.5);box-shadow:0 14px 34px rgba(0,0,0,.45)}
+.svc-top{display:flex;align-items:center;justify-content:space-between}
+.svc-icon{font-size:1.5rem}
+.svc-n{
+  font-size:.7rem;font-weight:800;color:var(--muted);letter-spacing:1px;
+  border:1px solid var(--border);border-radius:999px;padding:2px 10px;
+}
+.svc h4{font-size:.98rem;font-weight:700;line-height:1.35}
+.svc p{color:var(--muted);font-size:.85rem;flex:1}
+.svc-badge{
+  align-self:flex-start;font-size:.7rem;font-weight:800;letter-spacing:.8px;
+  border-radius:999px;padding:4px 12px;text-transform:uppercase;
+  background:rgba(16,185,129,.14);color:var(--emerald);border:1px solid rgba(16,185,129,.4);
+}
+.svc-badge.gold{background:rgba(245,158,11,.12);color:var(--gold);border-color:rgba(245,158,11,.45)}
+/* ---------- SIMULATOR ---------- */
+.sim-panel{
+  max-width:1020px;margin:44px auto 0;
+  background:var(--glass-strong);border:1px solid var(--border);border-radius:24px;
+  padding:44px 42px;backdrop-filter:blur(16px);
+  box-shadow:0 24px 70px rgba(0,0,0,.45);
+}
+.sim-controls{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:8px}
+.field label{display:block;font-size:.85rem;font-weight:700;color:var(--muted);margin-bottom:10px;letter-spacing:.3px}
+select,input[type=number]{
+  width:100%;background:rgba(5,8,17,.7);border:1px solid var(--border);border-radius:12px;
+  color:var(--text);font-family:inherit;font-size:1rem;padding:14px 16px;outline:none;
+  transition:border-color .2s;
+}
+select:focus,input[type=number]:focus{border-color:var(--emerald)}
+.income-row{display:flex;gap:16px;align-items:center}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;flex:1;height:6px;border-radius:999px;outline:none;
+  background:linear-gradient(90deg,var(--emerald) var(--fill,40%),rgba(255,255,255,.12) var(--fill,40%));
+  cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:22px;height:22px;border-radius:50%;
+  background:#fff;border:5px solid var(--emerald);
+  box-shadow:0 0 16px var(--emerald-glow);cursor:grab;
+}
+input[type=range]::-moz-range-thumb{
+  width:14px;height:14px;border-radius:50%;background:#fff;border:5px solid var(--emerald);
+  box-shadow:0 0 16px var(--emerald-glow);cursor:grab;
+}
+input[type=number]{width:130px;flex-shrink:0;text-align:center;font-weight:700}
+.checks{display:flex;flex-direction:column;gap:16px;margin:26px 0 8px}
+.check{
+  display:flex;gap:14px;align-items:flex-start;
+  background:rgba(255,255,255,.03);border:1px solid var(--border);
+  border-radius:14px;padding:16px 18px;cursor:pointer;transition:border-color .2s;
+}
+.check:hover{border-color:rgba(16,185,129,.4)}
+.check input{width:20px;height:20px;margin-top:2px;accent-color:var(--emerald);cursor:pointer;flex-shrink:0}
+.check span{font-size:.93rem;color:var(--text)}
+.hidden{display:none !important}
+.results{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:34px 0 22px}
+.metric{
+  background:rgba(255,255,255,.035);border:1px solid var(--border);border-radius:18px;
+  padding:26px 22px;text-align:center;
+}
+.metric .m-label{font-size:.82rem;font-weight:700;color:var(--muted);margin-bottom:12px;min-height:40px;display:flex;align-items:center;justify-content:center}
+.metric .m-value{font-size:clamp(1.4rem,2.6vw,2rem);font-weight:900;letter-spacing:-.5px}
+.metric .m-per{font-size:.78rem;color:var(--muted);margin-top:4px}
+.metric.save{
+  background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.55);
+  box-shadow:0 0 34px rgba(16,185,129,.18);
+}
+.metric.save .m-value{color:var(--emerald)}
+.metric.save .m-label{color:#b7f5dd}
+.rate-line{font-size:.8rem;color:var(--gold);font-weight:700;margin-top:8px}
+.legal-box{
+  border:1px solid rgba(245,158,11,.35);border-left:4px solid var(--gold);
+  background:rgba(245,158,11,.06);border-radius:14px;padding:20px 22px;margin-bottom:30px;
+}
+.legal-box h4{font-size:.9rem;font-weight:800;color:var(--gold);margin-bottom:8px;letter-spacing:.3px}
+.legal-box p{font-size:.9rem;color:var(--text)}
+.sim-ctas{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+/* ---------- FOOTER ---------- */
+footer{
+  border-top:1px solid var(--border);margin-top:60px;
+  background:rgba(5,8,17,.6);backdrop-filter:blur(10px);
+}
+.footer-inner{max-width:1160px;margin:0 auto;padding:56px 24px 40px;text-align:center}
+.footer-inner .logo{font-size:1.4rem}
+.foot-loc{margin:14px 0 22px;font-weight:600;color:var(--text)}
+.foot-legal{color:var(--muted);font-size:.78rem;max-width:860px;margin:0 auto 22px;line-height:1.7}
+.foot-copy{color:var(--muted);font-size:.85rem;font-weight:600}
+/* ---------- REVEAL ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:900px){
+  nav{display:none}
+  .grid3{grid-template-columns:1fr}
+  .sim-controls{grid-template-columns:1fr}
+  .results{grid-template-columns:1fr}
+  .sim-panel{padding:32px 22px}
+  .pillar{padding:28px 20px}
+  .pillar-tags{margin-left:0;flex-direction:row;align-items:center}
+  .hero{padding:80px 0 60px}
+}
+</style>
 </head>
 <body>
+<div class="bg-fx"></div>
 
-    <header>
-        <a href="#" class="logo">🧭 ROLANIA<span>.ES</span></a>
-        <nav>
-            <a href="#features" data-i18n="nav_why">¿Por qué Paraguay?</a>
-            <a href="#simulator" data-i18n="nav_sim">Simulador Fiscal</a>
-            <a href="#contact" data-i18n="nav_contact">Contacto</a>
-        </nav>
-        <button class="lang-switch" onclick="toggleLanguage()" id="langBtn">🇬🇧 EN</button>
-    </header>
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#inicio">🧭 ROLANIA<span>.ES</span></a>
+    <nav>
+      <a href="#por-que" data-i18n="navWhy">¿Por qué Paraguay?</a>
+      <a href="#ecosistema" data-i18n="navEco">Ecosistema 360°</a>
+      <a href="#simulador" data-i18n="navSim">Simulador</a>
+      <a href="#contacto" data-i18n="navContact">Contacto</a>
+    </nav>
+    <div class="lang-switch">
+      <button class="lang-btn active" id="btnEs" type="button">🇪🇸 ES</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" id="btnEn" type="button">🇬🇧 EN</button>
+    </div>
+  </div>
+</header>
 
-    <section class="hero">
-        <div class="badges">
-            <div class="badge">🇪🇸 España → 🇵🇾 Paraguay</div>
-            <div class="badge">🌐 Global Expats (EU / USA / LATAM)</div>
+<main>
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="badges">
+      <span class="badge" data-i18n="badge1">🇪🇸 España → 🇵🇾 Paraguay</span>
+      <span class="badge gold" data-i18n="badge2">🌐 Global Expats (EU / USA / LATAM)</span>
+    </div>
+    <h1 data-i18n="heroTitle">Tu Libertad Fiscal y Arraigo Legal en Paraguay</h1>
+    <p data-i18n="heroSub">Seguridad jurídica blindada mediante los Convenios de Doble Imposición (CDI) y la Ley 6380/2019 de Territorialidad. Estructuras 100% legales, transparentes y sin opacidad para empresarios, nómadas digitales y jubilados.</p>
+    <div class="cta-row">
+      <a href="#simulador" class="btn btn-primary" data-i18n="ctaCalc">📊 Calcular Ahorro Ahora</a>
+      <a href="#" id="waHero" target="_blank" rel="noopener" class="btn btn-ghost" data-i18n="ctaExpert">💬 Hablar con un Experto</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VALUE GRID ================= -->
+<section class="section" id="por-que">
+  <div class="container center">
+    <span class="over" data-i18n="whyOver">Propuesta de Valor</span>
+    <h2 data-i18n="whyTitle">¿Por qué Paraguay?</h2>
+    <p class="sub" data-i18n="whySub">Tres pilares jurídicos que convierten a Paraguay en la jurisdicción más eficiente y segura para tu patrimonio.</p>
+    <div class="grid3" style="text-align:left">
+      <div class="card reveal">
+        <div class="icon">🌎</div>
+        <h3 data-i18n="card1T">0% Renta Extranjera</h3>
+        <p data-i18n="card1X">Principio de territorialidad (Ley 6380/2019): negocios online, dividendos, royalties y pensiones de fuente extranjera tributan al 0% en Paraguay.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">⚖️</div>
+        <h3 data-i18n="card2T">Seguridad Jurídica CDI</h3>
+        <p data-i18n="card2X">Convenio de Doble Imposición oficial España–Paraguay. Planificación fiscal basada en tratados internacionales: cero opacidad, cero esquemas agresivos.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">🛡️</div>
+        <h3 data-i18n="card3T">Alcance Internacional</h3>
+        <p data-i18n="card3X">Estructuras para nómadas digitales, consultores y patrimonios de la UE, EE. UU. y LATAM, con acompañamiento integral en español e inglés.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ECOSYSTEM 360 ================= -->
+<section class="section" id="ecosistema">
+  <div class="container">
+    <div class="center">
+      <span class="over" data-i18n="ecoOver">Servicios High-Ticket</span>
+      <h2 data-i18n="ecoTitle">Ecosistema ROLANIA 360° — Conserjería &amp; Arraigo Total</h2>
+      <p class="sub" data-i18n="ecoSub">Doce servicios exclusivos orquestados en cuatro pilares estratégicos: una infografía viva de tu nueva vida en Paraguay.</p>
+    </div>
+
+    <!-- PILAR 1 -->
+    <div class="pillar reveal">
+      <div class="pillar-head">
+        <div class="pillar-num">01</div>
+        <div>
+          <h3 data-i18n="p1T">🛬 Aterrizaje &amp; Conserjería VIP</h3>
+          <p data-i18n="p1Sub">Tu llegada a Paraguay, resuelta desde el minuto cero.</p>
         </div>
-        <h1 data-i18n="hero_title">Tu Libertad Fiscal y Arraigo Legal en Paraguay</h1>
-        <p data-i18n="hero_sub">Estrategias de expatriación 100% legales avaladas por Convenios de Doble Imposición (CDI) y la Ley 6380/2019 de Territorialidad. Protege tu patrimonio sin interpretaciones opacas.</p>
-        <div class="cta-group">
-            <a href="#simulator" class="btn btn-primary" data-i18n="btn_calc">📊 Calcular Ahorro Ahora</a>
-            <a href="https://wa.me/595985540294" target="_blank" class="btn btn-secondary" data-i18n="btn_wsp">💬 Hablar con un Experto</a>
+        <div class="pillar-tags">
+          <span class="phase-chip" data-i18n="ph1">FASE 01</span>
+          <span class="tag-chip">Land &amp; Comfort</span>
         </div>
-    </section>
-
-    <section id="features" class="features">
-        <div class="card">
-            <h3 data-i18n="card1_title">0% Renta Extranjera</h3>
-            <p data-i18n="card1_desc">Bajo el principio de territorialidad paraguayo (Ley 6380/19), los ingresos que generes online desde el exterior o tus pensiones privadas quedan completamente exentos de imposición.</p>
+      </div>
+      <div class="svc-grid">
+        <div class="svc">
+          <div class="svc-top"><span class="svc-icon">🚘</span><span class="svc-n">01</span></div>
+          <h4 data-i18n="s1T">Recogida VIP Aeropuerto → Hotel</h4>
+          <p data-i18n="s1X">Acompañamiento personal desde el instante de llegada a Asunción.</p>
+          <span class="svc-badge" data-i18n="s1B">Acceso VIP</span>
         </div>
-        <div class="card">
-            <h3 data-i18n="card2_title">Seguridad Jurídica CDI</h3>
-            <p data-i18n="card2_desc">No operamos en zonas grises. Todo el marco de optimización se fundamenta en tratados internacionales oficiales que evitan la doble tributación y protegen tu traslado ante Hacienda.</p>
+        <div class="svc">
+          <div class="svc-top"><span class="svc-icon">🏨</span><span class="svc-n">02</span></div>
+          <h4 data-i18n="s2T">Alojamiento a Medida</h4>
+          <p data-i18n="s2X">Búsqueda y recomendación de estancias según poder adquisitivo: desde apartamentos ejecutivos hasta mansiones residenciales.</p>
+          <span class="svc-badge gold" data-i18n="s2B">A tu Medida</span>
         </div>
-        <div class="card">
-            <h3 data-i18n="card3_title">Alcance Internacional</h3>
-            <p data-i18n="card3_desc">Diseñamos estructuras corporativas y de residencia a medida para nómadas digitales, consultores, inversores y jubilados de España, la UE, Estados Unidos y Latinoamérica.</p>
-        </div>
-    </section>
-
-    <!-- SIMULADOR FISCAL NATIVO JAVASCRIPT -->
-    <section id="simulator" class="simulator-section">
-        <div class="simulator-header">
-            <h2 data-i18n="sim_title">Simulador Fiscal en Vivo</h2>
-            <p data-i18n="sim_sub">Interactúa con nuestro motor algorítmico y descubre tu ahorro neto anual en tiempo real.</p>
-        </div>
-
-        <div class="simulator-grid">
-            <!-- CONTROLES DE ENTRADA -->
-            <div class="sim-inputs">
-                <div class="input-group">
-                    <label data-i18n="label_profile">👤 Perfil Profesional / Situación</label>
-                    <select id="sim-profile" class="sim-select" onchange="calculateTax()">
-                        <option value="autonomo" data-i18n="opt_autonomo">Autónomo Activo (Servicios Online)</option>
-                        <option value="privado" data-i18n="opt_privado">Pensionista Privado (INSS / Planes)</option>
-                        <option value="publico" data-i18n="opt_publico">Pensionista Público (Clases Pasivas)</option>
-                    </select>
-                </div>
-
-                <div class="input-group">
-                    <label data-i18n="label_income">💶 Ingresos Brutos Anuales en España (€)</label>
-                    <input type="range" id="sim-income" class="sim-slider" min="10000" max="150000" step="1000" value="60000" oninput="calculateTax()">
-                    <div class="slider-val-display" id="income-val-display">60.000 €</div>
-                </div>
-
-                <div class="checkbox-group">
-                    <input type="checkbox" id="sim-residence" checked onchange="calculateTax()">
-                    <label for="sim-residence" data-i18n="label_residence">¿Te comprometes a residir más de 183 días al año en Paraguay y obtener la residencia fiscal legal (RUC)?</label>
-                </div>
-
-                <div class="checkbox-group" id="group-nationality" style="display: none;">
-                    <input type="checkbox" id="sim-nationality" onchange="calculateTax()">
-                    <label for="sim-nationality" data-i18n="label_nationality">¿Estás dispuesto a tramitar la Nacionalidad Paraguaya a los 3 años de residencia para activar la exención total del CDI para funcionarios?</label>
-                </div>
-            </div>
-
-            <!-- SALIDA DE RESULTADOS -->
-            <div class="sim-outputs">
-                <div>
-                    <div class="output-box">
-                        <span class="output-title" data-i18n="out_es">🇪🇸 Carga Fiscal en España (Estimada):</span>
-                        <span class="output-value" id="res-espana">11.520 €</span>
-                    </div>
-                    
-                    <div class="output-box">
-                        <span class="output-title" data-i18n="out_py">🇵🇾 Carga Fiscal en Paraguay (ROLANIA):</span>
-                        <span class="output-value" id="res-paraguay">0 €</span>
-                    </div>
-
-                    <div class="highlight-box">
-                        <div class="output-title" data-i18n="out_save">💰 TU AHORRO NETO ANUAL CON ROLANIA:</div>
-                        <div class="output-value" id="res-ahorro">11.520 €</div>
-                    </div>
-
-                    <div class="sim-legal-note" id="legal-explanation">
-                        Art. 14 CDI: Los servicios profesionales sin establecimiento permanente en España tributan exclusivamente en Paraguay (0% por territorialidad).
-                    </div>
-                </div>
-
-                <div class="sim-ctas">
-                    <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="sendWhatsApp()" data-i18n="btn_wsp_action">📲 Solicitar Estudio por WhatsApp</button>
-                    <a href="libreto_rolania.pdf" download class="btn btn-secondary" style="width: 100%; justify-content: center;" data-i18n="btn_pdf">📕 Descargar Libreto-Guía Oficial (PDF)</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact">
-        <p><strong>ROLANIA CONSULTING</strong> | <span data-i18n="footer_loc">Asunción, Paraguay & Madrid, España</span></p>
-        <p class="disclaimer" data-i18n="disclaimer">Nota legal: La información contenida en esta web y en el simulador fiscal tiene carácter orientativo y educativo. ROLANIA recomienda realizar un estudio de viabilidad personalizado antes de ejecutar cualquier traslado migratorio o fiscal internacional.</p>
-        <p style="margin-top: 2rem; font-size: 0.8rem;">&copy; 2026 ROLANIA.ES — All rights reserved.</p>
-    </footer>
-
-    <script>
-        // --- 1. DICCIONARIO BILINGÜE ---
-        const i18n = {
-            es: {
-                nav_why: "¿Por qué Paraguay?",
-                nav_sim: "Simulador Fiscal",
-                nav_contact: "Contacto",
-                hero_title: "Tu Libertad Fiscal y Arraigo Legal en Paraguay",
-                hero_sub: "Estrategias de expatriación 100% legales avaladas por Convenios de Doble Imposición (CDI) y la Ley 6380/2019 de Territorialidad. Protege tu patrimonio sin interpretaciones opacas.",
-                btn_calc: "📊 Calcular Ahorro Ahora",
-                btn_wsp: "💬 Hablar con un Experto",
-                card1_title: "0% Renta Extranjera",
-                card1_desc: "Bajo el principio de territorialidad paraguayo (Ley 6380/19), los ingresos que generes online desde el exterior o tus pensiones privadas quedan completamente exentos de imposición.",
-                card2_title: "Seguridad Jurídica CDI",
-                card2_desc: "No operamos en zonas grises. Todo el marco de optimización se fundamenta en tratados internacionales oficiales que evitan la doble tributación y protegen tu traslado ante Hacienda.",
-                card3_title: "Alcance Internacional",
-                card3_desc: "Diseñamos estructuras corporativas y de residencia a medida para nómadas digitales, consultores, inversores y jubilados de España, la UE, Estados Unidos y Latinoamérica.",
-                sim_title: "Simulador Fiscal en Vivo",
-                sim_sub: "Interactúa con nuestro motor algorítmico y descubre tu ahorro neto anual en tiempo real.",
-                label_profile: "👤 Perfil Profesional / Situación",
-                opt_autonomo: "Autónomo Activo (Servicios Online)",
-                opt_privado: "Pensionista Privado (INSS / Planes)",
-                opt_publico: "Pensionista Público (Clases Pasivas)",
-                label_income: "💶 Ingresos Brutos Anuales en España (€)",
-                label_residence: "¿Te comprometes a residir más de 183 días al año en Paraguay y obtener la residencia fiscal legal (RUC)?",
-                label_nationality: "¿Estás dispuesto a tramitar la Nacionalidad Paraguaya a los 3 años de residencia para activar la exención total del CDI para funcionarios?",
-                out_es: "🇪🇸 Carga Fiscal en España (Estimada):",
-                out_py: "🇵🇾 Carga Fiscal en Paraguay (ROLANIA):",
-                out_save: "💰 TU AHORRO NETO ANUAL CON ROLANIA:",
-                btn_wsp_action: "📲 Solicitar Estudio por WhatsApp",
-                btn_pdf: "📕 Descargar Libreto-Guía Oficial (PDF)",
-                footer_loc: "Asunción, Paraguay & Madrid, España",
-                disclaimer: "Nota legal: La información contenida en esta web y en el simulador fiscal tiene carácter orientativo y educativo. ROLANIA recomienda realizar un estudio de viabilidad personalizado antes de ejecutar cualquier traslado migratorio o fiscal internacional.",
-                note_autonomo: "Art. 14 CDI: Los servicios profesionales sin establecimiento permanente en España tributan exclusivamente en Paraguay (0% por territorialidad según Ley 6380/2019).",
-                note_privado: "Art. 17 CDI: Las pensiones privadas y del régimen general tributan en exclusiva en el Estado de residencia del beneficiario (0% en Paraguay al ser renta extranjera).",
-                note_publico_nac: "Art. 18.2.b CDI: Al adquirir la nacionalidad paraguaya y residir en el país, la pensión pública queda exenta en España y tributa al 0% en Paraguay.",
-                note_publico_no_nac: "Art. 18.2.a CDI: Sin nacionalidad paraguaya, España retiene en exclusiva por IRNR (~24%). Para lograr el 0%, es requisito tramitar la doble nacionalidad a los 3 años.",
-                note_no_residence: "❌ Sin traslado efectivo de residencia (>183 días) y RUC paraguayo, sigues sujeto a tributación por obligación personal en España por el Art. 9 de la LIRPF."
-            },
-            en: {
-                nav_why: "Why Paraguay?",
-                nav_sim: "Tax Simulator",
-                nav_contact: "Contact",
-                hero_title: "Your Tax Freedom & Legal Residency in Paraguay",
-                hero_sub: "100% legal expatriation strategies backed by Double Taxation Treaties (DTT) and the 6380/2019 Territoriality Law. Protect your wealth without aggressive or opaque loopholes.",
-                btn_calc: "📊 Calculate Savings Now",
-                btn_wsp: "💬 Talk to an Expert",
-                card1_title: "0% Foreign Income",
-                card1_desc: "Under Paraguay's territorial tax principle (Law 6380/19), income generated online from abroad or private pensions remain completely tax-exempt.",
-                card2_title: "DTT Legal Security",
-                card2_desc: "We do not operate in gray areas. Our entire optimization framework is built upon official international treaties that prevent double taxation and shield your relocation.",
-                card3_title: "Global Reach",
-                card3_desc: "We tailor corporate and residency structures for digital nomads, consultants, investors, and retirees from Spain, the EU, USA, and Latin America.",
-                sim_title: "Live Tax Simulator",
-                sim_sub: "Interact with our algorithmic engine and discover your net annual tax savings in real time.",
-                label_profile: "👤 Professional Profile / Status",
-                opt_autonomo: "Active Freelancer (Online Services)",
-                opt_privado: "Private Pensioner (Social Security / Funds)",
-                opt_publico: "Public Pensioner (Civil Service)",
-                label_income: "💶 Gross Annual Income in Spain (€)",
-                label_residence: "Do you commit to residing +183 days a year in Paraguay and obtaining legal tax residency (RUC)?",
-                label_nationality: "Are you willing to apply for Paraguayan Nationality after 3 years of residency to trigger total DTT tax exemption for civil servants?",
-                out_es: "🇪🇸 Estimated Tax Burden in Spain:",
-                out_py: "🇵🇾 Tax Burden in Paraguay (ROLANIA):",
-                out_save: "💰 YOUR NET ANNUAL SAVINGS WITH ROLANIA:",
-                btn_wsp_action: "📲 Request WhatsApp Assessment",
-                btn_pdf: "📕 Download Official Guide (PDF)",
-                footer_loc: "Asuncion, Paraguay & Madrid, Spain",
-                disclaimer: "Legal notice: The information provided on this website and simulator is for educational and guidance purposes. ROLANIA strongly recommends a personalized feasibility study prior to executing any international tax residency relocation.",
-                note_autonomo: "Art. 14 DTT: Professional services without a permanent establishment in Spain are taxed exclusively in Paraguay (0% territorial tax under Law 6380/2019).",
-                note_privado: "Art. 17 DTT: Private pensions are taxed exclusively in the beneficiary's State of residence (0% in Paraguay as foreign-source income).",
-                note_publico_nac: "Art. 18.2.b DTT: Upon acquiring Paraguayan nationality and residing in the country, public pensions are exempt in Spain and taxed at 0% in Paraguay.",
-                note_publico_no_nac: "Art. 18.2.a DTT: Without Paraguayan nationality, Spain retains withholding rights (~24%). To achieve 0%, acquiring dual citizenship after 3 years is required.",
-                note_no_residence: "❌ Without effective physical relocation (>183 days) and a Paraguayan tax ID (RUC), you remain legally subject to worldwide income taxation in Spain."
-            }
-        };
-
-        let currentLang = 'es';
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'es' ? 'en' : 'es';
-            document.getElementById('langBtn').innerText = currentLang === 'es' ? '🇬🇧 EN' : '🇪🇸 ES';
-            
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (i18n[currentLang][key]) {
-                    element.innerText = i18n[currentLang][key];
-                }
-            });
-            calculateTax(); // Recalcular para actualizar la nota legal en el idioma correcto
-        }
-
-        // --- 2. MOTOR DE CÁLCULO FISCAL NATIVO ---
-        function calculateTax() {
-            const profile = document.getElementById('sim-profile').value;
-            const income = parseFloat(document.getElementById('sim-income').value);
-            const isResident = document.getElementById('sim-residence').checked;
-            const isNational = document.getElementById('sim-nationality').checked;
-
-            // Actualizar visualización del slider
-            document.getElementById('income-val-display').innerText = new Intl.NumberFormat('es-ES').format(income) + ' €';
-
-            // Mostrar/Ocultar checkbox de nacionalidad solo para pensionistas públicos
-            const natGroup = document.getElementById('group-nationality');
-            if (profile === 'publico') {
-                natGroup.style.display = 'flex';
-            } else {
-                natGroup.style.display = 'none';
-            }
-
-            // Cálculo España (Estimación progresiva por tramos)
-            let taxES = 0;
-            if (income <= 30000) {
-                taxES = income * 0.22;
-            } else if (income <= 60000) {
-                taxES = income * 0.32;
-            } else {
-                taxES = income * 0.40;
-            }
-
-            // Cálculo Paraguay
-            let taxPY = 0;
-            let noteKey = "";
-
-            if (!isResident) {
-                taxPY = taxES; // Sin residencia no hay ahorro
-                noteKey = "note_no_residence";
-            } else {
-                if (profile === 'autonomo') {
-                    taxPY = 0;
-                    noteKey = "note_autonomo";
-                } else if (profile === 'privado') {
-                    taxPY = 0;
-                    noteKey = "note_privado";
-                } else if (profile === 'publico') {
-                    if (isNational) {
-                        taxPY = 0;
-                        noteKey = "note_publico_nac";
-                    } else {
-                        taxPY = income * 0.24; // Retención IRNR sin nacionalidad
-                        noteKey = "note_publico_no_nac";
-                    }
-                }
-            }
-
-            const savings = taxES - taxPY;
-
-            // Formatear y mostrar en pantalla
-            const fmt = (val) => new Intl.NumberFormat('es-ES', { maximumFractionDigits: 0 }).format(val) + ' €';
-            
-            document.getElementById('res-espana').innerText = fmt(taxES);
-            document.getElementById('res-paraguay').innerText = fmt(taxPY);
-            document.getElementById('res-ahorro').innerText = fmt(savings);
-            
-            // Actualizar nota legal
-            document.getElementById('legal-explanation').innerText = i18n[currentLang][noteKey];
-        }
-
-        // --- 3. CONEXIÓN WHATSAPP COMERCIAL ---
-        function sendWhatsApp() {
-            const profileSel = document.getElementById('sim-profile');
-            const profileText = profileSel.options[profileSel.selectedIndex].text;
-            const income = document.getElementById('income-val-display').innerText;
-            const savings = document.getElementById('res-ahorro').innerText;
-            
-            const text = `Hola ROLANIA 🧭. He utilizado vuestro simulador fiscal online:\n` +
-                         `• Perfil: ${profileText}\n` +
-                         `• Ingresos: ${income}\n` +
-                         `• Ahorro estimado: ${savings}\n\n` +
-                         `Quiero solicitar un Estudio de Viabilidad Personalizado para mi caso.`;
-            
-            const url = `https://wa.me/595985540294?text=${encodeURIComponent(text)}`;
-            window.open(url, '_blank');
-        }
-
-        // Ejecutar cálculo al cargar la página
-        window.onload = calculateTax;
-    </script>
-</body>
-</html>
+        <div class="svc">
+          <div class="svc-top"><span class="svc-icon">🚗</span><span class="svc-n">03</span></div>
+          <h4 data-i18n="s3T">Vehículo de Alquiler</h4>
+          <p data-i18n="s3X">Gestión y disposición de movilidad privada lista para circular.</p>
+          <span class="svc-badge" data-i18n="s3B">Llave en Mano</
