@@ -49,16 +49,17 @@
       color: var(--muted);
       font-size: 0.8rem;
       text-align: center;
-      padding: 8px 15px;
+      padding: 10px 15px;
       border-bottom: 1px solid var(--border);
       font-weight: 500;
       letter-spacing: 0.5px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 10px;
+      align-items: center;
+      gap: 12px;
     }
-    .top-bar span { color: var(--emerald); }
+    .top-bar span.sep { color: var(--emerald); }
     .top-bar a { color: var(--emerald); text-decoration: none; font-weight: 700; transition: color 0.2s; }
     .top-bar a:hover { color: #fff; }
     
@@ -162,10 +163,16 @@
     .phase-text h4 { color: #fff; font-size: 1.05rem; margin-bottom: 4px; }
     .phase-text p { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
     
-    .sim-badge {
-      margin-top: 12px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 12px 16px; border-radius: 12px; border-left: 4px solid var(--emerald);
+    /* Nueva Infografía SIM Destacada */
+    .sim-info-box {
+      margin-top: 14px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 16px; border-radius: 14px; display: flex; gap: 14px; align-items: center;
+      border-left: 4px solid var(--emerald);
     }
+    .sim-info-icon { font-size: 2.2rem; }
+    .sim-info-text h5 { color: var(--emerald); font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+    .sim-info-text p { font-size: 0.85rem; color: var(--text); line-height: 1.4; margin: 0; }
+
     .suace-img-container { margin-top: 14px; }
     .suace-img { width: 100%; border-radius: 10px; border: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
 
@@ -258,7 +265,24 @@
     .legal-box { border: 1px solid rgba(245, 158, 11, 0.35); border-left: 4px solid var(--gold); background: rgba(245, 158, 11, 0.06); border-radius: 14px; padding: 20px 22px; margin-bottom: 30px; }
     .legal-box h4 { font-size: 0.95rem; font-weight: 800; color: var(--gold); margin-bottom: 8px; letter-spacing: 0.3px; }
     .legal-box p { font-size: 0.9rem; color: var(--text); }
-    .sim-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    
+    .sim-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
+
+    /* NUEVO: RECUADRO COMPLIANCE (ANTI-SOBORNO) */
+    .compliance-banner {
+      background: rgba(220, 38, 38, 0.04);
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      border-left: 5px solid #dc2626;
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      text-align: left;
+    }
+    .compliance-icon { font-size: 2.4rem; flex-shrink: 0; }
+    .compliance-content h4 { color: #ef4444; font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .compliance-content p { color: var(--text); font-size: 0.9rem; line-height: 1.6; margin: 0; }
 
     /* ---------- FOOTER ---------- */
     footer {
@@ -267,10 +291,17 @@
     }
     .footer-inner { max-width: 1160px; margin: 0 auto; padding: 56px 24px 40px; text-align: center; }
     .footer-inner .logo { font-size: 1.4rem; }
-    .foot-contacts { margin: 24px 0; font-size: 0.95rem; font-weight: 600; color: #fff; background: var(--glass); padding: 18px 24px; border-radius: 12px; display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 14px; border: 1px solid var(--border); }
-    .foot-contacts span { color: var(--emerald); }
+    
+    .foot-contacts { 
+      margin: 24px 0; font-size: 0.95rem; font-weight: 600; color: #fff; 
+      background: var(--glass); padding: 18px 24px; border-radius: 12px; 
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px; 
+      border: 1px solid var(--border); 
+    }
+    .foot-contacts span.sep { color: var(--emerald); }
     .foot-contacts a { color: var(--emerald); text-decoration: none; transition: color 0.2s; }
     .foot-contacts a:hover { color: #fff; }
+    
     .foot-loc { margin: 14px 0 22px; font-weight: 600; color: var(--text); }
     .foot-legal { color: var(--muted); font-size: 0.8rem; max-width: 880px; margin: 0 auto 22px; line-height: 1.7; }
     .foot-copy { color: var(--muted); font-size: 0.85rem; font-weight: 600; }
@@ -282,8 +313,13 @@
       .sim-panel, .pillar, .bp-card { padding: 30px 20px; }
       .pillar-tags { margin-left: 0; flex-direction: row; align-items: center; }
       .hero { padding: 80px 0 60px; }
-      .foot-contacts { flex-direction: column; gap: 10px; align-items: center; }
-      .foot-contacts span { display: none; }
+      
+      /* Arreglo para que el correo y teléfonos no desaparezcan en móvil */
+      .top-bar, .foot-contacts { flex-direction: column; gap: 8px; text-align: center; }
+      .top-bar span.sep, .foot-contacts span.sep { display: none; }
+      
+      .compliance-banner { flex-direction: column; text-align: center; }
+      .sim-info-box { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
@@ -292,10 +328,10 @@
 
   <!-- ================= TOP BAR & HEADER ================= -->
   <div class="top-bar">
-    📞 Madrid: +34 919 933 817 <span>|</span> 
-    📱 Móvil: +34 646 325 246 <span>|</span> 
-    💬 WhatsApp: <a href="https://wa.me/595994434014" target="_blank">+595 994 434 014</a> <span>|</span> 
-    ✉️ Correo: <a href="mailto:rolania@proton.me">rolania@proton.me</a>
+    <span>📞 Madrid: +34 919 933 817</span> <span class="sep">|</span> 
+    <span>📱 Móvil: +34 646 325 246</span> <span class="sep">|</span> 
+    <span>💬 WhatsApp: <a href="https://wa.me/595994434014" target="_blank">+595 994 434 014</a></span> <span class="sep">|</span> 
+    <span>✉️ Correo: <a href="mailto:rolania@proton.me">rolania@proton.me</a></span>
   </div>
   
   <header>
@@ -358,7 +394,7 @@
       </div>
     </section>
 
-    <!-- ================= BLUEPRINT (ESTRATEGIA Y SUACE) ================= -->
+    <!-- ================= BLUEPRINT (AQUÍ ESTÁ LA SIM Y EL SUACE) ================= -->
     <section class="section" id="estrategia">
       <div class="container center">
         <span class="over" data-i18n="bpOver">Inteligencia Fiscal</span>
@@ -371,15 +407,19 @@
             <h3 data-i18n="bpFasesTitle">El Marco <span>Estratégico</span></h3>
             <div class="phase-list">
               
-              <!-- FASE 1 CON INFOGRAFÍA SIM -->
+              <!-- FASE 1 CON INFOGRAFÍA SIM DESTACADA -->
               <div class="phase-item">
                 <div class="phase-num">Fase 1</div>
                 <div class="phase-text" style="width: 100%;">
                   <h4 data-i18n="bpF1T">La Fundación Legal & Conectividad</h4>
                   <p data-i18n="bpF1D">Obtención de Identidad Fiscal (RUC) y Estructura Societaria en Paraguay.</p>
-                  <div class="sim-badge">
-                    <strong style="color: var(--emerald); font-size: 0.9rem;" data-i18n="bpF1SimTitle">📱 Conectividad Inmediata:</strong>
-                    <p style="margin-top: 4px; font-size: 0.85rem;" data-i18n="bpF1Sim">Tarjeta SIM prepago de Cía. Telefónica Paraguaya para tener datos durante la estancia, con posibilidad de habilitarla posteriormente como número definitivo.</p>
+                  
+                  <div class="sim-info-box">
+                    <div class="sim-info-icon">📱</div>
+                    <div class="sim-info-text">
+                      <h5 data-i18n="bpF1SimTitle">Bonus: Conectividad Inmediata</h5>
+                      <p data-i18n="bpF1Sim">Tarjeta SIM prepago de Cía. Telefónica Paraguaya para tener datos durante la estancia, con posibilidad de habilitarla posteriormente como número definitivo.</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -676,6 +716,16 @@
             <button class="btn btn-primary" id="waSim" type="button" data-i18n="btnWspSim">📲 Solicitar Conserjería y Estudio por WhatsApp</button>
             <a href="guia_rolania.pdf" download class="btn btn-gold" data-i18n="btnPdf">📕 Descargar Guía Rolanía (PDF)</a>
           </div>
+
+          <!-- RECUADRO ANTI-SOBORNO (COMPLIANCE) -->
+          <div class="compliance-banner">
+            <div class="compliance-icon">⚖️</div>
+            <div class="compliance-content">
+              <h4 data-i18n="compTitle">Compromiso Ético y Legal 100%</h4>
+              <p data-i18n="compDesc">Rolania ofrece servicios legales 100%. No aceptamos "sobornos" ni "coimas". Respetamos las Leyes Paraguayas y nos atenemos a sus procedimientos y plazos, no ofrecemos servicios "abreviados" ni "acelerados". Esto lo hacemos por la seguridad jurídica de nuestros clientes y por la de nuestra empresa.</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -687,9 +737,9 @@
       <div class="logo">🧭 ROLANIA<span>.ES</span></div>
       
       <div class="foot-contacts">
-        <span>📞 Madrid: +34 919 933 817</span> <span>|</span> 
-        <span>📱 Móvil ES: +34 646 325 246</span> <span>|</span> 
-        <span>💬 WhatsApp: <a href="https://wa.me/595994434014" target="_blank">+595 994 434 014</a></span> <span>|</span> 
+        <span>📞 Madrid: +34 919 933 817</span> <span class="sep">|</span> 
+        <span>📱 Móvil ES: +34 646 325 246</span> <span class="sep">|</span> 
+        <span>💬 WhatsApp: <a href="https://wa.me/595994434014" target="_blank">+595 994 434 014</a></span> <span class="sep">|</span> 
         <span>✉️ Correo: <a href="mailto:rolania@proton.me">rolania@proton.me</a></span>
       </div>
 
@@ -715,7 +765,7 @@
         bpOver: "Inteligencia Fiscal", bpTitle: "Metodología ROLANIA: De la Fundación al Imperio", bpSub: "Un dossier estratégico y operativo de 5 fases para garantizar una transición patrimonial blindada y eficiente.",
         bpFasesTitle: "El Marco", bpSocTitle: "El Escudo",
         bpF1T: "La Fundación Legal & Conectividad", bpF1D: "Obtención de Identidad Fiscal (RUC) y Estructura Societaria en Paraguay.",
-        bpF1SimTitle: "📱 Conectividad Inmediata:", bpF1Sim: "Tarjeta SIM prepago de Cía. Telefónica Paraguaya para tener datos durante la estancia, con posibilidad de habilitarla posteriormente como número definitivo.",
+        bpF1SimTitle: "Bonus: Conectividad Inmediata", bpF1Sim: "Tarjeta SIM prepago de Cía. Telefónica Paraguaya para tener datos durante la estancia, con posibilidad de habilitarla posteriormente como número definitivo.",
         bpF2T: "El Puente de Capital", bpF2D: "Desvinculación de la AEAT española, apertura bancaria y flujo de capitales seguro (Cumplimiento SEPRELAD y Cripto OTC).",
         bpF3T: "El Escudo Vital", bpF3D: "Blindaje mediante sistemas de Medicina Prepaga de élite en zonas clave como Itapúa.",
         bpF4T: "El Imperio Inmobiliario", bpF4D: "Ejecución de obra rentable (Monoambientes), protección ante riesgo laboral y permisos municipales.",
@@ -748,6 +798,8 @@
         resEs: "🇪🇸 Carga Fiscal en España (Estimada)", resPy: "🇵🇾 Carga en Paraguay (ROLANIA)", resSave: "💰 TU AHORRO NETO ANUAL CON ROLANIA",
         legTitle: "🛡️ Fundamento Legal Aplicable:",
         btnWspSim: "📲 Solicitar Conserjería y Estudio por WhatsApp", btnPdf: "📕 Descargar Guía Rolanía (PDF)",
+        compTitle: "Compromiso Ético y Legal 100%",
+        compDesc: "Rolania ofrece servicios legales 100%. No aceptamos \"sobornos\" ni \"coimas\". Respetamos las Leyes Paraguayas y nos atenemos a sus procedimientos y plazos, no ofrecemos servicios \"abreviados\" ni \"acelerados\". Esto lo hacemos por la seguridad jurídica de nuestros clientes y por la de nuestra empresa.",
         footLoc: "Asunción, Paraguay & Madrid, España",
         footLegal: "Nota legal: La información contenida en este sitio web y el simulador tributario tiene carácter educativo y de orientación general. ROLANIA recomienda encarecidamente realizar un estudio legal, migratorio y fiscal personalizado y formal antes de ejecutar cualquier cambio de residencia fiscal o compra patrimonial internacional.",
         noteAut: "Art. 14 CDI España–Paraguay: Los servicios profesionales independientes sin establecimiento permanente en España tributan exclusivamente en Paraguay (0% por territorialidad según Ley 6380/2019).",
@@ -769,7 +821,7 @@
         bpOver: "Fiscal Intelligence", bpTitle: "ROLANIA Methodology: From Foundation to Empire", bpSub: "A 5-phase strategic and operational dossier to guarantee a shielded and efficient wealth transition.",
         bpFasesTitle: "The Strategic", bpSocTitle: "The Corporate",
         bpF1T: "Legal Foundation & Connectivity", bpF1D: "Obtaining Tax Identity (RUC) and Corporate Structure in Paraguay.",
-        bpF1SimTitle: "📱 Immediate Connectivity:", bpF1Sim: "Prepaid SIM Card from a Paraguayan Telco for data access during your stay, with the option to keep it as your permanent number.",
+        bpF1SimTitle: "Bonus: Immediate Connectivity", bpF1Sim: "Prepaid SIM Card from a Paraguayan Telco for data access during your stay, with the option to keep it as your permanent number.",
         bpF2T: "Capital Bridge", bpF2D: "Disconnection from Spanish AEAT, bank opening, and secure capital flow (SEPRELAD Compliance and Crypto OTC).",
         bpF3T: "Vital Shield", bpF3D: "Shielding through elite Prepaid Medicine systems in key zones like Itapúa.",
         bpF4T: "Real Estate Empire", bpF4D: "Profitable construction execution (Studios), labor risk protection, and municipal permits.",
@@ -802,6 +854,8 @@
         resEs: "🇪🇸 Estimated Tax Burden in Spain", resPy: "🇵🇾 Burden in Paraguay (ROLANIA)", resSave: "💰 YOUR NET ANNUAL SAVINGS WITH ROLANIA",
         legTitle: "🛡️ Applicable Legal Framework:",
         btnWspSim: "📲 Request WhatsApp Concierge & Assessment", btnPdf: "📕 Download Rolania Guide (PDF)",
+        compTitle: "100% Ethical & Legal Commitment",
+        compDesc: "Rolania offers 100% legal services. We do not accept bribes or kickbacks. We respect Paraguayan Laws and adhere strictly to their procedures and timelines; we do not offer \"expedited\" or \"shortcut\" services. We do this for the legal security of our clients and our company.",
         footLoc: "Asuncion, Paraguay & Madrid, Spain",
         footLegal: "Legal notice: The information provided on this website and tax simulator is for educational and general guidance purposes. ROLANIA strongly recommends a formal, personalized legal, migration, and tax assessment before executing any international residency change or asset purchase.",
         noteAut: "Art. 14 DTT Spain–Paraguay: Independent professional services without a permanent establishment in Spain are taxed exclusively in the State of residence (0% in Paraguay under Law 6380/2019).",
