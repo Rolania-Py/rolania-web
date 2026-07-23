@@ -90,6 +90,7 @@
     }
     .lang-btn.active { background: var(--emerald); color: #04120c; }
     .lang-sep { color: rgba(255, 255, 255, 0.25); }
+    .flag-icon { width: 16px; height: 12px; object-fit: cover; border-radius: 2px; }
 
     /* ---------- HERO ---------- */
     .hero { padding: 90px 0 80px; text-align: center; }
@@ -97,7 +98,7 @@
     .badge {
       background: var(--glass); border: 1px solid var(--border);
       border-radius: 999px; padding: 8px 18px; font-size: 0.85rem; font-weight: 600; color: var(--text);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px); display: inline-flex; align-items: center; gap: 6px;
     }
     .badge.gold { border-color: rgba(245, 158, 11, 0.4); color: var(--gold); }
     .hero h1 {
@@ -163,7 +164,7 @@
     .phase-text h4 { color: #fff; font-size: 1.05rem; margin-bottom: 4px; }
     .phase-text p { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
     
-    /* Nueva Infografía SIM Destacada */
+    /* INFOGRAFÍA SIM DESTACADA (CORRECCIÓN ERROR 1) */
     .sim-info-box {
       margin-top: 14px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.4);
       padding: 16px; border-radius: 14px; display: flex; gap: 14px; align-items: center;
@@ -268,7 +269,7 @@
     
     .sim-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
 
-    /* NUEVO: RECUADRO COMPLIANCE (ANTI-SOBORNO) */
+    /* RECUADRO COMPLIANCE (ANTI-SOBORNO) */
     .compliance-banner {
       background: rgba(220, 38, 38, 0.04);
       border: 1px solid rgba(220, 38, 38, 0.3);
@@ -314,7 +315,6 @@
       .pillar-tags { margin-left: 0; flex-direction: row; align-items: center; }
       .hero { padding: 80px 0 60px; }
       
-      /* Arreglo para que el correo y teléfonos no desaparezcan en móvil */
       .top-bar, .foot-contacts { flex-direction: column; gap: 8px; text-align: center; }
       .top-bar span.sep, .foot-contacts span.sep { display: none; }
       
@@ -329,7 +329,7 @@
   <!-- ================= TOP BAR & HEADER ================= -->
   <div class="top-bar">
     <span>📞 Madrid: +34 919 933 817</span> <span class="sep">|</span> 
-    <span>📱 Móvil: +34 646 325 246</span> <span class="sep">|</span> 
+    <span>📱 Móvil: +34 640 734 208</span> <span class="sep">|</span> 
     <span>💬 WhatsApp: <a href="https://wa.me/595994434014" target="_blank">+595 994 434 014</a></span> <span class="sep">|</span> 
     <span>✉️ Correo: <a href="mailto:rolania@proton.me">rolania@proton.me</a></span>
   </div>
@@ -343,10 +343,11 @@
         <a href="#ecosistema" data-i18n="navEco">Ecosistema 360°</a>
         <a href="#simulador" data-i18n="navSim">Simulador</a>
       </nav>
+      <!-- BOTONES DE IDIOMA CON BANDERAS UNIVERSALES (CORRECCIÓN ERROR 2) -->
       <div class="lang-switch">
-        <button class="lang-btn active" id="btnEs" type="button">🇪🇸 Español</button>
+        <button class="lang-btn active" id="btnEs" type="button"><img src="https://flagcdn.com/w20/es.png" class="flag-icon" alt="ES"> Español</button>
         <span class="lang-sep">|</span>
-        <button class="lang-btn" id="btnEn" type="button">🇬🇧 English</button>
+        <button class="lang-btn" id="btnEn" type="button"><img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="GB"> English</button>
       </div>
     </div>
   </header>
@@ -356,7 +357,9 @@
     <section class="hero" id="inicio">
       <div class="container">
         <div class="badges">
-          <span class="badge" data-i18n="badge1">🇪🇸 España → 🇵🇾 Paraguay</span>
+          <span class="badge" data-i18n="badge1">
+            <img src="https://flagcdn.com/w20/es.png" class="flag-icon" alt="ES"> España → <img src="https://flagcdn.com/w20/py.png" class="flag-icon" alt="PY"> Paraguay
+          </span>
           <span class="badge gold" data-i18n="badge2">🌐 Global Expats (EU / USA / LATAM)</span>
         </div>
         <h1 data-i18n="heroTitle">Tu Libertad Fiscal y Arraigo Legal en Paraguay</h1>
@@ -394,7 +397,7 @@
       </div>
     </section>
 
-    <!-- ================= BLUEPRINT (AQUÍ ESTÁ LA SIM Y EL SUACE) ================= -->
+    <!-- ================= BLUEPRINT ================= -->
     <section class="section" id="estrategia">
       <div class="container center">
         <span class="over" data-i18n="bpOver">Inteligencia Fiscal</span>
@@ -402,7 +405,7 @@
         <p class="sub" data-i18n="bpSub">Un dossier estratégico y operativo de 5 fases para garantizar una transición patrimonial blindada y eficiente.</p>
         
         <div class="blueprint-grid" style="text-align:left">
-          <!-- Tarjeta 1: Marco Estratégico (Las 5 Fases) -->
+          <!-- Tarjeta 1: Marco Estratégico -->
           <div class="bp-card">
             <h3 data-i18n="bpFasesTitle">El Marco <span>Estratégico</span></h3>
             <div class="phase-list">
@@ -499,7 +502,7 @@
       </div>
     </section>
 
-    <!-- ================= ECOSYSTEM 360 (LOS 12 SERVICIOS) ================= -->
+    <!-- ================= ECOSYSTEM 360 ================= -->
     <section class="section" id="ecosistema">
       <div class="container">
         <div class="center">
@@ -717,7 +720,7 @@
             <a href="guia_rolania.pdf" download class="btn btn-gold" data-i18n="btnPdf">📕 Descargar Guía Rolanía (PDF)</a>
           </div>
 
-          <!-- RECUADRO ANTI-SOBORNO (COMPLIANCE) -->
+          <!-- RECUADRO COMPLIANCE -->
           <div class="compliance-banner">
             <div class="compliance-icon">⚖️</div>
             <div class="compliance-content">
@@ -738,7 +741,7 @@
       
       <div class="foot-contacts">
         <span>📞 Madrid: +34 919 933 817</span> <span class="sep">|</span> 
-        <span>📱 Móvil ES: +34 646 325 246</span> <span class="sep">|</span> 
+        <span>📱 Móvil ES: +34 640 734 208</span> <span class="sep">|</span> 
         <span>💬 WhatsApp: <a href="https://wa.me/595994434014" target="_blank">+595 994 434 014</a></span> <span class="sep">|</span> 
         <span>✉️ Correo: <a href="mailto:rolania@proton.me">rolania@proton.me</a></span>
       </div>
@@ -754,7 +757,8 @@
     const i18n = {
       es: {
         navWhy: "¿Por qué Paraguay?", navBp: "Metodología", navEco: "Ecosistema 360°", navSim: "Simulador",
-        badge1: "🇪🇸 España → 🇵🇾 Paraguay", badge2: "🌐 Global Expats (EU / USA / LATAM)",
+        badge1: "<img src='https://flagcdn.com/w20/es.png' class='flag-icon' alt='ES'> España → <img src='https://flagcdn.com/w20/py.png' class='flag-icon' alt='PY'> Paraguay", 
+        badge2: "🌐 Global Expats (EU / USA / LATAM)",
         heroTitle: "Tu Libertad Fiscal y Arraigo Legal en Paraguay",
         heroSub: "Seguridad jurídica blindada mediante los Convenios de Doble Imposición (CDI) y la Ley 6380/2019 de Territorialidad. Estructuras 100% legales, transparentes y sin opacidad para empresarios, nómadas digitales y jubilados.",
         ctaCalc: "📊 Calcular Ahorro Ahora", ctaExpert: "💬 Hablar con un Experto",
@@ -810,7 +814,8 @@
       },
       en: {
         navWhy: "Why Paraguay?", navBp: "Methodology", navEco: "360° Ecosystem", navSim: "Simulator",
-        badge1: "🇪🇸 Spain → 🇵🇾 Paraguay", badge2: "🌐 Global Expats (EU / USA / LATAM)",
+        badge1: "<img src='https://flagcdn.com/w20/gb.png' class='flag-icon' alt='GB'> Europe → <img src='https://flagcdn.com/w20/py.png' class='flag-icon' alt='PY'> Paraguay", 
+        badge2: "🌐 Global Expats (EU / USA / LATAM)",
         heroTitle: "Your Tax Freedom & Legal Residency in Paraguay",
         heroSub: "Ironclad legal security through Double Taxation Treaties (DTT) and the 6380/2019 Territoriality Law. 100% legal, transparent structures for entrepreneurs, digital nomads, and retirees.",
         ctaCalc: "📊 Calculate Savings Now", ctaExpert: "💬 Talk to an Expert",
@@ -877,7 +882,8 @@
       
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const k = el.getAttribute('data-i18n');
-        if (i18n[lang][k]) el.innerText = i18n[lang][k];
+        // SE UTILIZA innerHTML para que las imágenes de las banderas funcionen (CORRECCIÓN ERROR 2)
+        if (i18n[lang][k]) el.innerHTML = i18n[lang][k]; 
       });
       
       updateSim();
@@ -954,12 +960,12 @@
       const pctEs = inc > 0 ? ((tEs / inc) * 100).toFixed(1) + '%' : '0%';
       const pctPy = inc > 0 ? ((tPy / inc) * 100).toFixed(1) + '%' : '0%';
 
-      valEs.innerText = fmt(tEs);
-      valPy.innerText = fmt(tPy);
-      valSave.innerText = fmt(sav);
-      perEs.innerText = `${pctEs} tipo efectivo`;
-      perPy.innerText = `${pctPy} tipo efectivo`;
-      legDesc.innerText = i18n[lang][legKey];
+      valEs.innerHTML = fmt(tEs);
+      valPy.innerHTML = fmt(tPy);
+      valSave.innerHTML = fmt(sav);
+      perEs.innerHTML = `${pctEs} tipo efectivo`;
+      perPy.innerHTML = `${pctPy} tipo efectivo`;
+      legDesc.innerHTML = i18n[lang][legKey];
 
       // Conexión WhatsApp Simulador (+595 994 434 014)
       const profText = simProfile.options[simProfile.selectedIndex].text;
