@@ -49,12 +49,18 @@
       color: var(--muted);
       font-size: 0.8rem;
       text-align: center;
-      padding: 6px 15px;
+      padding: 8px 15px;
       border-bottom: 1px solid var(--border);
       font-weight: 500;
       letter-spacing: 0.5px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
     }
     .top-bar span { color: var(--emerald); }
+    .top-bar a { color: var(--emerald); text-decoration: none; font-weight: 700; transition: color 0.2s; }
+    .top-bar a:hover { color: #fff; }
     
     header {
       position: sticky; top: 0; z-index: 1000;
@@ -155,12 +161,15 @@
     }
     .phase-text h4 { color: #fff; font-size: 1.05rem; margin-bottom: 4px; }
     .phase-text p { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+    
+    .sim-badge {
+      margin-top: 12px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 12px 16px; border-radius: 12px; border-left: 4px solid var(--emerald);
+    }
+    .suace-img-container { margin-top: 14px; }
+    .suace-img { width: 100%; border-radius: 10px; border: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
 
-    .suace-container { margin-top: 30px; text-align: center; }
-    .suace-img { width: 100%; max-width: 500px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-    .suace-label { font-size: 0.8rem; color: var(--muted); margin-top: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
-
-    .table-container { width: 100%; overflow-x: auto; margin-top: 20px; }
+    .table-container { width: 100%; overflow-x: auto; }
     table { width: 100%; border-collapse: collapse; text-align: left; }
     th { background: rgba(16, 185, 129, 0.1); color: var(--emerald); padding: 12px 16px; font-weight: 700; border-bottom: 2px solid var(--emerald); }
     td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text); font-size: 0.9rem; }
@@ -258,8 +267,10 @@
     }
     .footer-inner { max-width: 1160px; margin: 0 auto; padding: 56px 24px 40px; text-align: center; }
     .footer-inner .logo { font-size: 1.4rem; }
-    .foot-contacts { margin: 24px 0; font-size: 0.95rem; font-weight: 600; color: #fff; background: var(--glass); padding: 15px; border-radius: 12px; display: inline-block; border: 1px solid var(--border); }
-    .foot-contacts span { color: var(--emerald); margin: 0 10px; }
+    .foot-contacts { margin: 24px 0; font-size: 0.95rem; font-weight: 600; color: #fff; background: var(--glass); padding: 18px 24px; border-radius: 12px; display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 14px; border: 1px solid var(--border); }
+    .foot-contacts span { color: var(--emerald); }
+    .foot-contacts a { color: var(--emerald); text-decoration: none; transition: color 0.2s; }
+    .foot-contacts a:hover { color: #fff; }
     .foot-loc { margin: 14px 0 22px; font-weight: 600; color: var(--text); }
     .foot-legal { color: var(--muted); font-size: 0.8rem; max-width: 880px; margin: 0 auto 22px; line-height: 1.7; }
     .foot-copy { color: var(--muted); font-size: 0.85rem; font-weight: 600; }
@@ -271,7 +282,7 @@
       .sim-panel, .pillar, .bp-card { padding: 30px 20px; }
       .pillar-tags { margin-left: 0; flex-direction: row; align-items: center; }
       .hero { padding: 80px 0 60px; }
-      .foot-contacts { display: flex; flex-direction: column; gap: 10px; }
+      .foot-contacts { flex-direction: column; gap: 10px; align-items: center; }
       .foot-contacts span { display: none; }
     }
   </style>
@@ -281,7 +292,10 @@
 
   <!-- ================= TOP BAR & HEADER ================= -->
   <div class="top-bar">
-    Madrid: +34 919 933 817 <span>|</span> Móvil: +34 646 325 246 <span>|</span> <a href="https://wa.me/595994434014" target="_blank" style="color:var(--emerald); text-decoration:none; font-weight:700;">WhatsApp Paraguay: +595 994 434 014</a>
+    📞 Madrid: +34 919 933 817 <span>|</span> 
+    📱 Móvil: +34 646 325 246 <span>|</span> 
+    💬 WhatsApp: <a href="https://wa.me/595994434014" target="_blank">+595 994 434 014</a> <span>|</span> 
+    ✉️ Correo: <a href="mailto:rolania@proton.me">rolania@proton.me</a>
   </div>
   
   <header>
@@ -349,20 +363,27 @@
       <div class="container center">
         <span class="over" data-i18n="bpOver">Inteligencia Fiscal</span>
         <h2 data-i18n="bpTitle">Metodología ROLANIA: De la Fundación al Imperio</h2>
-        <p class="sub" data-i18n="bpSub">Un dossier estratégico y operativo de 4 fases para garantizar una transición patrimonial blindada y eficiente.</p>
+        <p class="sub" data-i18n="bpSub">Un dossier estratégico y operativo de 5 fases para garantizar una transición patrimonial blindada y eficiente.</p>
         
         <div class="blueprint-grid" style="text-align:left">
-          <!-- Tarjeta 1: Marco Estratégico (Las 4 Fases) -->
+          <!-- Tarjeta 1: Marco Estratégico (Las 5 Fases) -->
           <div class="bp-card">
             <h3 data-i18n="bpFasesTitle">El Marco <span>Estratégico</span></h3>
             <div class="phase-list">
+              
+              <!-- FASE 1 CON INFOGRAFÍA SIM -->
               <div class="phase-item">
                 <div class="phase-num">Fase 1</div>
-                <div class="phase-text">
-                  <h4 data-i18n="bpF1T">La Fundación Legal</h4>
+                <div class="phase-text" style="width: 100%;">
+                  <h4 data-i18n="bpF1T">La Fundación Legal & Conectividad</h4>
                   <p data-i18n="bpF1D">Obtención de Identidad Fiscal (RUC) y Estructura Societaria en Paraguay.</p>
+                  <div class="sim-badge">
+                    <strong style="color: var(--emerald); font-size: 0.9rem;" data-i18n="bpF1SimTitle">📱 Conectividad Inmediata:</strong>
+                    <p style="margin-top: 4px; font-size: 0.85rem;" data-i18n="bpF1Sim">Tarjeta SIM prepago de Cía. Telefónica Paraguaya para tener datos durante la estancia, con posibilidad de habilitarla posteriormente como número definitivo.</p>
+                  </div>
                 </div>
               </div>
+
               <div class="phase-item">
                 <div class="phase-num">Fase 2</div>
                 <div class="phase-text">
@@ -370,6 +391,7 @@
                   <p data-i18n="bpF2D">Desvinculación de la AEAT española, apertura bancaria y flujo de capitales seguro (Cumplimiento SEPRELAD y Cripto OTC).</p>
                 </div>
               </div>
+              
               <div class="phase-item">
                 <div class="phase-num">Fase 3</div>
                 <div class="phase-text">
@@ -377,6 +399,7 @@
                   <p data-i18n="bpF3D">Blindaje mediante sistemas de Medicina Prepaga de élite en zonas clave como Itapúa.</p>
                 </div>
               </div>
+              
               <div class="phase-item">
                 <div class="phase-num">Fase 4</div>
                 <div class="phase-text">
@@ -384,10 +407,23 @@
                   <p data-i18n="bpF4D">Ejecución de obra rentable (Monoambientes), protección ante riesgo laboral y permisos municipales.</p>
                 </div>
               </div>
+
+              <!-- FASE 5: SUACE INTEGRADO -->
+              <div class="phase-item">
+                <div class="phase-num">Fase 5</div>
+                <div class="phase-text" style="width: 100%;">
+                  <h4 data-i18n="bpF5T">Flujograma SUACE (Previo a Migraciones)</h4>
+                  <p data-i18n="bpF5D">Proceso detallado de obtención de información y entrega de requisitos corporativos.</p>
+                  <div class="suace-img-container">
+                    <img src="SUACE.png" alt="Flujograma SUACE" class="suace-img" />
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
 
-          <!-- Tarjeta 2: Escudo Societario & Flujograma SUACE -->
+          <!-- Tarjeta 2: Escudo Societario -->
           <div class="bp-card">
             <h3 data-i18n="bpSocTitle">El Escudo <span>Societario</span></h3>
             <div class="table-container">
@@ -417,12 +453,6 @@
                   </tr>
                 </tbody>
               </table>
-            </div>
-            
-            <div class="suace-container">
-              <div class="suace-label" data-i18n="suaceLabel">Flujograma SUACE: Proceso Previo a Migraciones</div>
-              <!-- IMAGEN SUACE INTEGRADA -->
-              <img src="SUACE.png" alt="Flujograma SUACE" class="suace-img" />
             </div>
           </div>
         </div>
@@ -657,9 +687,10 @@
       <div class="logo">🧭 ROLANIA<span>.ES</span></div>
       
       <div class="foot-contacts">
-        📞 Madrid: +34 919 933 817 <span>|</span> 
-        📱 Móvil ES: +34 646 325 246 <span>|</span> 
-        💬 Paraguay (WhatsApp): <a href="https://wa.me/595994434014" target="_blank" style="color:var(--emerald); text-decoration:none;">+595 994 434 014</a>
+        <span>📞 Madrid: +34 919 933 817</span> <span>|</span> 
+        <span>📱 Móvil ES: +34 646 325 246</span> <span>|</span> 
+        <span>💬 WhatsApp: <a href="https://wa.me/595994434014" target="_blank">+595 994 434 014</a></span> <span>|</span> 
+        <span>✉️ Correo: <a href="mailto:rolania@proton.me">rolania@proton.me</a></span>
       </div>
 
       <p class="foot-loc" data-i18n="footLoc">Asunción, Paraguay &amp; Madrid, España</p>
@@ -681,16 +712,17 @@
         card1T: "0% Renta Extranjera", card1X: "Principio de territorialidad (Ley 6380/2019): negocios online, dividendos, royalties y pensiones de fuente extranjera tributan al 0% en Paraguay.",
         card2T: "Seguridad Jurídica CDI", card2X: "Convenio de Doble Imposición oficial España–Paraguay. Planificación fiscal basada en tratados internacionales: cero opacidad, cero esquemas agresivos.",
         card3T: "Alcance Internacional", card3X: "Estructuras para nómadas digitales, consultores y patrimonios de la UE, EE. UU. y LATAM, con acompañamiento integral en español e inglés.",
-        bpOver: "Inteligencia Fiscal", bpTitle: "Metodología ROLANIA: De la Fundación al Imperio", bpSub: "Un dossier estratégico y operativo de 4 fases para garantizar una transición patrimonial blindada y eficiente.",
+        bpOver: "Inteligencia Fiscal", bpTitle: "Metodología ROLANIA: De la Fundación al Imperio", bpSub: "Un dossier estratégico y operativo de 5 fases para garantizar una transición patrimonial blindada y eficiente.",
         bpFasesTitle: "El Marco", bpSocTitle: "El Escudo",
-        bpF1T: "La Fundación Legal", bpF1D: "Obtención de Identidad Fiscal (RUC) y Estructura Societaria en Paraguay.",
+        bpF1T: "La Fundación Legal & Conectividad", bpF1D: "Obtención de Identidad Fiscal (RUC) y Estructura Societaria en Paraguay.",
+        bpF1SimTitle: "📱 Conectividad Inmediata:", bpF1Sim: "Tarjeta SIM prepago de Cía. Telefónica Paraguaya para tener datos durante la estancia, con posibilidad de habilitarla posteriormente como número definitivo.",
         bpF2T: "El Puente de Capital", bpF2D: "Desvinculación de la AEAT española, apertura bancaria y flujo de capitales seguro (Cumplimiento SEPRELAD y Cripto OTC).",
         bpF3T: "El Escudo Vital", bpF3D: "Blindaje mediante sistemas de Medicina Prepaga de élite en zonas clave como Itapúa.",
         bpF4T: "El Imperio Inmobiliario", bpF4D: "Ejecución de obra rentable (Monoambientes), protección ante riesgo laboral y permisos municipales.",
+        bpF5T: "Flujograma SUACE (Previo a Migraciones)", bpF5D: "Proceso detallado de obtención de información y entrega de requisitos corporativos.",
         thCrit: "Criterio", thAut: "Persona Física (Autónomo)", thEas: "Empresa EAS",
         tdResp: "Responsabilidad", tdIlim: "Ilimitada", tdLim: "Limitada al capital",
         tdCost: "Costo Mant.", tdBajo: "Bajo (Honorario contador)", tdMed: "Medio (Balances anuales)", tdImp: "Impuestos",
-        suaceLabel: "Flujograma SUACE: Proceso Previo a Migraciones",
         ecoOver: "Servicios High-Ticket", ecoTitle: "Ecosistema ROLANIA 360° — Conserjería & Arraigo Total", ecoSub: "Doce servicios exclusivos orquestados en cuatro pilares estratégicos: una infografía viva de tu nueva vida en Paraguay.",
         p1T: "🛬 Aterrizaje & Conserjería VIP", p1Sub: "Tu llegada a Paraguay, resuelta desde el minuto cero.",
         s1T: "Recogida VIP Aeropuerto → Hotel", s1X: "Acompañamiento personal desde el instante de llegada a Asunción. Cero estrés de transporte o seguridad.", s1B: "Acceso VIP",
@@ -734,16 +766,17 @@
         card1T: "0% Foreign Source Income", card1X: "Territoriality principle (Law 6380/2019): online businesses, foreign dividends, royalties, and pensions are taxed at 0% in Paraguay.",
         card2T: "DTT Legal Security", card2X: "Official Spain–Paraguay Double Taxation Treaty. Tax planning based on international law: zero opacity, zero aggressive schemes.",
         card3T: "Global Reach", card3X: "Custom residency and corporate structures for digital nomads, consultants, and retirees from EU, USA, and LATAM.",
-        bpOver: "Fiscal Intelligence", bpTitle: "ROLANIA Methodology: From Foundation to Empire", bpSub: "A 4-phase strategic and operational dossier to guarantee a shielded and efficient wealth transition.",
+        bpOver: "Fiscal Intelligence", bpTitle: "ROLANIA Methodology: From Foundation to Empire", bpSub: "A 5-phase strategic and operational dossier to guarantee a shielded and efficient wealth transition.",
         bpFasesTitle: "The Strategic", bpSocTitle: "The Corporate",
-        bpF1T: "Legal Foundation", bpF1D: "Obtaining Tax Identity (RUC) and Corporate Structure in Paraguay.",
+        bpF1T: "Legal Foundation & Connectivity", bpF1D: "Obtaining Tax Identity (RUC) and Corporate Structure in Paraguay.",
+        bpF1SimTitle: "📱 Immediate Connectivity:", bpF1Sim: "Prepaid SIM Card from a Paraguayan Telco for data access during your stay, with the option to keep it as your permanent number.",
         bpF2T: "Capital Bridge", bpF2D: "Disconnection from Spanish AEAT, bank opening, and secure capital flow (SEPRELAD Compliance and Crypto OTC).",
         bpF3T: "Vital Shield", bpF3D: "Shielding through elite Prepaid Medicine systems in key zones like Itapúa.",
         bpF4T: "Real Estate Empire", bpF4D: "Profitable construction execution (Studios), labor risk protection, and municipal permits.",
+        bpF5T: "SUACE Flowchart (Pre-Migration)", bpF5D: "Detailed process for obtaining information and submitting corporate requirements.",
         thCrit: "Criterion", thAut: "Individual (Freelancer)", thEas: "EAS Company",
         tdResp: "Liability", tdIlim: "Unlimited", tdLim: "Limited to Capital",
         tdCost: "Maint. Cost", tdBajo: "Low (Accountant fee)", tdMed: "Medium (Annual balances)", tdImp: "Taxes",
-        suaceLabel: "SUACE Flowchart: Pre-Migration Process",
         ecoOver: "High-Ticket Services", ecoTitle: "ROLANIA 360° Ecosystem — Total Concierge & Relocation", ecoSub: "Twelve exclusive services orchestrated across four strategic pillars: a living infographic of your new life in Paraguay.",
         p1T: "🛬 Landing & VIP Concierge", p1Sub: "Your arrival in Paraguay, seamless from minute one.",
         s1T: "VIP Airport → Hotel Pickup", s1X: "Personalized escort from the moment you land in Asuncion. Zero transport or security stress.", s1B: "VIP Access",
