@@ -78,6 +78,8 @@
     nav { display: flex; gap: 28px; align-items: center; }
     nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
     nav a:hover { color: var(--emerald); }
+    
+    /* Banderas CDN y Selector de Idiomas */
     .lang-switch {
       display: flex; align-items: center; gap: 4px;
       background: var(--glass); border: 1px solid var(--border);
@@ -89,16 +91,16 @@
       transition: all 0.2s; display: flex; align-items: center; gap: 6px;
     }
     .lang-btn.active { background: var(--emerald); color: #04120c; }
+    .flag-icon { width: 16px; border-radius: 2px; box-shadow: 0 0 2px rgba(0,0,0,0.3); }
     .lang-sep { color: rgba(255, 255, 255, 0.25); }
-    .flag-icon { width: 16px; height: 12px; object-fit: cover; border-radius: 2px; }
 
     /* ---------- HERO ---------- */
     .hero { padding: 90px 0 80px; text-align: center; }
     .badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 28px; }
     .badge {
-      background: var(--glass); border: 1px solid var(--border);
+      background: var(--glass); border: 1px solid var(--border); display: flex; align-items: center; gap: 6px;
       border-radius: 999px; padding: 8px 18px; font-size: 0.85rem; font-weight: 600; color: var(--text);
-      backdrop-filter: blur(8px); display: inline-flex; align-items: center; gap: 6px;
+      backdrop-filter: blur(8px);
     }
     .badge.gold { border-color: rgba(245, 158, 11, 0.4); color: var(--gold); }
     .hero h1 {
@@ -163,10 +165,19 @@
     }
     .phase-text h4 { color: #fff; font-size: 1.05rem; margin-bottom: 4px; }
     .phase-text p { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+    
+    /* Infografía SIM Destacada (Fase 1) */
+    .sim-info-box {
+      margin-top: 14px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 16px; border-radius: 14px; display: flex; gap: 14px; align-items: center;
+      border-left: 4px solid var(--emerald);
+    }
+    .sim-info-icon { font-size: 2.2rem; }
+    .sim-info-text h5 { color: var(--emerald); font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+    .sim-info-text p { font-size: 0.85rem; color: var(--text); line-height: 1.4; margin: 0; }
 
-    .suace-img-container { margin-top: 24px; background: rgba(0,0,0,0.2); padding: 16px; border-radius: 12px; border: 1px solid var(--border); text-align: center;}
-    .suace-img-container h4 { color: var(--emerald); margin-bottom: 12px; font-size: 1rem; }
-    .suace-img { width: 100%; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+    .suace-img-container { margin-top: 14px; }
+    .suace-img { width: 100%; border-radius: 10px; border: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
 
     .table-container { width: 100%; overflow-x: auto; }
     table { width: 100%; border-collapse: collapse; text-align: left; }
@@ -213,22 +224,6 @@
       background: rgba(16, 185, 129, 0.14); color: var(--emerald); border: 1px solid rgba(16, 185, 129, 0.4);
     }
     .svc-badge.gold { background: rgba(245, 158, 11, 0.12); color: var(--gold); border-color: rgba(245, 158, 11, 0.45); }
-
-    /* ---------- ESTILOS BANNERS INTERACTIVOS Y TRANSPARENCIA ---------- */
-    details.banner-interactivo summary { list-style: none; outline: none; cursor: pointer; transition: background 0.3s ease; }
-    details.banner-interactivo summary:hover { background: rgba(255,255,255,0.02); }
-    details.banner-interactivo summary::-webkit-details-marker { display: none; }
-    .icono-desplegable { color: var(--emerald); font-size: 1.2rem; transition: transform 0.3s ease; }
-    details[open].banner-interactivo .icono-desplegable { transform: rotate(180deg); }
-    details[open].banner-interactivo { border-color: var(--emerald); box-shadow: 0 8px 30px rgba(16, 185, 129, 0.15); }
-    .ayuda-desplegable { color: var(--emerald); font-size: 0.85rem; font-weight: 600; margin-top: 8px; display: inline-block;}
-
-    .banner-transparencia { background: var(--glass-strong); border-left: 5px solid var(--emerald); padding: 34px; margin: 40px auto 0; border-radius: 20px; box-shadow: 0 16px 40px rgba(0,0,0,0.3); backdrop-filter: blur(12px); border: 1px solid var(--border); border-left: 5px solid var(--emerald); max-width: 1040px;}
-    .transparencia-header h2 { margin-top: 0; color: #fff; font-size: 1.5rem; margin-bottom: 10px; }
-    .transparencia-header p { font-size: 1rem; color: var(--text); line-height: 1.6; }
-    .documentos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 25px; }
-    .doc-link { background: rgba(255,255,255,0.03); padding: 15px; text-decoration: none; color: var(--text); border: 1px solid var(--border); border-radius: 12px; font-weight: 500; font-size: 0.9rem; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; text-align: center; }
-    .doc-link:hover { background: rgba(16, 185, 129, 0.1); color: #fff; border-color: var(--emerald); transform: translateY(-3px); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2); }
 
     /* ---------- SIMULATOR NATIVO ---------- */
     .sim-panel {
@@ -326,6 +321,7 @@
       .top-bar span.sep, .foot-contacts span.sep { display: none; }
       
       .compliance-banner { flex-direction: column; text-align: center; }
+      .sim-info-box { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
@@ -350,9 +346,13 @@
         <a href="#simulador" data-i18n="navSim">Simulador</a>
       </nav>
       <div class="lang-switch">
-        <button class="lang-btn active" id="btnEs" type="button"><img src="https://flagcdn.com/w20/es.png" class="flag-icon" alt="ES"> Español</button>
+        <button class="lang-btn active" id="btnEs" type="button">
+          <img src="https://flagcdn.com/w20/es.png" class="flag-icon" alt="ES"> Español
+        </button>
         <span class="lang-sep">|</span>
-        <button class="lang-btn" id="btnEn" type="button"><img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="GB"> English</button>
+        <button class="lang-btn" id="btnEn" type="button">
+          <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="EN"> English
+        </button>
       </div>
     </div>
   </header>
@@ -363,7 +363,8 @@
       <div class="container">
         <div class="badges">
           <span class="badge" data-i18n="badge1">
-            <img src="https://flagcdn.com/w20/es.png" class="flag-icon" alt="ES"> España → <img src="https://flagcdn.com/w20/py.png" class="flag-icon" alt="PY"> Paraguay
+            <img src="https://flagcdn.com/w20/es.png" class="flag-icon" alt="ES" style="margin-right:2px;"> España → 
+            <img src="https://flagcdn.com/w20/py.png" class="flag-icon" alt="PY" style="margin-right:2px; margin-left:2px;"> Paraguay
           </span>
           <span class="badge gold" data-i18n="badge2">🌐 Global Expats (EU / USA / LATAM)</span>
         </div>
@@ -402,7 +403,7 @@
       </div>
     </section>
 
-    <!-- ================= BLUEPRINT ================= -->
+    <!-- ================= BLUEPRINT (ESTRATEGIA, SIM Y SUACE) ================= -->
     <section class="section" id="estrategia">
       <div class="container center">
         <span class="over" data-i18n="bpOver">Inteligencia Fiscal</span>
@@ -415,11 +416,20 @@
             <h3 data-i18n="bpFasesTitle">El Marco <span>Estratégico</span></h3>
             <div class="phase-list">
               
+              <!-- FASE 1: CONECTIVIDAD SIM -->
               <div class="phase-item">
                 <div class="phase-num">Fase 1</div>
                 <div class="phase-text" style="width: 100%;">
                   <h4 data-i18n="bpF1T">La Fundación Legal & Conectividad</h4>
                   <p data-i18n="bpF1D">Obtención de Identidad Fiscal (RUC) y Estructura Societaria en Paraguay.</p>
+                  
+                  <div class="sim-info-box">
+                    <div class="sim-info-icon">📲</div>
+                    <div class="sim-info-text">
+                      <h5 data-i18n="bpF1SimTitle">Bonus: Conectividad Inmediata</h5>
+                      <p data-i18n="bpF1Sim">Tarjeta SIM prepago de Cía. Telefónica Paraguaya para tener datos durante la estancia, con posibilidad de habilitarla posteriormente como número definitivo.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -447,10 +457,22 @@
                 </div>
               </div>
 
+              <!-- FASE 5: SUACE -->
+              <div class="phase-item">
+                <div class="phase-num">Fase 5</div>
+                <div class="phase-text" style="width: 100%;">
+                  <h4 data-i18n="bpF5T">Flujograma SUACE (Previo a Migraciones)</h4>
+                  <p data-i18n="bpF5D">Proceso detallado de obtención de información y entrega de requisitos corporativos.</p>
+                  <div class="suace-img-container">
+                    <img src="SUACE.png" alt="Flujograma SUACE" class="suace-img" />
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
 
-          <!-- Tarjeta 2: Escudo Societario & Flujograma SUACE -->
+          <!-- Tarjeta 2: Escudo Societario -->
           <div class="bp-card">
             <h3 data-i18n="bpSocTitle">El Escudo <span>Societario</span></h3>
             <div class="table-container">
@@ -481,25 +503,18 @@
                 </tbody>
               </table>
             </div>
-
-            <!-- AQUÍ SE TRASLADÓ EL FLUJOGRAMA SUACE -->
-            <div class="suace-img-container">
-              <h4 data-i18n="suaceTitle">Flujograma de Procesos - SUACE</h4>
-              <img src="SUACE.png" alt="Flujograma SUACE" class="suace-img" />
-            </div>
-
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= ECOSYSTEM 360 ================= -->
+    <!-- ================= ECOSYSTEM 360 (LOS 12 SERVICIOS) ================= -->
     <section class="section" id="ecosistema">
       <div class="container">
         <div class="center">
           <span class="over" data-i18n="ecoOver">Servicios High-Ticket</span>
           <h2 data-i18n="ecoTitle">Ecosistema ROLANIA 360° — Conserjería &amp; Arraigo Total</h2>
-          <p class="sub" data-i18n="ecoSub">Trece servicios exclusivos orquestados en cuatro pilares estratégicos: una infografía viva de tu nueva vida en Paraguay.</p>
+          <p class="sub" data-i18n="ecoSub">Doce servicios exclusivos orquestados en cuatro pilares estratégicos: una infografía viva de tu nueva vida en Paraguay.</p>
         </div>
 
         <!-- PILAR 1 -->
@@ -540,56 +555,43 @@
               <p data-i18n="s4X">Configuración técnica para recibir y emitir llamadas a España con numeración local española a coste ridículo/cero.</p>
               <span class="svc-badge gold" data-i18n="s4B">Ahorro 100%</span>
             </div>
-            <!-- AQUÍ SE TRASLADÓ EL BONUS DE CONECTIVIDAD COMO PUNTO 05 -->
-            <div class="svc">
-              <div class="svc-top"><span class="svc-icon">📱</span><span class="svc-n">05</span></div>
-              <h4 data-i18n="s5BonusT">Bonus: Conectividad Inmediata</h4>
-              <p data-i18n="s5BonusX">Tarjeta SIM prepago de Cía. Telefónica Paraguaya para tener datos durante la estancia, con posibilidad de habilitarla como número definitivo.</p>
-              <span class="svc-badge" data-i18n="s5BonusB">Conectividad</span>
-            </div>
           </div>
         </div>
 
-        <!-- PILAR 2: BANNER INTERACTIVO DESPLEGABLE -->
-        <details class="pillar banner-interactivo" style="padding: 0;">
-          <summary style="padding: 40px 36px; display: flex; align-items: flex-start; justify-content: space-between;">
-            <div class="pillar-head" style="margin-bottom: 0; flex: 1;">
-              <div class="pillar-num">02</div>
-              <div>
-                <h3 data-i18n="p2T">⚖️ Legalidad, Fiscalidad &amp; Identidad</h3>
-                <p data-i18n="p2Sub">Estructuración burocrática y fiscal avalada por la legislación paraguaya.</p>
-                <span class="ayuda-desplegable" data-i18n="p2SubClick">(Haz clic para desplegar los detalles) ▼</span>
-              </div>
-              <div class="pillar-tags">
-                <span class="phase-chip">FASE 02</span>
-                <span class="tag-chip">Core Legal</span>
-              </div>
+        <!-- PILAR 2 -->
+        <div class="pillar">
+          <div class="pillar-head">
+            <div class="pillar-num">02</div>
+            <div>
+              <h3 data-i18n="p2T">⚖️ Legalidad, Fiscalidad &amp; Identidad</h3>
+              <p data-i18n="p2Sub">Estructuración burocrática y fiscal avalada por la legislación paraguaya.</p>
             </div>
-            <span class="icono-desplegable">▼</span>
-          </summary>
-          <div style="padding: 0 36px 40px 36px; border-top: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.15); padding-top: 30px;">
-            <div class="svc-grid">
-              <div class="svc">
-                <div class="svc-top"><span class="svc-icon">👔</span><span class="svc-n">06</span></div>
-                <h4 data-i18n="s5T">Acompañamiento Administrativo</h4>
-                <p data-i18n="s5X">Personal experto cualificado a tu lado en cada trámite presencial ante las instituciones públicas (incluido proceso SUACE) y notarías paraguayas.</p>
-                <span class="svc-badge" data-i18n="s5B">100% Guiado</span>
-              </div>
-              <div class="svc">
-                <div class="svc-top"><span class="svc-icon">🪪</span><span class="svc-n">07</span></div>
-                <h4 data-i18n="s6T">Residencia, Cédula &amp; RUC (DNIT)</h4>
-                <p data-i18n="s6X">Obtención de residencia permanente, documento de identidad y alta fiscal para activar tu tributación al 0% internacional.</p>
-                <span class="svc-badge gold" data-i18n="s6B">Legalidad DNIT</span>
-              </div>
-              <div class="svc">
-                <div class="svc-top"><span class="svc-icon">🪪</span><span class="svc-n">08</span></div>
-                <h4 data-i18n="s7T">Permiso de Conducir Paraguayo</h4>
-                <p data-i18n="s7X">Gestión, canje y tramitación ágil de la licencia de conducir local válida en todo el Mercosur y convenios europeos.</p>
-                <span class="svc-badge" data-i18n="s7B">Trámite Ágil</span>
-              </div>
+            <div class="pillar-tags">
+              <span class="phase-chip">FASE 02</span>
+              <span class="tag-chip">Core Legal</span>
             </div>
           </div>
-        </details>
+          <div class="svc-grid">
+            <div class="svc">
+              <div class="svc-top"><span class="svc-icon">👔</span><span class="svc-n">05</span></div>
+              <h4 data-i18n="s5T">Acompañamiento Administrativo</h4>
+              <p data-i18n="s5X">Personal experto cualificado a tu lado en cada trámite presencial ante las instituciones públicas (incluido proceso SUACE) y notarías paraguayas.</p>
+              <span class="svc-badge" data-i18n="s5B">100% Guiado</span>
+            </div>
+            <div class="svc">
+              <div class="svc-top"><span class="svc-icon">🪪</span><span class="svc-n">06</span></div>
+              <h4 data-i18n="s6T">Residencia, Cédula &amp; RUC (DNIT)</h4>
+              <p data-i18n="s6X">Obtención de residencia permanente, documento de identidad y alta fiscal para activar tu tributación al 0% internacional.</p>
+              <span class="svc-badge gold" data-i18n="s6B">Legalidad DNIT</span>
+            </div>
+            <div class="svc">
+              <div class="svc-top"><span class="svc-icon">🪪</span><span class="svc-n">07</span></div>
+              <h4 data-i18n="s7T">Permiso de Conducir Paraguayo</h4>
+              <p data-i18n="s7X">Gestión, canje y tramitación ágil de la licencia de conducir local válida en todo el Mercosur y convenios europeos.</p>
+              <span class="svc-badge" data-i18n="s7B">Trámite Ágil</span>
+            </div>
+          </div>
+        </div>
 
         <!-- PILAR 3 -->
         <div class="pillar">
@@ -606,13 +608,13 @@
           </div>
           <div class="svc-grid">
             <div class="svc">
-              <div class="svc-top"><span class="svc-icon">🏢</span><span class="svc-n">09</span></div>
+              <div class="svc-top"><span class="svc-icon">🏢</span><span class="svc-n">08</span></div>
               <h4 data-i18n="s8T">Real Estate &amp; Propiedades</h4>
               <p data-i18n="s8X">Búsqueda, compraventa y auditoría jurídica de inmuebles con o sin cédula de habitabilidad/título formal.</p>
               <span class="svc-badge" data-i18n="s8B">Alta Plusvalía</span>
             </div>
             <div class="svc">
-              <div class="svc-top"><span class="svc-icon">🌾</span><span class="svc-n">10</span></div>
+              <div class="svc-top"><span class="svc-icon">🌾</span><span class="svc-n">09</span></div>
               <h4 data-i18n="s9T">Terrenos en Cuotas (Sin Entrada)</h4>
               <p data-i18n="s9X">Estrategia legal para adquirir lotes de tierra a plazos, sin entrada y sin cédula paraguaya: exclusivamente con tu pasaporte.</p>
               <span class="svc-badge gold" data-i18n="s9B">Solo Pasaporte</span>
@@ -635,19 +637,19 @@
           </div>
           <div class="svc-grid">
             <div class="svc">
-              <div class="svc-top"><span class="svc-icon">🏦</span><span class="svc-n">11</span></div>
+              <div class="svc-top"><span class="svc-icon">🏦</span><span class="svc-n">10</span></div>
               <h4 data-i18n="s10T">Inteligencia Bancaria</h4>
               <p data-i18n="s10X">Asesoría de cumplimiento (compliance), búsqueda y apertura de cuentas bancarias personales y corporativas en los mejores bancos.</p>
               <span class="svc-badge" data-i18n="s10B">Banca VIP</span>
             </div>
             <div class="svc">
-              <div class="svc-top"><span class="svc-icon">🗺️</span><span class="svc-n">12</span></div>
+              <div class="svc-top"><span class="svc-icon">🗺️</span><span class="svc-n">11</span></div>
               <h4 data-i18n="s11T">Tours Privados de Inversión</h4>
               <p data-i18n="s11X">Acompañamiento por las mejores zonas económicas, agrícolas y residenciales del país para detectar oportunidades reales.</p>
               <span class="svc-badge gold" data-i18n="s11B">Tour Privado</span>
             </div>
             <div class="svc">
-              <div class="svc-top"><span class="svc-icon">⛳</span><span class="svc-n">13</span></div>
+              <div class="svc-top"><span class="svc-icon">⛳</span><span class="svc-n">12</span></div>
               <h4 data-i18n="s12T">Clubs Privados &amp; Condominios</h4>
               <p data-i18n="s12X">Acceso e introducción a residencias de condominios cerrados de alto standing, clubes de campo y comunidades privadas de la élite.</p>
               <span class="svc-badge" data-i18n="s12B">VIP Club</span>
@@ -724,7 +726,7 @@
             <a href="guia_rolania.pdf" download class="btn btn-gold" data-i18n="btnPdf">📕 Descargar Guía Rolanía (PDF)</a>
           </div>
 
-          <!-- RECUADRO COMPLIANCE -->
+          <!-- RECUADRO COMPLIANCE (ANTI-SOBORNO) -->
           <div class="compliance-banner">
             <div class="compliance-icon">⚖️</div>
             <div class="compliance-content">
@@ -732,23 +734,8 @@
               <p data-i18n="compDesc">Rolania ofrece servicios legales 100%. No aceptamos "sobornos" ni "coimas". Respetamos las Leyes Paraguayas y nos atenemos a sus procedimientos y plazos, no ofrecemos servicios "abreviados" ni "acelerados". Esto lo hacemos por la seguridad jurídica de nuestros clientes y por la de nuestra empresa.</p>
             </div>
           </div>
-        </div>
-        
-        <!-- NUEVO BANNER DE TRANSPARENCIA Y DOCUMENTOS OFICIALES -->
-        <div class="banner-transparencia">
-          <div class="transparencia-header">
-            <h2 data-i18n="transpTitle">Cuentas Claras, Confianza Total</h2>
-            <p data-i18n="transpDesc">En Guía Rolanía creemos en la transparencia absoluta. No hay letras pequeñas, ni sobrecostes ocultos, ni procesos opacos. Ponemos a tu disposición directa las normativas legales de extranjería y las tasas oficiales del Gobierno. Compruébalo tú mismo, no tenemos nada que ocultar.</p>
-          </div>
-          <div class="documentos-grid">
-            <a href="ARANCELES_.pdf" target="_blank" class="doc-link">📄 Aranceles Oficiales</a>
-            <a href="Ley_6984_de_Migraciones_-_2022.pdf" target="_blank" class="doc-link">📄 Ley 6984 de Migraciones</a>
-            <a href="politica_migratoria_OIM_PM_2016.pdf" target="_blank" class="doc-link">📄 Política Migratoria OIM</a>
-            <a href="Residencia_Permanente.pdf" target="_blank" class="doc-link">📄 Requisitos: Res. Permanente</a>
-            <a href="Residencia_Temp.pdf" target="_blank" class="doc-link">📄 Requisitos: Res. Temporal</a>
-          </div>
-        </div>
 
+        </div>
       </div>
     </section>
   </main>
@@ -776,7 +763,7 @@
     const i18n = {
       es: {
         navWhy: "¿Por qué Paraguay?", navBp: "Metodología", navEco: "Ecosistema 360°", navSim: "Simulador",
-        badge1: "<img src='https://flagcdn.com/w20/es.png' class='flag-icon' alt='ES'> España → <img src='https://flagcdn.com/w20/py.png' class='flag-icon' alt='PY'> Paraguay", 
+        badge1: "<img src='https://flagcdn.com/w20/es.png' class='flag-icon' alt='ES' style='margin-right:2px;'> España → <img src='https://flagcdn.com/w20/py.png' class='flag-icon' alt='PY' style='margin-right:2px; margin-left:2px;'> Paraguay", 
         badge2: "🌐 Global Expats (EU / USA / LATAM)",
         heroTitle: "Tu Libertad Fiscal y Arraigo Legal en Paraguay",
         heroSub: "Seguridad jurídica blindada mediante los Convenios de Doble Imposición (CDI) y la Ley 6380/2019 de Territorialidad. Estructuras 100% legales, transparentes y sin opacidad para empresarios, nómadas digitales y jubilados.",
@@ -788,21 +775,21 @@
         bpOver: "Inteligencia Fiscal", bpTitle: "Metodología ROLANIA: De la Fundación al Imperio", bpSub: "Un dossier estratégico y operativo de 5 fases para garantizar una transición patrimonial blindada y eficiente.",
         bpFasesTitle: "El Marco", bpSocTitle: "El Escudo",
         bpF1T: "La Fundación Legal & Conectividad", bpF1D: "Obtención de Identidad Fiscal (RUC) y Estructura Societaria en Paraguay.",
+        bpF1SimTitle: "Bonus: Conectividad Inmediata", bpF1Sim: "Tarjeta SIM prepago de Cía. Telefónica Paraguaya para tener datos durante la estancia, con posibilidad de habilitarla posteriormente como número definitivo.",
         bpF2T: "El Puente de Capital", bpF2D: "Desvinculación de la AEAT española, apertura bancaria y flujo de capitales seguro (Cumplimiento SEPRELAD y Cripto OTC).",
         bpF3T: "El Escudo Vital", bpF3D: "Blindaje mediante sistemas de Medicina Prepaga de élite en zonas clave como Itapúa.",
         bpF4T: "El Imperio Inmobiliario", bpF4D: "Ejecución de obra rentable (Monoambientes), protección ante riesgo laboral y permisos municipales.",
-        suaceTitle: "Flujograma de Procesos - SUACE",
+        bpF5T: "Flujograma SUACE (Previo a Migraciones)", bpF5D: "Proceso detallado de obtención de información y entrega de requisitos corporativos.",
         thCrit: "Criterio", thAut: "Persona Física (Autónomo)", thEas: "Empresa EAS",
         tdResp: "Responsabilidad", tdIlim: "Ilimitada", tdLim: "Limitada al capital",
         tdCost: "Costo Mant.", tdBajo: "Bajo (Honorario contador)", tdMed: "Medio (Balances anuales)", tdImp: "Impuestos",
-        ecoOver: "Servicios High-Ticket", ecoTitle: "Ecosistema ROLANIA 360° — Conserjería & Arraigo Total", ecoSub: "Trece servicios exclusivos orquestados en cuatro pilares estratégicos: una infografía viva de tu nueva vida en Paraguay.",
+        ecoOver: "Servicios High-Ticket", ecoTitle: "Ecosistema ROLANIA 360° — Conserjería & Arraigo Total", ecoSub: "Doce servicios exclusivos orquestados en cuatro pilares estratégicos: una infografía viva de tu nueva vida en Paraguay.",
         p1T: "🛬 Aterrizaje & Conserjería VIP", p1Sub: "Tu llegada a Paraguay, resuelta desde el minuto cero.",
         s1T: "Recogida VIP Aeropuerto → Hotel", s1X: "Acompañamiento personal desde el instante de llegada a Asunción. Cero estrés de transporte o seguridad.", s1B: "Acceso VIP",
         s2T: "Alojamiento a Medida", s2X: "Búsqueda y recomendación de estancias según poder adquisitivo: desde apartamentos ejecutivos hasta mansiones residenciales.", s2B: "A tu Medida",
         s3T: "Vehículo de Alquiler", s3X: "Gestión y disposición de movilidad privada lista para circular con seguro completo desde tu primer día.", s3B: "Llave en Mano",
         s4T: "Telefonía VoIP España–Paraguay", s4X: "Configuración técnica para recibir y emitir llamadas a España con numeración local española a coste ridículo/cero.", s4B: "Ahorro 100%",
-        s5BonusT: "Bonus: Conectividad Inmediata", s5BonusX: "Tarjeta SIM prepago de Cía. Telefónica Paraguaya para tener datos durante la estancia, con posibilidad de habilitarla como número definitivo.", s5BonusB: "Conectividad",
-        p2T: "⚖️ Legalidad, Fiscalidad & Identidad", p2Sub: "Estructuración burocrática y fiscal avalada por la legislación paraguaya.", p2SubClick: "(Haz clic para desplegar los detalles) ▼",
+        p2T: "⚖️ Legalidad, Fiscalidad & Identidad", p2Sub: "Estructuración burocrática y fiscal avalada por la legislación paraguaya.",
         s5T: "Acompañamiento Administrativo", s5X: "Personal experto cualificado a tu lado en cada trámite presencial ante las instituciones públicas (incluido proceso SUACE) y notarías paraguayas.", s5B: "100% Guiado",
         s6T: "Residencia, Cédula & RUC (DNIT)", s6X: "Obtención de residencia permanente, documento de identidad y alta fiscal para activar tu tributación al 0% internacional.", s6B: "Legalidad DNIT",
         s7T: "Permiso de Conducir Paraguayo", s7X: "Gestión, canje y tramitación ágil de la licencia de conducir local válida en todo el Mercosur y convenios europeos.", s7B: "Trámite Ágil",
@@ -823,8 +810,6 @@
         btnWspSim: "📲 Solicitar Conserjería y Estudio por WhatsApp", btnPdf: "📕 Descargar Guía Rolanía (PDF)",
         compTitle: "Compromiso Ético y Legal 100%",
         compDesc: "Rolania ofrece servicios legales 100%. No aceptamos \"sobornos\" ni \"coimas\". Respetamos las Leyes Paraguayas y nos atenemos a sus procedimientos y plazos, no ofrecemos servicios \"abreviados\" ni \"acelerados\". Esto lo hacemos por la seguridad jurídica de nuestros clientes y por la de nuestra empresa.",
-        transpTitle: "Cuentas Claras, Confianza Total",
-        transpDesc: "En Guía Rolanía creemos en la transparencia absoluta. No hay letras pequeñas, ni sobrecostes ocultos, ni procesos opacos. Ponemos a tu disposición directa las normativas legales de extranjería y las tasas oficiales del Gobierno. Compruébalo tú mismo, no tenemos nada que ocultar.",
         footLoc: "Asunción, Paraguay & Madrid, España",
         footLegal: "Nota legal: La información contenida en este sitio web y el simulador tributario tiene carácter educativo y de orientación general. ROLANIA recomienda encarecidamente realizar un estudio legal, migratorio y fiscal personalizado y formal antes de ejecutar cualquier cambio de residencia fiscal o compra patrimonial internacional.",
         noteAut: "Art. 14 CDI España–Paraguay: Los servicios profesionales independientes sin establecimiento permanente en España tributan exclusivamente en Paraguay (0% por territorialidad según Ley 6380/2019).",
@@ -835,7 +820,7 @@
       },
       en: {
         navWhy: "Why Paraguay?", navBp: "Methodology", navEco: "360° Ecosystem", navSim: "Simulator",
-        badge1: "<img src='https://flagcdn.com/w20/gb.png' class='flag-icon' alt='GB'> Europe → <img src='https://flagcdn.com/w20/py.png' class='flag-icon' alt='PY'> Paraguay", 
+        badge1: "<img src='https://flagcdn.com/w20/es.png' class='flag-icon' alt='ES' style='margin-right:2px;'> Spain → <img src='https://flagcdn.com/w20/py.png' class='flag-icon' alt='PY' style='margin-right:2px; margin-left:2px;'> Paraguay", 
         badge2: "🌐 Global Expats (EU / USA / LATAM)",
         heroTitle: "Your Tax Freedom & Legal Residency in Paraguay",
         heroSub: "Ironclad legal security through Double Taxation Treaties (DTT) and the 6380/2019 Territoriality Law. 100% legal, transparent structures for entrepreneurs, digital nomads, and retirees.",
@@ -847,21 +832,21 @@
         bpOver: "Fiscal Intelligence", bpTitle: "ROLANIA Methodology: From Foundation to Empire", bpSub: "A 5-phase strategic and operational dossier to guarantee a shielded and efficient wealth transition.",
         bpFasesTitle: "The Strategic", bpSocTitle: "The Corporate",
         bpF1T: "Legal Foundation & Connectivity", bpF1D: "Obtaining Tax Identity (RUC) and Corporate Structure in Paraguay.",
+        bpF1SimTitle: "Bonus: Immediate Connectivity", bpF1Sim: "Prepaid SIM Card from a Paraguayan Telco for data access during your stay, with the option to keep it as your permanent number.",
         bpF2T: "Capital Bridge", bpF2D: "Disconnection from Spanish AEAT, bank opening, and secure capital flow (SEPRELAD Compliance and Crypto OTC).",
         bpF3T: "Vital Shield", bpF3D: "Shielding through elite Prepaid Medicine systems in key zones like Itapúa.",
         bpF4T: "Real Estate Empire", bpF4D: "Profitable construction execution (Studios), labor risk protection, and municipal permits.",
-        suaceTitle: "SUACE Process Flowchart",
+        bpF5T: "SUACE Flowchart (Pre-Migration)", bpF5D: "Detailed process for obtaining information and submitting corporate requirements.",
         thCrit: "Criterion", thAut: "Individual (Freelancer)", thEas: "EAS Company",
         tdResp: "Liability", tdIlim: "Unlimited", tdLim: "Limited to Capital",
         tdCost: "Maint. Cost", tdBajo: "Low (Accountant fee)", tdMed: "Medium (Annual balances)", tdImp: "Taxes",
-        ecoOver: "High-Ticket Services", ecoTitle: "ROLANIA 360° Ecosystem — Total Concierge & Relocation", ecoSub: "Thirteen exclusive services orchestrated across four strategic pillars: a living infographic of your new life in Paraguay.",
+        ecoOver: "High-Ticket Services", ecoTitle: "ROLANIA 360° Ecosystem — Total Concierge & Relocation", ecoSub: "Twelve exclusive services orchestrated across four strategic pillars: a living infographic of your new life in Paraguay.",
         p1T: "🛬 Landing & VIP Concierge", p1Sub: "Your arrival in Paraguay, seamless from minute one.",
         s1T: "VIP Airport → Hotel Pickup", s1X: "Personalized escort from the moment you land in Asuncion. Zero transport or security stress.", s1B: "VIP Access",
         s2T: "Tailored Housing", s2X: "Accommodation search matching your purchasing power: from executive apartments to residential mansions.", s2B: "Custom Fit",
         s3T: "Rental Vehicle", s3X: "Private mobility ready to drive with full insurance coverage from your very first day.", s3B: "Turnkey",
         s4T: "Spain–Paraguay VoIP Telephony", s4X: "Technical setup to receive and make calls to Spain using a local Spanish phone number at near-zero cost.", s4B: "100% Savings",
-        s5BonusT: "Bonus: Immediate Connectivity", s5BonusX: "Prepaid SIM Card from a Paraguayan Telco for data access during your stay, with the option to keep it as your permanent number.", s5BonusB: "Connectivity",
-        p2T: "⚖️ Legality, Taxation & Identity", p2Sub: "Bureaucratic and tax structuring backed by Paraguayan law.", p2SubClick: "(Click to expand details) ▼",
+        p2T: "⚖️ Legality, Taxation & Identity", p2Sub: "Bureaucratic and tax structuring backed by Paraguayan law.",
         s5T: "Administrative Escort", s5X: "Qualified expert personnel by your side during every physical appointment at public institutions (including SUACE) and notary offices.", s5B: "100% Guided",
         s6T: "Residency, ID Card & RUC (DNIT)", s6X: "Obtaining permanent residency, national ID, and tax registration to activate your 0% international taxation.", s6B: "DNIT Compliant",
         s7T: "Paraguayan Driver's License", s7X: "Agile processing or exchange of local driver's licenses valid across Mercosur and European treaties.", s7B: "Fast Track",
@@ -882,8 +867,6 @@
         btnWspSim: "📲 Request WhatsApp Concierge & Assessment", btnPdf: "📕 Download Rolania Guide (PDF)",
         compTitle: "100% Ethical & Legal Commitment",
         compDesc: "Rolania offers 100% legal services. We do not accept bribes or kickbacks. We respect Paraguayan Laws and adhere strictly to their procedures and timelines; we do not offer \"expedited\" or \"shortcut\" services. We do this for the legal security of our clients and our company.",
-        transpTitle: "Clear Accounts, Total Trust",
-        transpDesc: "At Guía Rolanía we believe in absolute transparency. There is no fine print, hidden costs, or opaque processes. We make the legal immigration regulations and official Government fees directly available to you. Check it yourself, we have nothing to hide.",
         footLoc: "Asuncion, Paraguay & Madrid, Spain",
         footLegal: "Legal notice: The information provided on this website and tax simulator is for educational and general guidance purposes. ROLANIA strongly recommends a formal, personalized legal, migration, and tax assessment before executing any international residency change or asset purchase.",
         noteAut: "Art. 14 DTT Spain–Paraguay: Independent professional services without a permanent establishment in Spain are taxed exclusively in the State of residence (0% in Paraguay under Law 6380/2019).",
@@ -905,7 +888,9 @@
       
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const k = el.getAttribute('data-i18n');
-        if (i18n[lang][k]) el.innerHTML = i18n[lang][k]; 
+        if (i18n[lang][k]) {
+          el.innerHTML = i18n[lang][k];
+        }
       });
       
       updateSim();
@@ -982,13 +967,14 @@
       const pctEs = inc > 0 ? ((tEs / inc) * 100).toFixed(1) + '%' : '0%';
       const pctPy = inc > 0 ? ((tPy / inc) * 100).toFixed(1) + '%' : '0%';
 
-      valEs.innerHTML = fmt(tEs);
-      valPy.innerHTML = fmt(tPy);
-      valSave.innerHTML = fmt(sav);
-      perEs.innerHTML = `${pctEs} tipo efectivo`;
-      perPy.innerHTML = `${pctPy} tipo efectivo`;
-      legDesc.innerHTML = i18n[lang][legKey];
+      valEs.innerText = fmt(tEs);
+      valPy.innerText = fmt(tPy);
+      valSave.innerText = fmt(sav);
+      perEs.innerText = `${pctEs} tipo efectivo`;
+      perPy.innerText = `${pctPy} tipo efectivo`;
+      legDesc.innerText = i18n[lang][legKey];
 
+      // Conexión WhatsApp Simulador (+595 994 434 014)
       const profText = simProfile.options[simProfile.selectedIndex].text;
       const msg = (lang === 'es' ? 'Hola ROLANIA 🧭. He calculado mi optimización en vuestro Simulador Fiscal:\n' : 'Hello ROLANIA 🧭. I calculated my tax optimization on your Simulator:\n') +
                   `• Perfil: ${profText}\n` +
