@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  
   <style>
     :root {
       --bg0: #050811;
@@ -43,36 +42,6 @@
     }
     .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
     section { scroll-margin-top: 96px; }
-    /* ---------- BANNER GIGANTE GUÍA DESCARGABLE ---------- */
-    .banner-descarga-verde {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 1.3rem; /* Letra mucho más grande */
-      padding: 22px 40px; /* Doble de grosor */
-      border-radius: 18px;
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      border: 1px solid #fbbf24;
-      box-shadow: 0 12px 35px rgba(245, 158, 11, 0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-      width: 100%;
-      max-width: 550px; /* Lo hace ancho como un banner */
-      border: 1px solid #22c55e;
-    }
-    .banner-descarga-verde:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 45px rgba(245, 158, 11, 0.6);)
-      color: #ffffff;
-    }
-    .banner-descarga-container {
-      margin-top: 35px; /* Espacio de separación con los botones de arriba */
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
 
     /* ---------- HEADER & TOP BAR ---------- */
     .top-bar {
@@ -309,14 +278,6 @@
     .legal-box { border: 1px solid rgba(245, 158, 11, 0.35); border-left: 4px solid var(--gold); background: rgba(245, 158, 11, 0.06); border-radius: 14px; padding: 20px 22px; margin-bottom: 30px; }
     .legal-box h4 { font-size: 0.95rem; font-weight: 800; color: var(--gold); margin-bottom: 8px; letter-spacing: 0.3px; }
     .legal-box p { font-size: 0.9rem; color: var(--text); }
-    
-    .<div class="sim-ctas">
-            <button class="btn btn-primary" id="waSim" type="button" data-i18n="btnWspSim">📲 Solicitar Conserjería y Estudio por WhatsApp</button>
-          </div>
-    <!-- NUEVO BANNER VERDE GUIA ROLANIA -->
-        <div class="banner-descarga-container">
-          <a href="guia_rolania.pdf" download class="banner-descarga-verde" data-i18n="btnPdf">📕 Descargar Guía Rolanía (PDF)</a>
-        </div>
 
     /* RECUADRO COMPLIANCE (ANTI-SOBORNO) */
     .compliance-banner {
@@ -356,172 +317,16 @@
     .foot-legal { color: var(--muted); font-size: 0.8rem; max-width: 880px; margin: 0 auto 22px; line-height: 1.7; }
     .foot-copy { color: var(--muted); font-size: 0.85rem; font-weight: 600; }
 
-    /* ---------- RESPONSIVE ---------- */
-    @media (max-width: 900px) {
-      nav { display: none; }
-      .grid3, .blueprint-grid, .sim-controls, .results { grid-template-columns: 1fr; }
-      .sim-panel, .pillar, .bp-card { padding: 30px 20px; }
-      .pillar-tags { margin-left: 0; flex-direction: row; align-items: center; }
-      .hero { padding: 80px 0 60px; }
-      
-      .top-bar, .foot-contacts { flex-direction: column; gap: 8px; text-align: center; }
-      .top-bar span.sep, .foot-contacts span.sep { display: none; }
-      
-      .compliance-banner { flex-direction: column; text-align: center; }
-    }
-    .sim-ctas {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  width: 100% !important;
-  margin-bottom: 30px !important;
-  text-align: center !important;
-}
-
-#waSim {
-  margin: 0 auto !important;
-}
-   /* ---------- FOTOS CORPORATIVAS (JR Y ESCUDO) ---------- */
-    .author-brand {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 24px;
-    }
-    .img-jr {
-      height: 70px;
-      width: 70px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--gold);
-      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
-    }
-    .img-escudo {
-      height: 75px;
-      object-fit: contain;
-    }
-
-    /* ---------- NUEVOS BANNERS HERO (GUÍA + EXPERTO) ---------- */
-    .hero-banners {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      width: 100%;
-      max-width: 650px;
-      margin: 35px auto 0;
-    }
-
-    /* Banner 1: Guía Rolanía (Dorado) */
-    .banner-descarga-dorado {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      gap: 12px;
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 1.3rem;
-      padding: 22px 40px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      color: #ffffff;
-      border: 1px solid #fbbf24;
-      box-shadow: 0 12px 35px rgba(245, 158, 11, 0.4);
-      transition: all 0.3s ease;
-    }
-    .banner-descarga-dorado:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 45px rgba(245, 158, 11, 0.6);
-      color: #ffffff;
-    }
-
-    /* Banner 2: Experto con subtexto (Ejecutivo / Premium) */
-    .expert-banner-wrapper {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 10px 10px 20px 10px;
-      text-align: center;
-      transition: border-color 0.3s ease;
-    }
-    .expert-banner-wrapper:hover {
-      border-color: rgba(59, 130, 246, 0.4);
-    }
-    .expert-main-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      gap: 12px;
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 1.3rem;
-      padding: 20px 30px;
-      border-radius: 15px;
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8); /* Azul Corporativo */
-      color: #ffffff;
-      border: 1px solid #60a5fa;
-      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
-      transition: transform 0.2s;
-    }
-    .expert-main-btn:hover {
-      transform: translateY(-3px);
-      color: #ffffff;
-    }
-    .expert-subtext {
-      font-size: 0.9rem;
-      color: #96a1ba;
-      line-height: 1.6;
-      margin-top: 18px;
-      padding: 0 20px;
-      font-weight: 500;
-    } 
-  </style>
-</head>
-<body>
-  <div class="bg-fx"></div>
-
-  <!-- ================= TOP BAR & HEADER ================= -->
-  <div class="top-bar">
-    <span>📞 Madrid: +34 919 933 817</span> <span class="sep">|</span> 
-    <span>📱 Móvil: +34 640 734 208</span> <span class="sep">|</span> 
-    <span>💬 WhatsApp: <a href="https://wa.me/595994434014" target="_blank">+595 994 434 014</a></span> <span class="sep">|</span> 
-    <span>✉️ Correo: <a href="mailto:rolania@proton.me">rolania@proton.me</a></span>
-  </div>
-  
-  <header>
-    <div class="header-inner">
-      <a class="logo" href="#inicio">🧭 ROLANIA<span>.ES</span></a>
-      <nav>
-        <a href="#por-que" data-i18n="navWhy">¿Por qué Paraguay?</a>
-        <a href="#estrategia" data-i18n="navBp">Metodología</a>
-        <a href="#ecosistema" data-i18n="navEco">Ecosistema 360°</a>
-        <a href="#simulador" data-i18n="navSim">Simulador</a>
-        <a href="#videos" data-i18n="navVideos">Vídeos</a>
-      </nav>
-      <div class="lang-switch">
-        <button class="lang-btn active" id="btnEs" type="button"><img src="https://flagcdn.com/w20/es.png" class="flag-icon" alt="ES"> Español</button>
-        <span class="lang-sep">|</span>
-        <button class="lang-btn" id="btnEn" type="button"><img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="GB"> English</button>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <!-- ================= HERO ================= -->
-    <section class="hero" id="inicio">
-      <div class="container">
     /* ---------- FOTOS CORPORATIVAS (JR Y ESCUDO) ---------- */
     .author-brand {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 30px; /* Un poco más de espacio entre ellas */
+      gap: 30px; 
       margin-bottom: 35px;
     }
     .img-jr {
-      height: 210px; /* ¡Tamaño triplicado! */
+      height: 210px; 
       width: 210px;
       border-radius: 50%;
       object-fit: cover;
@@ -529,25 +334,18 @@
       box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
     }
     .img-escudo {
-      height: 225px; /* ¡Tamaño triplicado! */
+      height: 225px; 
       object-fit: contain;
     }
 
     /* ---------- NUEVOS BANNERS HERO (GUÍA + EXPERTO EN PARALELO) ---------- */
     .hero-banners-row {
       display: grid;
-      grid-template-columns: 1fr 1fr; /* Divide el espacio en dos columnas iguales */
+      grid-template-columns: 1fr 1fr; 
       gap: 24px;
       width: 100%;
-      max-width: 1040px; /* Más ancho para que quepan ambos cómodamente */
+      max-width: 1040px; 
       margin: 45px auto 0;
-    }
-
-    /* Para que en móviles no se aplasten y se pongan uno encima del otro */
-    @media (max-width: 900px) {
-      .hero-banners-row {
-        grid-template-columns: 1fr;
-      }
     }
 
     .expert-banner-wrapper {
@@ -619,14 +417,115 @@
       margin-top: 18px;
       padding: 0 20px;
       font-weight: 500;
-      flex-grow: 1; /* Esto hace que si un texto es más largo, las cajas se igualen en altura */
+      flex-grow: 1; 
     }
+
+    /* Blindaje para centrar botón de WhatsApp del simulador */
+    .sim-ctas {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      width: 100% !important;
+      margin: 0 auto 30px auto !important;
+      text-align: center !important;
+    }
+
+    #waSim {
+      display: inline-flex !important;
+      margin: 0 auto !important;
+      float: none !important;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 900px) {
+      nav { display: none; }
+      .grid3, .blueprint-grid, .sim-controls, .results { grid-template-columns: 1fr; }
+      .sim-panel, .pillar, .bp-card { padding: 30px 20px; }
+      .pillar-tags { margin-left: 0; flex-direction: row; align-items: center; }
+      .hero { padding: 40px 0 25px; }
+      
+      .top-bar, .foot-contacts { flex-direction: column; gap: 8px; text-align: center; }
+      .top-bar span.sep, .foot-contacts span.sep { display: none; }
+      
+      .compliance-banner { flex-direction: column; text-align: center; }
+      .hero-banners-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-fx"></div>
+
+  <!-- ================= TOP BAR & HEADER ================= -->
+  <div class="top-bar">
+    <span>📞 Madrid: +34 919 933 817</span> <span class="sep">|</span> 
+    <span>📱 Móvil: +34 640 734 208</span> <span class="sep">|</span> 
+    <span>💬 WhatsApp: <a href="https://wa.me/595994434014" target="_blank">+595 994 434 014</a></span> <span class="sep">|</span> 
+    <span>✉️ Correo: <a href="mailto:rolania@proton.me">rolania@proton.me</a></span>
+  </div>
+  
+  <header>
+    <div class="header-inner">
+      <a class="logo" href="#inicio">🧭 ROLANIA<span>.ES</span></a>
+      <nav>
+        <a href="#por-que" data-i18n="navWhy">¿Por qué Paraguay?</a>
+        <a href="#estrategia" data-i18n="navBp">Metodología</a>
+        <a href="#ecosistema" data-i18n="navEco">Ecosistema 360°</a>
+        <a href="#simulador" data-i18n="navSim">Simulador</a>
+        <a href="#videos" data-i18n="navVideos">Vídeos</a>
+      </nav>
+      <div class="lang-switch">
+        <button class="lang-btn active" id="btnEs" type="button"><img src="https://flagcdn.com/w20/es.png" class="flag-icon" alt="ES"> Español</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" id="btnEn" type="button"><img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="GB"> English</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="inicio">
+      <div class="container">
+        
+        <!-- FOTOS CORPORATIVAS Y ESCUDO (Nombres exactos) -->
+        <div class="author-brand">
+          <img src="JR.jpeg" alt="JR" class="img-jr">
+          <img src="ROLANIA.jpg" alt="Escudo Rolania" class="img-escudo">
         </div>
+
+        <div class="badges">
+          <span class="badge" data-i18n="badge1">
+            <img src="https://flagcdn.com/w20/es.png" class="flag-icon" alt="ES"> España → <img src="https://flagcdn.com/w20/py.png" class="flag-icon" alt="PY"> Paraguay
+          </span>
+          <span class="badge gold" data-i18n="badge2">🌐 Global Expats (EU / USA / LATAM)</span>
+        </div>
+        
+        <h1 data-i18n="heroTitle">Tu Libertad Fiscal y Arraigo Legal en Paraguay</h1>
+        <p data-i18n="heroSub">Seguridad jurídica blindada mediante los Convenios de Doble Imposición (CDI) y la Ley 6380/2019 de Territorialidad. Estructuras 100% legales, transparentes y sin opacidad para empresarios, nómadas digitales y jubilados.</p>
+        
+        <!-- ZONA DE LOS DOS GRANDES BANNERS (LADO A LADO) -->
+        <div class="hero-banners-row">
+          
+          <!-- Banner 1: Descargar Guía -->
+          <div class="expert-banner-wrapper">
+             <a href="guia_rolania.pdf" download class="banner-descarga-dorado" data-i18n="btnPdf">📕 Descargar Guía Rolanía (PDF)</a>
+             <div class="expert-subtext">
+                Descarga esta guía gratuita, en la que podrás encontrar un resumen de los aspectos más importantes sobre cómo y por qué solicitar la Residencia en Paraguay.
+             </div>
+          </div>
+
+          <!-- Banner 2: Hablar con un Experto -->
+          <div class="expert-banner-wrapper">
+             <a href="https://wa.me/595994434014?text=Hola%20ROLANIA.%20Quisiera%20hablar%20con%20un%20experto" target="_blank" rel="noopener" class="expert-main-btn">💬 Hablar con un Experto</a>
+             <div class="expert-subtext">
+                Concierta una cita telefónica o por videollamada de 10 min, gratuita. En ella te explicaremos quiénes somos y los servicios que ofrecemos con detalle. En caso de que estés interesado, programaremos una sesión de asesoramiento de 45 min de duración con un coste de 75€ para organizar y preparar tu desembarco en Paraguay.
+             </div>
+          </div>
+
         </div>
       </div>
     </section>
-    
-    <!- ============= VALUE GRID ============= ->
+
+    <!-- ================= VALUE GRID ================= -->
     <section class="section" id="por-que">
       <div class="container center">
         <span class="over" data-i18n="whyOver">Propuesta de Valor</span>
@@ -961,9 +860,8 @@
             <p id="legDesc">Art. 14 CDI España–Paraguay: Los servicios profesionales independientes tributan exclusivamente en el Estado de residencia. En Paraguay, los ingresos de fuente extranjera pagan 0% (Ley 6380/2019).</p>
           </div>
 
-          <div class="sim-ctas">
-            <button class="btn btn-primary" id="waSim" type="button" data-i18n="btnWspSim">📲 Solicitar Conserjería y Estudio por WhatsApp</button>
-           
+          <div class="sim-ctas" style="display: flex; justify-content: center; width: 100%; text-align: center; margin: 20px auto 30px auto;">
+            <button class="btn btn-primary" id="waSim" type="button" data-i18n="btnWspSim" style="margin: 0 auto;">📲 Solicitar Conserjería y Estudio por WhatsApp</button>
           </div>
 
           <!-- RECUADRO COMPLIANCE -->
@@ -1087,7 +985,7 @@
         legTitle: "🛡️ Fundamento Legal Aplicable:",
         btnWspSim: "📲 Solicitar Conserjería y Estudio por WhatsApp", btnPdf: "📕 Descargar Guía Rolanía (PDF)",
         compTitle: "Compromiso Ético y Legal 100%",
-        compDesc: "Rolania ofrece servicios legales 100%. No ofrecemos \"sobornos\" ni \"coimas\". Respetamos las Leyes Paraguayas y nos atenemos a sus procedimientos y plazos, no ofrecemos servicios \"abreviados\" ni \"acelerados\". Esto lo hacemos por la seguridad jurídica de nuestros clientes y por la de nuestra empresa.",
+        compDesc: "Rolania ofrece servicios legales 100%. No aceptamos ni ofrecemos \"sobornos\" ni \"coimas\". Respetamos las Leyes Paraguayas y nos atenemos a sus procedimientos y plazos, no ofrecemos servicios \"abreviados\" ni \"acelerados\". Esto lo hacemos por la seguridad jurídica de nuestros clientes y por la de nuestra empresa.",
         transpTitle: "Cuentas Claras, Confianza Total",
         transpDesc: "En Guía Rolanía creemos en la transparencia absoluta. No hay letras pequeñas, ni sobrecostes ocultos, ni procesos opacos. Ponemos a tu disposición directa las normativas legales de extranjería y las tasas oficiales del Gobierno.",
         footLoc: "Asunción, Paraguay & Madrid, España",
@@ -1269,4 +1167,3 @@
     syncIncome('range');
   </script>
 </body>
-</html>
