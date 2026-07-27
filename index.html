@@ -8,36 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  /* ---------- BANNER GIGANTE GUÍA DESCARGABLE ---------- */
-    .banner-descarga-verde {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 1.3rem; /* Letra mucho más grande */
-      padding: 22px 40px; /* Doble de grosor */
-      border-radius: 18px;
-      background: linear-gradient(135deg, #4ade80, #16a34a); /* Fondo verde hoja */
-      color: #ffffff;
-      box-shadow: 0 12px 35px rgba(22, 163, 74, 0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
-      width: 100%;
-      max-width: 550px; /* Lo hace ancho como un banner */
-      border: 1px solid #22c55e;
-    }
-    .banner-descarga-verde:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 45px rgba(22, 163, 74, 0.6);
-      color: #ffffff;
-    }
-    .banner-descarga-container {
-      margin-top: 35px; /* Espacio de separación con los botones de arriba */
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
+  
   <style>
     :root {
       --bg0: #050811;
@@ -72,6 +43,36 @@
     }
     .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
     section { scroll-margin-top: 96px; }
+    /* ---------- BANNER GIGANTE GUÍA DESCARGABLE ---------- */
+    .banner-descarga-verde {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.3rem; /* Letra mucho más grande */
+      padding: 22px 40px; /* Doble de grosor */
+      border-radius: 18px;
+      background: linear-gradient(135deg, #4ade80, #16a34a); /* Fondo verde hoja */
+      color: #ffffff;
+      box-shadow: 0 12px 35px rgba(22, 163, 74, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      width: 100%;
+      max-width: 550px; /* Lo hace ancho como un banner */
+      border: 1px solid #22c55e;
+    }
+    .banner-descarga-verde:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 45px rgba(22, 163, 74, 0.6);
+      color: #ffffff;
+    }
+    .banner-descarga-container {
+      margin-top: 35px; /* Espacio de separación con los botones de arriba */
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
 
     /* ---------- HEADER & TOP BAR ---------- */
     .top-bar {
@@ -312,6 +313,10 @@
     .<div class="sim-ctas">
             <button class="btn btn-primary" id="waSim" type="button" data-i18n="btnWspSim">📲 Solicitar Conserjería y Estudio por WhatsApp</button>
           </div>
+    <!-- NUEVO BANNER VERDE GUIA ROLANIA -->
+        <div class="banner-descarga-container">
+          <a href="guia_rolania.pdf" download class="banner-descarga-verde" data-i18n="btnPdf">📕 Descargar Guía Rolanía (PDF)</a>
+        </div>
 
     /* RECUADRO COMPLIANCE (ANTI-SOBORNO) */
     .compliance-banner {
@@ -755,7 +760,7 @@
 
           <div class="sim-ctas">
             <button class="btn btn-primary" id="waSim" type="button" data-i18n="btnWspSim">📲 Solicitar Conserjería y Estudio por WhatsApp</button>
-            <a href="guia_rolania.pdf" download class="btn btn-gold" data-i18n="btnPdf">📕 Descargar Guía Rolanía (PDF)</a>
+           
           </div>
 
           <!-- RECUADRO COMPLIANCE -->
