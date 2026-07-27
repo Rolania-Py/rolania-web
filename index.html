@@ -8,6 +8,36 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  /* ---------- BANNER GIGANTE GUÍA DESCARGABLE ---------- */
+    .banner-descarga-verde {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.3rem; /* Letra mucho más grande */
+      padding: 22px 40px; /* Doble de grosor */
+      border-radius: 18px;
+      background: linear-gradient(135deg, #4ade80, #16a34a); /* Fondo verde hoja */
+      color: #ffffff;
+      box-shadow: 0 12px 35px rgba(22, 163, 74, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      width: 100%;
+      max-width: 550px; /* Lo hace ancho como un banner */
+      border: 1px solid #22c55e;
+    }
+    .banner-descarga-verde:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 45px rgba(22, 163, 74, 0.6);
+      color: #ffffff;
+    }
+    .banner-descarga-container {
+      margin-top: 35px; /* Espacio de separación con los botones de arriba */
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
   <style>
     :root {
       --bg0: #050811;
@@ -279,7 +309,9 @@
     .legal-box h4 { font-size: 0.95rem; font-weight: 800; color: var(--gold); margin-bottom: 8px; letter-spacing: 0.3px; }
     .legal-box p { font-size: 0.9rem; color: var(--text); }
     
-    .sim-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
+    .<div class="sim-ctas">
+            <button class="btn btn-primary" id="waSim" type="button" data-i18n="btnWspSim">📲 Solicitar Conserjería y Estudio por WhatsApp</button>
+          </div>
 
     /* RECUADRO COMPLIANCE (ANTI-SOBORNO) */
     .compliance-banner {
@@ -378,6 +410,10 @@
         <div class="cta-row">
           <a href="#simulador" class="btn btn-primary" data-i18n="ctaCalc">📊 Calcular Ahorro Ahora</a>
           <a href="https://wa.me/595994434014?text=Hola%20ROLANIA.%20Quisiera%20hablar%20con%20un%20experto" target="_blank" rel="noopener" class="btn btn-ghost" data-i18n="ctaExpert">💬 Hablar con un Experto</a>
+        </div>
+        <!-- NUEVO BANNER VERDE GUIA ROLANIA -->
+        <div class="banner-descarga-container">
+          <a href="guia_rolania.pdf" download class="banner-descarga-verde" data-i18n="btnPdf">📕 Descargar Guía Rolanía (PDF)</a>
         </div>
       </div>
     </section>
