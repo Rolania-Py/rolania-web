@@ -215,7 +215,7 @@
     .svc-badge.gold { background: rgba(245, 158, 11, 0.12); color: var(--gold); border-color: rgba(245, 158, 11, 0.45); }
 
     /* ---------- ESTILOS DE VÍDEOS DE YOUTUBE ---------- */
-    .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 40px; }
+    .video-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 40px; }
     .video-card {
       background: var(--glass); border: 1px solid var(--border); border-radius: var(--radius);
       padding: 20px; backdrop-filter: blur(12px); display: flex; flex-direction: column; gap: 14px;
@@ -322,7 +322,7 @@
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 900px) {
       nav { display: none; }
-      .grid3, .blueprint-grid, .sim-controls, .results, .video-grid { grid-template-columns: 1fr; }
+      .grid3, .blueprint-grid, .sim-controls, .results { grid-template-columns: 1fr; }
       .sim-panel, .pillar, .bp-card { padding: 30px 20px; }
       .pillar-tags { margin-left: 0; flex-direction: row; align-items: center; }
       .hero { padding: 80px 0 60px; }
@@ -352,8 +352,8 @@
         <a href="#por-que" data-i18n="navWhy">¿Por qué Paraguay?</a>
         <a href="#estrategia" data-i18n="navBp">Metodología</a>
         <a href="#ecosistema" data-i18n="navEco">Ecosistema 360°</a>
-        <a href="#videos" data-i18n="navVideos">Vídeos</a>
         <a href="#simulador" data-i18n="navSim">Simulador</a>
+        <a href="#videos" data-i18n="navVideos">Vídeos</a>
       </nav>
       <div class="lang-switch">
         <button class="lang-btn active" id="btnEs" type="button"><img src="https://flagcdn.com/w20/es.png" class="flag-icon" alt="ES"> Español</button>
@@ -655,35 +655,6 @@
       </div>
     </section>
 
-    <!-- ================= SECCIÓN DE VÍDEOS DESTACADOS ================= -->
-    <section class="section" id="videos">
-      <div class="container center">
-        <span class="over" data-i18n="vidOver">Recursos Audiovisuales</span>
-        <h2 data-i18n="vidTitle">Vídeos de Interés Estratégico</h2>
-        <p class="sub" data-i18n="vidSub">Análisis imprescindible sobre fiscalidad internacional, desvinculación tributaria y la realidad de vivir e invertir en Paraguay.</p>
-        
-        <div class="video-grid" style="text-align: left;">
-          <!-- Vídeo 1 -->
-          <div class="video-card">
-            <div class="video-container">
-              <iframe src="https://www.youtube.com/embed/X3YT2-CDW6I" title="Asesor Fiscal: Saca Tus Ahorros De España Antes De Que Sea Tarde" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <h3 data-i18n="v1T">Asesor Fiscal: Saca Tus Ahorros De España Antes De Que Sea Tarde</h3>
-            <p data-i18n="v1D">Análisis detallado sobre la presión tributaria en España, opciones de planificación fiscal y las ventajas competitivas de cambiar de residencia a jurisdicciones de tributación territorial como Paraguay.</p>
-          </div>
-
-          <!-- Vídeo 2 -->
-          <div class="video-card">
-            <div class="video-container">
-              <iframe src="https://www.youtube.com/embed/72fsPOYBn8E" title="Vivir en PARAGUAY! Costumbres, Oportunidades y Estilo de Vida" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <h3 data-i18n="v2T">Vivir en PARAGUAY! Costumbres, Oportunidades y Estilo de Vida</h3>
-            <p data-i18n="v2D">Un recorrido completo por la cultura, la tranquilidad, el estilo de vida y las grandes oportunidades que ofrece Paraguay como destino clave de residencia e inversión.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ================= SIMULADOR FISCAL NATIVO ================= -->
     <section class="section" id="simulador">
       <div class="container">
@@ -778,6 +749,26 @@
 
       </div>
     </section>
+
+    <!-- ================= SECCIÓN DE VÍDEOS DESTACADOS ================= -->
+    <section class="section" id="videos">
+      <div class="container center">
+        <span class="over" data-i18n="vidOver">Recursos Audiovisuales</span>
+        <h2 data-i18n="vidTitle">Vídeos de Interés Estratégico</h2>
+        <p class="sub" data-i18n="vidSub">Análisis imprescindible sobre fiscalidad internacional, desvinculación tributaria y la realidad de vivir e invertir en Paraguay.</p>
+        
+        <div class="video-grid" style="text-align: left; max-width: 700px; margin: 40px auto 0;">
+          <!-- Vídeo 1 -->
+          <div class="video-card">
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/X3YT2-CDW6I" title="Asesor Fiscal: Saca Tus Ahorros De España Antes De Que Sea Tarde" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h3 data-i18n="v1T">Asesor Fiscal: Saca Tus Ahorros De España Antes De Que Sea Tarde</h3>
+            <p data-i18n="v1D">Análisis detallado sobre la presión tributaria en España, opciones de planificación fiscal y las ventajas competitivas de cambiar de residencia a jurisdicciones de tributación territorial como Paraguay.</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- ================= FOOTER & CONTACTOS ================= -->
@@ -842,7 +833,6 @@
         s12T: "Clubs Privados & Condominios", s12X: "Acceso e introducción a residencias de condominios cerrados de alto standing, clubes de campo y comunidades privadas de la élite.", s12B: "VIP Club",
         vidOver: "Recursos Audiovisuales", vidTitle: "Vídeos de Interés Estratégico", vidSub: "Análisis imprescindible sobre fiscalidad internacional, desvinculación tributaria y la realidad de vivir e invertir en Paraguay.",
         v1T: "Asesor Fiscal: Saca Tus Ahorros De España Antes De Que Sea Tarde", v1D: "Análisis detallado sobre la presión tributaria en España, opciones de planificación fiscal y las ventajas competitivas de cambiar de residencia a jurisdicciones de tributación territorial como Paraguay.",
-        v2T: "Vivir en PARAGUAY! Costumbres, Oportunidades y Estilo de Vida", v2D: "Un recorrido completo por la cultura, la tranquilidad, el estilo de vida y las grandes oportunidades que ofrece Paraguay como destino clave de residencia e inversión.",
         simOver: "Algoritmo en Vivo", simTitle: "Simulador Fiscal en Tiempo Real", simSub: "Comprueba la carga tributaria entre España y Paraguay en segundos. Cero iframes, velocidad instantánea.",
         simL1: "👤 Perfil Profesional / Situación", opt1: "Autónomo Activo (Servicios Online)", opt2: "Pensionista Privado (INSS / Fondos)", opt3: "Pensionista Público (Clases Pasivas)",
         simL2: "💶 Ingresos Brutos Anuales en España (€)",
@@ -904,7 +894,6 @@
         s12T: "Private Clubs & Gated Communities", s12X: "Access and introduction to high-standing gated residences, country clubs, and elite private communities.", s12B: "VIP Club",
         vidOver: "Audiovisual Resources", vidTitle: "Videos of Strategic Interest", vidSub: "Essential analysis on international taxation, tax relocation, and the reality of living and investing in Paraguay.",
         v1T: "Tax Advisor: Move Your Savings From Spain Before It's Too Late", v1D: "Detailed breakdown on tax pressure in Spain, fiscal planning options, and competitive advantages of changing residency to territorial tax jurisdictions like Paraguay.",
-        v2T: "Living in PARAGUAY! Customs, Opportunities and Lifestyle", v2D: "A complete journey through the culture, tranquility, lifestyle, and great opportunities Paraguay offers as a key residency and investment destination.",
         simOver: "Live Algorithm", simTitle: "Real-Time Tax Simulator", simSub: "Compare tax burdens between Spain and Paraguay in seconds. Zero iframes, instant speed.",
         simL1: "👤 Professional Profile / Status", opt1: "Active Freelancer (Online Services)", opt2: "Private Pensioner (Social Security / Funds)", opt3: "Public Pensioner (Civil Service)",
         simL2: "💶 Gross Annual Income in Spain (€)",
@@ -1023,7 +1012,7 @@
       legDesc.innerHTML = i18n[lang][legKey];
 
       const profText = simProfile.options[simProfile.selectedIndex].text;
-      const msg = (lang === 'es' ? 'Hola ROLANIA 🧭. He calculated mi optimización en vuestro Simulador Fiscal:\n' : 'Hello ROLANIA 🧭. I calculated my tax optimization on your Simulator:\n') +
+      const msg = (lang === 'es' ? 'Hola ROLANIA 🧭. He calculado mi optimización en vuestro Simulador Fiscal:\n' : 'Hello ROLANIA 🧭. I calculated my tax optimization on your Simulator:\n') +
                   `• Perfil: ${profText}\n` +
                   `• Ingresos Brutos: ${fmt(inc)}\n` +
                   `• Ahorro Estimado: ${fmt(sav)}\n\n` +
