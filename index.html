@@ -214,15 +214,20 @@
     }
     .svc-badge.gold { background: rgba(245, 158, 11, 0.12); color: var(--gold); border-color: rgba(245, 158, 11, 0.45); }
 
-    /* ---------- ESTILOS BANNERS INTERACTIVOS Y TRANSPARENCIA ---------- */
-    details.banner-interactivo summary { list-style: none; outline: none; cursor: pointer; transition: background 0.3s ease; }
-    details.banner-interactivo summary:hover { background: rgba(255,255,255,0.02); }
-    details.banner-interactivo summary::-webkit-details-marker { display: none; }
-    .icono-desplegable { color: var(--emerald); font-size: 1.2rem; transition: transform 0.3s ease; }
-    details[open].banner-interactivo .icono-desplegable { transform: rotate(180deg); }
-    details[open].banner-interactivo { border-color: var(--emerald); box-shadow: 0 8px 30px rgba(16, 185, 129, 0.15); }
-    .ayuda-desplegable { color: var(--emerald); font-size: 0.85rem; font-weight: 600; margin-top: 8px; display: inline-block;}
+    /* ---------- ESTILOS DE VÍDEOS DE YOUTUBE ---------- */
+    .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 40px; }
+    .video-card {
+      background: var(--glass); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 20px; backdrop-filter: blur(12px); display: flex; flex-direction: column; gap: 14px;
+      transition: transform 0.25s, border-color 0.25s;
+    }
+    .video-card:hover { transform: translateY(-5px); border-color: rgba(16, 185, 129, 0.45); }
+    .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; border: 1px solid var(--border); }
+    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    .video-card h3 { font-size: 1.1rem; font-weight: 700; color: #fff; line-height: 1.4; }
+    .video-card p { color: var(--muted); font-size: 0.9rem; }
 
+    /* ---------- TRANSPARENCIA ---------- */
     .banner-transparencia { background: var(--glass-strong); border-left: 5px solid var(--emerald); padding: 34px; margin: 40px auto 0; border-radius: 20px; box-shadow: 0 16px 40px rgba(0,0,0,0.3); backdrop-filter: blur(12px); border: 1px solid var(--border); border-left: 5px solid var(--emerald); max-width: 1040px;}
     .transparencia-header h2 { margin-top: 0; color: #fff; font-size: 1.5rem; margin-bottom: 10px; }
     .transparencia-header p { font-size: 1rem; color: var(--text); line-height: 1.6; }
@@ -317,7 +322,7 @@
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 900px) {
       nav { display: none; }
-      .grid3, .blueprint-grid, .sim-controls, .results { grid-template-columns: 1fr; }
+      .grid3, .blueprint-grid, .sim-controls, .results, .video-grid { grid-template-columns: 1fr; }
       .sim-panel, .pillar, .bp-card { padding: 30px 20px; }
       .pillar-tags { margin-left: 0; flex-direction: row; align-items: center; }
       .hero { padding: 80px 0 60px; }
@@ -347,6 +352,7 @@
         <a href="#por-que" data-i18n="navWhy">¿Por qué Paraguay?</a>
         <a href="#estrategia" data-i18n="navBp">Metodología</a>
         <a href="#ecosistema" data-i18n="navEco">Ecosistema 360°</a>
+        <a href="#videos" data-i18n="navVideos">Vídeos</a>
         <a href="#simulador" data-i18n="navSim">Simulador</a>
       </nav>
       <div class="lang-switch">
@@ -406,7 +412,7 @@
     <section class="section" id="estrategia">
       <div class="container center">
         <span class="over" data-i18n="bpOver">Inteligencia Fiscal</span>
-        <h2 data-i18n="bpTitle">Metodología ROLANIA: </h2>
+        <h2 data-i18n="bpTitle">Metodología ROLANIA: De la Fundación al Imperio</h2>
         <p class="sub" data-i18n="bpSub">Un dossier estratégico y operativo de 5 fases para garantizar una transición patrimonial blindada y eficiente.</p>
         
         <div class="blueprint-grid" style="text-align:left">
@@ -435,7 +441,7 @@
                 <div class="phase-num">Fase 3</div>
                 <div class="phase-text">
                   <h4 data-i18n="bpF3T">El Escudo Vital</h4>
-                  <p data-i18n="bpF3D">Blindaje mediante sistemas de Medicina Prepaga de élite en zonas clave como Asunción, Cuidad del Este, Encarnación y Colonias Unidas, en Itapúa.</p>
+                  <p data-i18n="bpF3D">Blindaje mediante sistemas de Medicina Prepaga de élite en zonas clave como Asunción, Ciudad del Este, Encarnación y Colonias Unidas, en Itapúa.</p>
                 </div>
               </div>
               
@@ -482,7 +488,6 @@
               </table>
             </div>
 
-            <!-- AQUÍ SE TRASLADÓ EL FLUJOGRAMA SUACE -->
             <div class="suace-img-container">
               <h4 data-i18n="suaceTitle">Flujograma de Procesos - SUACE</h4>
               <img src="SUACE.png" alt="Flujograma SUACE" class="suace-img" />
@@ -540,7 +545,6 @@
               <p data-i18n="s4X">Configuración técnica para recibir y emitir llamadas a España con numeración local española a coste ridículo/cero.</p>
               <span class="svc-badge gold" data-i18n="s4B">Ahorro 100%</span>
             </div>
-            <!-- AQUÍ SE TRASLADÓ EL BONUS DE CONECTIVIDAD COMO PUNTO 05 -->
             <div class="svc">
               <div class="svc-top"><span class="svc-icon">📱</span><span class="svc-n">05</span></div>
               <h4 data-i18n="s5BonusT">Bonus: Conectividad Inmediata</h4>
@@ -550,46 +554,40 @@
           </div>
         </div>
 
-        <!-- PILAR 2: BANNER INTERACTIVO DESPLEGABLE -->
-        <details class="pillar banner-interactivo" style="padding: 0;">
-          <summary style="padding: 40px 36px; display: flex; align-items: flex-start; justify-content: space-between;">
-            <div class="pillar-head" style="margin-bottom: 0; flex: 1;">
-              <div class="pillar-num">02</div>
-              <div>
-                <h3 data-i18n="p2T">⚖️ Legalidad, Fiscalidad &amp; Identidad</h3>
-                <p data-i18n="p2Sub">Estructuración burocrática y fiscal avalada por la legislación paraguaya.</p>
-                <span class="ayuda-desplegable" data-i18n="p2SubClick">(Haz clic para desplegar los detalles) ▼</span>
-              </div>
-              <div class="pillar-tags">
-                <span class="phase-chip">FASE 02</span>
-                <span class="tag-chip">Core Legal</span>
-              </div>
+        <!-- PILAR 2: VISTA DIRECTA SIN DESPLEGABLE -->
+        <div class="pillar">
+          <div class="pillar-head">
+            <div class="pillar-num">02</div>
+            <div>
+              <h3 data-i18n="p2T">⚖️ Legalidad, Fiscalidad &amp; Identidad</h3>
+              <p data-i18n="p2Sub">Estructuración burocrática y fiscal avalada por la legislación paraguaya.</p>
             </div>
-            <span class="icono-desplegable">▼</span>
-          </summary>
-          <div style="padding: 0 36px 40px 36px; border-top: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.15); padding-top: 30px;">
-            <div class="svc-grid">
-              <div class="svc">
-                <div class="svc-top"><span class="svc-icon">👔</span><span class="svc-n">06</span></div>
-                <h4 data-i18n="s5T">Acompañamiento Administrativo</h4>
-                <p data-i18n="s5X">Personal experto cualificado a tu lado en cada trámite presencial ante las instituciones públicas (incluido proceso SUACE) y notarías paraguayas.</p>
-                <span class="svc-badge" data-i18n="s5B">100% Guiado</span>
-              </div>
-              <div class="svc">
-                <div class="svc-top"><span class="svc-icon">🪪</span><span class="svc-n">07</span></div>
-                <h4 data-i18n="s6T">Residencia, Cédula &amp; RUC (DNIT)</h4>
-                <p data-i18n="s6X">Obtención de residencia permanente, documento de identidad y alta fiscal para activar tu tributación al 0% internacional.</p>
-                <span class="svc-badge gold" data-i18n="s6B">Legalidad DNIT</span>
-              </div>
-              <div class="svc">
-                <div class="svc-top"><span class="svc-icon">🪪</span><span class="svc-n">08</span></div>
-                <h4 data-i18n="s7T">Permiso de Conducir Paraguayo</h4>
-                <p data-i18n="s7X">Gestión, canje y tramitación ágil de la licencia de conducir local válida en todo el Mercosur y convenios europeos.</p>
-                <span class="svc-badge" data-i18n="s7B">Trámite Ágil</span>
-              </div>
+            <div class="pillar-tags">
+              <span class="phase-chip">FASE 02</span>
+              <span class="tag-chip">Core Legal</span>
             </div>
           </div>
-        </details>
+          <div class="svc-grid">
+            <div class="svc">
+              <div class="svc-top"><span class="svc-icon">👔</span><span class="svc-n">06</span></div>
+              <h4 data-i18n="s5T">Acompañamiento Administrativo</h4>
+              <p data-i18n="s5X">Personal experto cualificado a tu lado en cada trámite presencial ante las instituciones públicas (incluido proceso SUACE) y notarías paraguayas.</p>
+              <span class="svc-badge" data-i18n="s5B">100% Guiado</span>
+            </div>
+            <div class="svc">
+              <div class="svc-top"><span class="svc-icon">🪪</span><span class="svc-n">07</span></div>
+              <h4 data-i18n="s6T">Residencia, Cédula &amp; RUC (DNIT)</h4>
+              <p data-i18n="s6X">Obtención de residencia permanente, documento de identidad y alta fiscal para activar tu tributación al 0% internacional.</p>
+              <span class="svc-badge gold" data-i18n="s6B">Legalidad DNIT</span>
+            </div>
+            <div class="svc">
+              <div class="svc-top"><span class="svc-icon">🪪</span><span class="svc-n">08</span></div>
+              <h4 data-i18n="s7T">Permiso de Conducir Paraguayo</h4>
+              <p data-i18n="s7X">Gestión, canje y tramitación ágil de la licencia de conducir local válida en todo el Mercosur y convenios europeos.</p>
+              <span class="svc-badge" data-i18n="s7B">Trámite Ágil</span>
+            </div>
+          </div>
+        </div>
 
         <!-- PILAR 3 -->
         <div class="pillar">
@@ -652,6 +650,35 @@
               <p data-i18n="s12X">Acceso e introducción a residencias de condominios cerrados de alto standing, clubes de campo y comunidades privadas de la élite.</p>
               <span class="svc-badge" data-i18n="s12B">VIP Club</span>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SECCIÓN DE VÍDEOS DESTACADOS ================= -->
+    <section class="section" id="videos">
+      <div class="container center">
+        <span class="over" data-i18n="vidOver">Recursos Audiovisuales</span>
+        <h2 data-i18n="vidTitle">Vídeos de Interés Estratégico</h2>
+        <p class="sub" data-i18n="vidSub">Análisis imprescindible sobre fiscalidad internacional, desvinculación tributaria y la realidad de vivir e invertir en Paraguay.</p>
+        
+        <div class="video-grid" style="text-align: left;">
+          <!-- Vídeo 1 -->
+          <div class="video-card">
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/X3YT2-CDW6I" title="Asesor Fiscal: Saca Tus Ahorros De España Antes De Que Sea Tarde" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h3 data-i18n="v1T">Asesor Fiscal: Saca Tus Ahorros De España Antes De Que Sea Tarde</h3>
+            <p data-i18n="v1D">Análisis detallado sobre la presión tributaria en España, opciones de planificación fiscal y las ventajas competitivas de cambiar de residencia a jurisdicciones de tributación territorial como Paraguay.</p>
+          </div>
+
+          <!-- Vídeo 2 -->
+          <div class="video-card">
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/72fsPOYBn8E" title="Vivir en PARAGUAY! Costumbres, Oportunidades y Estilo de Vida" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h3 data-i18n="v2T">Vivir en PARAGUAY! Costumbres, Oportunidades y Estilo de Vida</h3>
+            <p data-i18n="v2D">Un recorrido completo por la cultura, la tranquilidad, el estilo de vida y las grandes oportunidades que ofrece Paraguay como destino clave de residencia e inversión.</p>
           </div>
         </div>
       </div>
@@ -734,7 +761,7 @@
           </div>
         </div>
         
-        <!-- NUEVO BANNER DE TRANSPARENCIA Y DOCUMENTOS OFICIALES -->
+        <!-- BANNER DE TRANSPARENCIA Y DOCUMENTOS OFICIALES -->
         <div class="banner-transparencia">
           <div class="transparencia-header">
             <h2 data-i18n="transpTitle">Cuentas Claras, Confianza Total</h2>
@@ -775,7 +802,7 @@
   <script>
     const i18n = {
       es: {
-        navWhy: "¿Por qué Paraguay?", navBp: "Metodología", navEco: "Ecosistema 360°", navSim: "Simulador",
+        navWhy: "¿Por qué Paraguay?", navBp: "Metodología", navEco: "Ecosistema 360°", navVideos: "Vídeos", navSim: "Simulador",
         badge1: "<img src='https://flagcdn.com/w20/es.png' class='flag-icon' alt='ES'> España → <img src='https://flagcdn.com/w20/py.png' class='flag-icon' alt='PY'> Paraguay", 
         badge2: "🌐 Global Expats (EU / USA / LATAM)",
         heroTitle: "Tu Libertad Fiscal y Arraigo Legal en Paraguay",
@@ -802,7 +829,7 @@
         s3T: "Vehículo de Alquiler", s3X: "Gestión y disposición de movilidad privada lista para circular con seguro completo desde tu primer día.", s3B: "Llave en Mano",
         s4T: "Telefonía VoIP España–Paraguay", s4X: "Configuración técnica para recibir y emitir llamadas a España con numeración local española a coste ridículo/cero.", s4B: "Ahorro 100%",
         s5BonusT: "Bonus: Conectividad Inmediata", s5BonusX: "Tarjeta SIM prepago de Cía. Telefónica Paraguaya para tener datos durante la estancia, con posibilidad de habilitarla como número definitivo.", s5BonusB: "Conectividad",
-        p2T: "⚖️ Legalidad, Fiscalidad & Identidad", p2Sub: "Estructuración burocrática y fiscal avalada por la legislación paraguaya.", p2SubClick: "(Haz clic para desplegar los detalles) ▼",
+        p2T: "⚖️ Legalidad, Fiscalidad & Identidad", p2Sub: "Estructuración burocrática y fiscal avalada por la legislación paraguaya.",
         s5T: "Acompañamiento Administrativo", s5X: "Personal experto cualificado a tu lado en cada trámite presencial ante las instituciones públicas (incluido proceso SUACE) y notarías paraguayas.", s5B: "100% Guiado",
         s6T: "Residencia, Cédula & RUC (DNIT)", s6X: "Obtención de residencia permanente, documento de identidad y alta fiscal para activar tu tributación al 0% internacional.", s6B: "Legalidad DNIT",
         s7T: "Permiso de Conducir Paraguayo", s7X: "Gestión, canje y tramitación ágil de la licencia de conducir local válida en todo el Mercosur y convenios europeos.", s7B: "Trámite Ágil",
@@ -813,6 +840,9 @@
         s10T: "Inteligencia Bancaria", s10X: "Asesoría de cumplimiento (compliance), búsqueda y apertura de cuentas bancarias personales y corporativas en los mejores bancos.", s10B: "Banca VIP",
         s11T: "Tours Privados de Inversión", s11X: "Acompañamiento por las mejores zonas económicas, agrícolas y residenciales del país para detectar oportunidades reales.", s11B: "Tour Privado",
         s12T: "Clubs Privados & Condominios", s12X: "Acceso e introducción a residencias de condominios cerrados de alto standing, clubes de campo y comunidades privadas de la élite.", s12B: "VIP Club",
+        vidOver: "Recursos Audiovisuales", vidTitle: "Vídeos de Interés Estratégico", vidSub: "Análisis imprescindible sobre fiscalidad internacional, desvinculación tributaria y la realidad de vivir e invertir en Paraguay.",
+        v1T: "Asesor Fiscal: Saca Tus Ahorros De España Antes De Que Sea Tarde", v1D: "Análisis detallado sobre la presión tributaria en España, opciones de planificación fiscal y las ventajas competitivas de cambiar de residencia a jurisdicciones de tributación territorial como Paraguay.",
+        v2T: "Vivir en PARAGUAY! Costumbres, Oportunidades y Estilo de Vida", v2D: "Un recorrido completo por la cultura, la tranquilidad, el estilo de vida y las grandes oportunidades que ofrece Paraguay como destino clave de residencia e inversión.",
         simOver: "Algoritmo en Vivo", simTitle: "Simulador Fiscal en Tiempo Real", simSub: "Comprueba la carga tributaria entre España y Paraguay en segundos. Cero iframes, velocidad instantánea.",
         simL1: "👤 Perfil Profesional / Situación", opt1: "Autónomo Activo (Servicios Online)", opt2: "Pensionista Privado (INSS / Fondos)", opt3: "Pensionista Público (Clases Pasivas)",
         simL2: "💶 Ingresos Brutos Anuales en España (€)",
@@ -834,7 +864,7 @@
         noteNoRes: "❌ Sin traslado efectivo de residencia (>183 días) y obtención del RUC paraguayo, sigues sujeto a tributación por obligación personal mundial en España por el Art. 9 de la LIRPF."
       },
       en: {
-        navWhy: "Why Paraguay?", navBp: "Methodology", navEco: "360° Ecosystem", navSim: "Simulator",
+        navWhy: "Why Paraguay?", navBp: "Methodology", navEco: "360° Ecosystem", navVideos: "Videos", navSim: "Simulator",
         badge1: "<img src='https://flagcdn.com/w20/gb.png' class='flag-icon' alt='GB'> Europe → <img src='https://flagcdn.com/w20/py.png' class='flag-icon' alt='PY'> Paraguay", 
         badge2: "🌐 Global Expats (EU / USA / LATAM)",
         heroTitle: "Your Tax Freedom & Legal Residency in Paraguay",
@@ -861,7 +891,7 @@
         s3T: "Rental Vehicle", s3X: "Private mobility ready to drive with full insurance coverage from your very first day.", s3B: "Turnkey",
         s4T: "Spain–Paraguay VoIP Telephony", s4X: "Technical setup to receive and make calls to Spain using a local Spanish phone number at near-zero cost.", s4B: "100% Savings",
         s5BonusT: "Bonus: Immediate Connectivity", s5BonusX: "Prepaid SIM Card from a Paraguayan Telco for data access during your stay, with the option to keep it as your permanent number.", s5BonusB: "Connectivity",
-        p2T: "⚖️ Legality, Taxation & Identity", p2Sub: "Bureaucratic and tax structuring backed by Paraguayan law.", p2SubClick: "(Click to expand details) ▼",
+        p2T: "⚖️ Legality, Taxation & Identity", p2Sub: "Bureaucratic and tax structuring backed by Paraguayan law.",
         s5T: "Administrative Escort", s5X: "Qualified expert personnel by your side during every physical appointment at public institutions (including SUACE) and notary offices.", s5B: "100% Guided",
         s6T: "Residency, ID Card & RUC (DNIT)", s6X: "Obtaining permanent residency, national ID, and tax registration to activate your 0% international taxation.", s6B: "DNIT Compliant",
         s7T: "Paraguayan Driver's License", s7X: "Agile processing or exchange of local driver's licenses valid across Mercosur and European treaties.", s7B: "Fast Track",
@@ -872,6 +902,9 @@
         s10T: "Banking Intelligence", s10X: "Compliance advisory, search, and opening of personal and corporate bank accounts with top local banks.", s10B: "VIP Banking",
         s11T: "Private Investment Tours", s11X: "Personalized tours across the best economic, agricultural, and residential zones to spot real opportunities.", s11B: "Private Tour",
         s12T: "Private Clubs & Gated Communities", s12X: "Access and introduction to high-standing gated residences, country clubs, and elite private communities.", s12B: "VIP Club",
+        vidOver: "Audiovisual Resources", vidTitle: "Videos of Strategic Interest", vidSub: "Essential analysis on international taxation, tax relocation, and the reality of living and investing in Paraguay.",
+        v1T: "Tax Advisor: Move Your Savings From Spain Before It's Too Late", v1D: "Detailed breakdown on tax pressure in Spain, fiscal planning options, and competitive advantages of changing residency to territorial tax jurisdictions like Paraguay.",
+        v2T: "Living in PARAGUAY! Customs, Opportunities and Lifestyle", v2D: "A complete journey through the culture, tranquility, lifestyle, and great opportunities Paraguay offers as a key residency and investment destination.",
         simOver: "Live Algorithm", simTitle: "Real-Time Tax Simulator", simSub: "Compare tax burdens between Spain and Paraguay in seconds. Zero iframes, instant speed.",
         simL1: "👤 Professional Profile / Status", opt1: "Active Freelancer (Online Services)", opt2: "Private Pensioner (Social Security / Funds)", opt3: "Public Pensioner (Civil Service)",
         simL2: "💶 Gross Annual Income in Spain (€)",
@@ -990,7 +1023,7 @@
       legDesc.innerHTML = i18n[lang][legKey];
 
       const profText = simProfile.options[simProfile.selectedIndex].text;
-      const msg = (lang === 'es' ? 'Hola ROLANIA 🧭. He calculado mi optimización en vuestro Simulador Fiscal:\n' : 'Hello ROLANIA 🧭. I calculated my tax optimization on your Simulator:\n') +
+      const msg = (lang === 'es' ? 'Hola ROLANIA 🧭. He calculated mi optimización en vuestro Simulador Fiscal:\n' : 'Hello ROLANIA 🧭. I calculated my tax optimization on your Simulator:\n') +
                   `• Perfil: ${profText}\n` +
                   `• Ingresos Brutos: ${fmt(inc)}\n` +
                   `• Ahorro Estimado: ${fmt(sav)}\n\n` +
