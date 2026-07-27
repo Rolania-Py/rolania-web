@@ -108,19 +108,6 @@
       -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     }
     .hero p { max-width: 780px; margin: 0 auto 38px; color: var(--muted); font-size: 1.15rem; }
-    .cta-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
-      font-weight: 700; font-size: 1rem; padding: 15px 30px; border-radius: 14px;
-      transition: transform 0.2s, box-shadow 0.2s; cursor: pointer; border: none; font-family: inherit;
-    }
-    .btn:hover { transform: translateY(-3px); }
-    .btn-primary { background: linear-gradient(135deg, #10b981, #0d9e6e); color: #03130c; box-shadow: 0 8px 30px var(--emerald-glow); }
-    .btn-primary:hover { box-shadow: 0 12px 40px var(--emerald-glow); }
-    .btn-ghost { background: var(--glass); border: 1px solid var(--border); color: var(--text); backdrop-filter: blur(8px); }
-    .btn-ghost:hover { border-color: var(--emerald); color: var(--emerald); }
-    .btn-gold { background: var(--glass); border: 1px solid rgba(245, 158, 11, 0.45); color: var(--gold); }
-    .btn-gold:hover { box-shadow: 0 8px 30px var(--gold-glow); }
 
     /* ---------- SECTION HEADERS ---------- */
     .section { padding: 40px 0; }
@@ -317,24 +304,24 @@
     .foot-legal { color: var(--muted); font-size: 0.8rem; max-width: 880px; margin: 0 auto 22px; line-height: 1.7; }
     .foot-copy { color: var(--muted); font-size: 0.85rem; font-weight: 600; }
 
-    /* ---------- FOTOS CORPORATIVAS (JR Y ESCUDO) ---------- */
-    .author-brand {
+    /* ---------- FOTOS CORPORATIVAS (JR Y ESCUDO) AL FINAL (REDUCIDAS) ---------- */
+    .author-brand-footer {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 30px; 
-      margin-bottom: 35px;
+      gap: 30px;
+      margin: 40px auto 10px auto;
     }
     .img-jr {
-      height: 210px; 
-      width: 210px;
+      height: 130px; /* Reducida de tamaño tal como pediste */
+      width: 130px;
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid var(--gold);
       box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
     }
     .img-escudo {
-      height: 225px; 
+      height: 140px; /* Reducida para armonizar con la foto */
       object-fit: contain;
     }
 
@@ -485,13 +472,6 @@
     <!-- ================= HERO ================= -->
     <section class="hero" id="inicio">
       <div class="container">
-        
-        <!-- FOTOS CORPORATIVAS Y ESCUDO (Nombres exactos) -->
-        <div class="author-brand">
-          <img src="JR.jpeg" alt="JR" class="img-jr">
-          <img src="ROLANIA.jpg" alt="Escudo Rolania" class="img-escudo">
-        </div>
-
         <div class="badges">
           <span class="badge" data-i18n="badge1">
             <img src="https://flagcdn.com/w20/es.png" class="flag-icon" alt="ES"> España → <img src="https://flagcdn.com/w20/py.png" class="flag-icon" alt="PY"> Paraguay
@@ -697,7 +677,7 @@
           </div>
         </div>
 
-        <!-- PILAR 2: VISTA DIRECTA SIN DESPLEGABLE -->
+        <!-- PILAR 2 -->
         <div class="pillar">
           <div class="pillar-head">
             <div class="pillar-num">02</div>
@@ -893,6 +873,14 @@
       </div>
     </section>
 
+    <!-- ================= FOTOS CORPORATIVAS Y ESCUDO (AL FINAL) ================= -->
+    <div class="container">
+      <div class="author-brand-footer">
+        <img src="JR.jpeg" alt="JR" class="img-jr">
+        <img src="ROLANIA.jpg" alt="Escudo Rolania" class="img-escudo">
+      </div>
+    </div>
+
     <!-- ================= SECCIÓN DE VÍDEOS DESTACADOS ================= -->
     <section class="section" id="videos">
       <div class="container center">
@@ -941,7 +929,6 @@
         badge2: "🌐 Global Expats (EU / USA / LATAM)",
         heroTitle: "Tu Libertad Fiscal y Arraigo Legal en Paraguay",
         heroSub: "Seguridad jurídica blindada mediante los Convenios de Doble Imposición (CDI) y la Ley 6380/2019 de Territorialidad. Estructuras 100% legales, transparentes y sin opacidad para empresarios, nómadas digitales y jubilados.",
-        ctaCalc: "📊 Calcular Ahorro Ahora", ctaExpert: "💬 Hablar con un Experto",
         whyOver: "Propuesta de Valor", whyTitle: "¿Por qué Paraguay?", whySub: "Tres pilares jurídicos que convierten a Paraguay en la jurisdicción más eficiente y segura para tu patrimonio.",
         card1T: "0% Renta Extranjera", card1X: "Principio de territorialidad (Ley 6380/2019): negocios online, dividendos, royalties y pensiones de fuente extranjera tributan al 0% en Paraguay.",
         card2T: "Seguridad Jurídica CDI", card2X: "Convenio de Doble Imposición oficial España–Paraguay. Planificación fiscal basada en tratados internacionales: cero opacidad, cero esquemas agresivos.",
@@ -1002,7 +989,6 @@
         badge2: "🌐 Global Expats (EU / USA / LATAM)",
         heroTitle: "Your Tax Freedom & Legal Residency in Paraguay",
         heroSub: "Ironclad legal security through Double Taxation Treaties (DTT) and the 6380/2019 Territoriality Law. 100% legal, transparent structures for entrepreneurs, digital nomads, and retirees.",
-        ctaCalc: "📊 Calculate Savings Now", ctaExpert: "💬 Talk to an Expert",
         whyOver: "Value Proposition", whyTitle: "Why Paraguay?", whySub: "Three legal pillars making Paraguay the most efficient and secure jurisdiction for your wealth.",
         card1T: "0% Foreign Source Income", card1X: "Territoriality principle (Law 6380/2019): online businesses, foreign dividends, royalties, and pensions are taxed at 0% in Paraguay.",
         card2T: "DTT Legal Security", card2X: "Official Spain–Paraguay Double Taxation Treaty. Tax planning based on international law: zero opacity, zero aggressive schemes.",
