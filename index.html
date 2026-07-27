@@ -512,37 +512,115 @@
     <!-- ================= HERO ================= -->
     <section class="hero" id="inicio">
       <div class="container">
-       <!-- FOTOS CORPORATIVAS Y ESCUDO -->
-        <div class="author-brand">
-          <!-- ATENCIÓN: Si tus fotos son .jpg, cambia el .png por .jpg aquí abajo -->
-          <img src="JR.jpeg" alt="JR" class="img-jr">
-          <img src="Rolania.jpg" alt="Escudo Rolania" class="img-escudo">
-        </div>
+    /* ---------- FOTOS CORPORATIVAS (JR Y ESCUDO) ---------- */
+    .author-brand {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px; /* Un poco más de espacio entre ellas */
+      margin-bottom: 35px;
+    }
+    .img-jr {
+      height: 210px; /* ¡Tamaño triplicado! */
+      width: 210px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--gold);
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+    }
+    .img-escudo {
+      height: 225px; /* ¡Tamaño triplicado! */
+      object-fit: contain;
+    }
 
-        <div class="badges">
-          <span class="badge" data-i18n="badge1">
-            <img src="https://flagcdn.com/w20/es.png" class="flag-icon" alt="ES"> España → <img src="https://flagcdn.com/w20/py.png" class="flag-icon" alt="PY"> Paraguay
-          </span>
-          <span class="badge gold" data-i18n="badge2">🌐 Global Expats (EU / USA / LATAM)</span>
-        </div>
-        
-        <h1 data-i18n="heroTitle">Tu Libertad Fiscal y Arraigo Legal en Paraguay</h1>
-        <p data-i18n="heroSub">Seguridad jurídica blindada mediante los Convenios de Doble Imposición (CDI) y la Ley 6380/2019 de Territorialidad. Estructuras 100% legales, transparentes y sin opacidad para empresarios, nómadas digitales y jubilados.</p>
-        
-        <!-- ZONA DE LOS DOS GRANDES BANNERS -->
-        <div class="hero-banners">
-          
-          <!-- Banner 1: Descargar Guía -->
-          <a href="guia_rolania.pdf" download class="banner-descarga-dorado" data-i18n="btnPdf">📕 Descargar Guía Rolanía (PDF)</a>
+    /* ---------- NUEVOS BANNERS HERO (GUÍA + EXPERTO EN PARALELO) ---------- */
+    .hero-banners-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Divide el espacio en dos columnas iguales */
+      gap: 24px;
+      width: 100%;
+      max-width: 1040px; /* Más ancho para que quepan ambos cómodamente */
+      margin: 45px auto 0;
+    }
 
-          <!-- Banner 2: Hablar con un Experto + Subtexto -->
-          <div class="expert-banner-wrapper">
-             <a href="https://wa.me/595994434014?text=Hola%20ROLANIA.%20Quisiera%20hablar%20con%20un%20experto" target="_blank" rel="noopener" class="expert-main-btn">💬 Hablar con un Experto</a>
-             <div class="expert-subtext">
-                Concierta una cita telefónica o por videollamada de 10 min, gratuita. En ella te explicaremos quiénes somos y los servicios que ofrecemos con detalle. En caso de que estés interesado, programaremos una sesión de asesoramiento de 45 min de duración con un coste de 75€ para organizar y preparar tu desembarco en Paraguay.
-             </div>
-          </div>
+    /* Para que en móviles no se aplasten y se pongan uno encima del otro */
+    @media (max-width: 900px) {
+      .hero-banners-row {
+        grid-template-columns: 1fr;
+      }
+    }
 
+    .expert-banner-wrapper {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 10px 10px 20px 10px;
+      text-align: center;
+      transition: border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .expert-banner-wrapper:hover {
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+    
+    /* Botón Dorado (Guía) */
+    .banner-descarga-dorado {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.3rem;
+      padding: 20px 30px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #ffffff;
+      border: 1px solid #fbbf24;
+      box-shadow: 0 12px 35px rgba(245, 158, 11, 0.4);
+      transition: all 0.3s ease;
+    }
+    .banner-descarga-dorado:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 45px rgba(245, 158, 11, 0.6);
+      color: #ffffff;
+    }
+
+    /* Botón Azul (Experto) */
+    .expert-main-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.3rem;
+      padding: 20px 30px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: #ffffff;
+      border: 1px solid #60a5fa;
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+      transition: transform 0.2s;
+    }
+    .expert-main-btn:hover {
+      transform: translateY(-3px);
+      color: #ffffff;
+    }
+    
+    /* Texto inferior de ambos banners */
+    .expert-subtext {
+      font-size: 0.9rem;
+      color: #96a1ba;
+      line-height: 1.6;
+      margin-top: 18px;
+      padding: 0 20px;
+      font-weight: 500;
+      flex-grow: 1; /* Esto hace que si un texto es más largo, las cajas se igualen en altura */
+    }
         </div>
         </div>
       </div>
