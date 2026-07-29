@@ -74,19 +74,19 @@
       display: flex; align-items: center; justify-content: space-between; gap: 20px;
     }
 
-    /* EL NUEVO LOGO CIRCULAR (SECCIONADO MÁGICAMENTE) */
+    /* EL NUEVO LOGO CIRCULAR (SECCIONADO MÁGICAMENTE Y AMPLIADO) */
     .logo { 
       font-size: 1.3rem; font-weight: 800; letter-spacing: 0.5px; text-decoration: none; 
       color: var(--text); display: flex; align-items: center; gap: 12px;
     }
     .logo span { color: var(--emerald); }
     .nav-logo-img {
-      width: 44px; /* Tamaño 3x más grande que la antigua brújula */
-      height: 44px;
+      width: 56px; /* Aumentado para destacar más */
+      height: 56px;
       border-radius: 50%; /* Recorta el fondo cuadrado en un círculo perfecto */
       object-fit: cover; /* Centra y ajusta el logo sin deformarlo */
       object-position: center;
-      border: 2px solid var(--emerald); /* Un pequeño aro verde elegante */
+      border: 2px solid var(--emerald);
       box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
       flex-shrink: 0;
     }
@@ -330,25 +330,29 @@
     .foot-legal { color: var(--muted); font-size: 0.8rem; max-width: 880px; margin: 0 auto 22px; line-height: 1.7; }
     .foot-copy { color: var(--muted); font-size: 0.85rem; font-weight: 600; }
 
-    /* ---------- FOTOS CORPORATIVAS (JR Y ESCUDO) AL FINAL (REDUCIDAS) ---------- */
+    /* ---------- FOTOS CORPORATIVAS AL FINAL (LOGO A LA IZQ Y JR A LA DER) ---------- */
     .author-brand-footer {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 30px;
+      gap: 35px;
       margin: 40px auto 10px auto;
     }
-    .img-jr {
-      height: 130px; 
-      width: 130px;
+    .img-bottom-logo {
+      height: 140px; 
+      width: 140px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--gold);
-      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+      border: 3px solid var(--emerald); /* Borde esmeralda para el logo */
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
     }
-    .img-escudo {
+    .img-jr {
       height: 140px; 
-      object-fit: contain;
+      width: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--gold); /* Borde dorado para tu foto */
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
     }
 
     /* ---------- NUEVOS BANNERS HERO (GUÍA + EXPERTO EN PARALELO) ---------- */
@@ -460,7 +464,7 @@
     <div class="header-inner">
       <a class="logo" href="#inicio">
         <!-- AQUÍ VA TU NUEVO LOGO CIRCULAR -->
-        <img src="logo.jpg" alt="Logo Nexus Paraguay" class="nav-logo-img">
+        <img src="logo.png" alt="Logo Nexus Paraguay" class="nav-logo-img">
         NEXUS<span> PARAGUAY</span>
       </a>
       <nav>
@@ -861,8 +865,10 @@
     <!-- ================= FOTOS CORPORATIVAS Y ESCUDO (AL FINAL) ================= -->
     <div class="container">
       <div class="author-brand-footer">
+        <!-- LOGO A LA IZQUIERDA -->
+        <img src="logo.png" alt="Logo Nexus" class="img-bottom-logo">
+        <!-- TU FOTO A LA DERECHA -->
         <img src="JR.jpeg" alt="JR" class="img-jr">
-        <img src="ROLANIA.jpg" alt="Escudo Rolania" class="img-escudo">
       </div>
     </div>
 
@@ -889,8 +895,8 @@
   <!-- ================= FOOTER & CONTACTOS ================= -->
   <footer id="contacto">
     <div class="footer-inner">
-      <div class="logo">
-        <img src="logo.jpg" alt="Logo Nexus Paraguay" class="nav-logo-img">
+      <div class="logo" style="justify-content: center;">
+        <img src="logo.png" alt="Logo Nexus Paraguay" class="nav-logo-img">
         NEXUS<span> PARAGUAY</span>
       </div>
       
@@ -1066,7 +1072,7 @@
     const perEs = document.getElementById('perEs');
     const perPy = document.getElementById('perPy');
     const legDesc = document.getElementById('legDesc');
-    const waSim = document.getElementById('waSim'); // Ahora apunta a una etiqueta <a>
+    const waSim = document.getElementById('waSim');
 
     function syncIncome(source) {
       if (source === 'range') simNum.value = simRange.value;
@@ -1134,7 +1140,6 @@
                   `• Ahorro Estimado: ${fmt(sav)}\n\n` +
                   (lang === 'es' ? 'Quiero solicitar mi Conserjería 360° y Estudio Formal.' : 'I want to request my 360° Concierge and Formal Assessment.');
       
-      // Actualizamos el enlace dinámicamente en lugar de usar onclick (evita bloqueadores de popups y fallos CSS)
       waSim.href = `https://wa.me/595994434014?text=${encodeURIComponent(msg)}`;
     }
 
