@@ -74,17 +74,17 @@
       display: flex; align-items: center; justify-content: space-between; gap: 20px;
     }
 
-    /* EL NUEVO LOGO CIRCULAR (SECCIONADO MÁGICAMENTE Y AMPLIADO) */
+    /* EL NUEVO LOGO CIRCULAR */
     .logo { 
       font-size: 1.3rem; font-weight: 800; letter-spacing: 0.5px; text-decoration: none; 
       color: var(--text); display: flex; align-items: center; gap: 12px;
     }
     .logo span { color: var(--emerald); }
     .nav-logo-img {
-      width: 56px; /* Aumentado para destacar más */
+      width: 56px; 
       height: 56px;
-      border-radius: 50%; /* Recorta el fondo cuadrado en un círculo perfecto */
-      object-fit: cover; /* Centra y ajusta el logo sin deformarlo */
+      border-radius: 50%;
+      object-fit: cover;
       object-position: center;
       border: 2px solid var(--emerald);
       box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
@@ -298,7 +298,7 @@
     .compliance-content h4 { color: #ef4444; font-size: 1.05rem; font-weight: 800; margin-bottom: 6px; letter-spacing: 0.5px; text-transform: uppercase; }
     .compliance-content p { color: var(--text); font-size: 0.9rem; line-height: 1.6; margin: 0; }
 
-    /* BOTONES GLOBALES (Blindados para evitar roturas del navegador) */
+    /* BOTONES GLOBALES */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
       font-weight: 700; font-size: 1rem; padding: 15px 30px; border-radius: 14px;
@@ -330,7 +330,7 @@
     .foot-legal { color: var(--muted); font-size: 0.8rem; max-width: 880px; margin: 0 auto 22px; line-height: 1.7; }
     .foot-copy { color: var(--muted); font-size: 0.85rem; font-weight: 600; }
 
-    /* ---------- FOTOS CORPORATIVAS AL FINAL (LOGO A LA IZQ Y JR A LA DER) ---------- */
+    /* ---------- FOTOS CORPORATIVAS AL FINAL ---------- */
     .author-brand-footer {
       display: flex;
       justify-content: center;
@@ -343,7 +343,8 @@
       width: 140px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--emerald); /* Borde esmeralda para el logo */
+      object-position: center;
+      border: 3px solid var(--emerald); 
       box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
     }
     .img-jr {
@@ -351,7 +352,9 @@
       width: 140px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--gold); /* Borde dorado para tu foto */
+      /* Ajuste mágico para bajar la cabeza en la foto y que no se corte */
+      object-position: center 15%; 
+      border: 3px solid var(--gold); 
       box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
     }
 
@@ -463,8 +466,8 @@
   <header>
     <div class="header-inner">
       <a class="logo" href="#inicio">
-        <!-- AQUÍ VA TU NUEVO LOGO CIRCULAR -->
-        <img src="logo.png" alt="Logo Nexus Paraguay" class="nav-logo-img">
+        <!-- AQUÍ VA TU NUEVO LOGO CIRCULAR (CON LA RUTA ./ FUERZA LA BÚSQUEDA LOCAL) -->
+        <img src="./logo.png" alt="Logo Nexus Paraguay" class="nav-logo-img">
         NEXUS<span> PARAGUAY</span>
       </a>
       <nav>
@@ -618,7 +621,7 @@
             </div>
             <div class="suace-img-container">
               <h4 data-i18n="suaceTitle">Flujograma de Procesos - SUACE</h4>
-              <img src="SUACE.png" alt="Flujograma SUACE" class="suace-img" />
+              <img src="./SUACE.png" alt="Flujograma SUACE" class="suace-img" />
             </div>
           </div>
         </div>
@@ -828,7 +831,6 @@
             <p id="legDesc">Art. 14 CDI España–Paraguay: Los servicios profesionales independientes tributan exclusivamente en el Estado de residencia. En Paraguay, los ingresos de fuente extranjera pagan 0% (Ley 6380/2019).</p>
           </div>
 
-          <!-- BOTÓN WHATSAPP ARREGLADO (AHORA ES UN ENLACE PURO 'a') -->
           <div style="display: flex; justify-content: center; width: 100%; text-align: center; margin: 30px 0;">
             <a href="#" id="waSim" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="btnWspSim" style="margin: 0 auto;">
               📲 Solicitar Conserjería y Estudio por WhatsApp
@@ -862,13 +864,11 @@
       </div>
     </section>
 
-    <!-- ================= FOTOS CORPORATIVAS Y ESCUDO (AL FINAL) ================= -->
+    <!-- ================= FOTOS CORPORATIVAS AL FINAL ================= -->
     <div class="container">
       <div class="author-brand-footer">
-        <!-- LOGO A LA IZQUIERDA -->
-        <img src="logo.png" alt="Logo Nexus" class="img-bottom-logo">
-        <!-- TU FOTO A LA DERECHA -->
-        <img src="JR.jpeg" alt="JR" class="img-jr">
+        <img src="./logo.png" alt="Logo Nexus" class="img-bottom-logo">
+        <img src="./JR.jpeg" alt="JR" class="img-jr">
       </div>
     </div>
 
@@ -896,7 +896,7 @@
   <footer id="contacto">
     <div class="footer-inner">
       <div class="logo" style="justify-content: center;">
-        <img src="logo.png" alt="Logo Nexus Paraguay" class="nav-logo-img">
+        <img src="./logo.png" alt="Logo Nexus Paraguay" class="nav-logo-img">
         NEXUS<span> PARAGUAY</span>
       </div>
       
